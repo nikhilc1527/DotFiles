@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+
+import subprocess
+import os
+
+def main():
+    # sub = subprocess.run(["paru -Sl | fzf -m --preview 'echo {} | awk \"{print $2}\" | xargs -t pacaur -Si'"], text=True, shell=True, stdout=subprocess.PIPE)
+    sub = subprocess.run(["paru -Sl | fzf -m --preview \"pacaur -Si {2}\""], text=True, shell=True, stdout=subprocess.PIPE)
+    if (sub.returncode != 0 or not sub.stdout):
+        exit(0)
+
+    out = sub.stdout
+    packages = out.split('\n')
+    package_list = ""
+
+    print("Packages:")
+    for i in range(0, len(packages) - 1):
+        cur_pack = packages[i].split(' ')
+        print(cur_pack[0] + "/" + cur_pack[1])
+    print()
+
+    print("Continue?: [Y/n]", end='')
+    s = input().strip()
+    if not (s=="Y" or s == "y" or s == ''):
+        exit(0)
+
+    for i in range(0, len(packages) - 1):
+        cur_pack = packages[i].split(' ')
+        os.system(str.format("paru -S {}/{}", cur_pack[0], cur_pack[1]))
+        # package_list += str.format(" {}/{}", cur_pack[0], cur_pack[1])
+
+    # os.system(str.format("yay -S {}", package_list))
+
+if __name__ == "__main__":
+    main()

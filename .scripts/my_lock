@@ -1,0 +1,5 @@
+#!/bin/bash
+
+convert /home/nikhil/.local/share/lock_wall.png /home/nikhil/.local/share/lock.png -gravity center -composite -matte /tmp/locked.png
+i3lock -t -i /tmp/locked.png
+rm /tmp/locked.png 
