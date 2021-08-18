@@ -24,7 +24,7 @@ export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="random"
 # ZSH_THEME="jonathan"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

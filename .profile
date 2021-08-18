@@ -41,7 +41,7 @@ export MBSYNCRC="$XDG_CONFIG_HOME"/mbsyncrc
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch-config
 export TASKRC="$XDG_CONFIG_HOME"/taskrc
 
-export ZDOTDIR=/home/nikhil/
+export ZDOTDIR=$HOME/.config/zsh
 
 export GTK_THEME=Adwaita:dark
 export GTK_THEME=Adwaita:dark
@@ -51,5 +51,3 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export ANDROID_SDK_ROOT=/home/nikhil/MyFiles/AndroidSDK2
 export ANDROID_SDK_PATH=/home/nikhil/MyFiles/AndroidSDK2
 export ANDROID_HOME=/home/nikhil/MyFiles/AndroidSDK2
-
-# testing
