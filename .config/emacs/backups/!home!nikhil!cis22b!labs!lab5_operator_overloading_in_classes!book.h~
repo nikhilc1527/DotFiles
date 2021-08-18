@@ -1,0 +1,86 @@
+/*
+this class Book has 8 fields for the 8 data that a book can have, which are isbn number, title, author, publisher, date_added, quantity on hand, wholesale cost, and retail price
+for each data member, the class also has a corresponding getter and setter method, respectively
+the class also has 3 constructors:
+1. empty constructor, which takes no parameters and all of the fields and default constructed
+2. copy constructor, which takes another Book class instance and copies over all of the fields
+3. data constructor, which takes 8 parameters, and sets the fields with the corresponding parameters
+ */
+
+#include <string>
+#include <iostream>
+#include <sstream>
+
+class Book {
+private:
+  long long isbn;
+  std::string title;
+  std::string author;
+  std::string publisher;
+  std::string date_added;
+  std::string quantity_on_hand;
+  std::string wholesale_cost;
+  std::string retail_price;
+
+public:
+  std::string get_retail_price() const { return retail_price; }
+
+  void set_retail_price(const std::string& retail_price) {
+    this->retail_price = retail_price;
+  }
+
+  std::string get_wholesale_cost() const { return wholesale_cost; }
+
+  void set_wholesale_cost(const std::string& wholesale_cost) {
+    this->wholesale_cost = wholesale_cost;
+  }
+
+  std::string get_quantity_on_hand() const { return quantity_on_hand; }
+
+  void set_quantity_on_hand(const std::string& quantity_on_hand) {
+    this->quantity_on_hand = quantity_on_hand;
+  }
+
+  std::string get_date_added() const { return date_added; }
+
+  void set_date_added(const std::string& date_added) {
+    this->date_added = date_added;
+  }
+
+  std::string get_publisher() const { return publisher; }
+
+  void set_publisher(const std::string& publisher) {
+    this->publisher = publisher;
+  }
+
+  std::string get_author() const { return author; }
+
+  void set_author(const std::string& author) { this->author = author; }
+
+  std::string get_title() const { return title; }
+
+  void set_title(const std::string& title) { this->title = title; }
+
+  long long  get_isbn() const { return isbn; }
+
+  void set_isbn(long long isbn) { this->isbn = isbn; }
+
+  Book(long long isbn, const std::string &title, const std::string &author,
+       const std::string &publisher, const std::string &date_added, const std::string &quantity_on_hand,
+       const std::string &wholesale_cost, const std::string &retail_price);
+  Book();
+
+  Book(const Book &other);
+
+  ~Book();
+
+  operator int() const;
+
+  friend bool operator==(const Book &first, const Book &second);
+
+  Book& operator=(const Book &other);
+
+  // could overload these operators to have a more neat main method and main file
+  friend std::istream& operator>>(std::istream&, Book&);
+  friend std::ostream& operator<<(std::ostream&, const Book&);
+};

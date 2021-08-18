@@ -1,0 +1,7 @@
+#include <ifstream>
+
+int main(int argc, char *argv[]) {
+  std::ifstream("english_dictionary.txt");
+  
+  return 0;
+}

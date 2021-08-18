@@ -1,0 +1,30 @@
+#include "mainwindow.h"
+
+#include <QApplication>
+
+#include <webcam.h>
+
+#include <fstream>
+#include <iostream>
+
+void grab() {
+    const int XRES = 640, YRES = 480;
+    Webcam webcam("/dev/video0", XRES, YRES);
+    auto frame = webcam.frame();
+
+    std::ofstream image;
+    image.open("frame.ppm");
+    image << "P6\n" << XRES << " " << YRES << " 255\n";
+    image.write((char *) frame.data, frame.size);
+    image.close();
+}
+
+int main(int argc, char *argv[])
+{
+    grab();
+
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
+}

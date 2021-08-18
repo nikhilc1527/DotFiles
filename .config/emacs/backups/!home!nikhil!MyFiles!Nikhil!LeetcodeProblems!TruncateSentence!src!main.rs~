@@ -1,0 +1,24 @@
+struct Solution;
+
+impl Solution {
+    pub fn truncate_sentence(s: String, k: i32) -> String {
+        let mut res: String = String::from("");
+        let mut words = 0;
+        for c in s.chars() {
+            if words == k {
+                break;
+            }
+            if c == ' ' {
+                words += 1;
+            } else {
+                res.push(c);
+            }
+        }
+
+        res
+    }
+}
+
+fn main() {
+    println!("Hello, world!");
+}

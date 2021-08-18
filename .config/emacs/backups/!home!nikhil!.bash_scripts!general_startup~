@@ -1,0 +1,6 @@
+export PATH=/home/nikhil_chatterjee/Downloads/node-v15.5.0-linux-x64/bin/:/home/nikhil_chatterjee/Downloads/google-cloud-sdk/bin:/home/nikhil_chatterjee/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nikhil_chatterjee/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+

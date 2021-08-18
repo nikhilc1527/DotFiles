@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+
+class Solution {
+public:
+  std::string alienOrder(std::vector<std::string>& words) {
+    std::vector<std::unordered_set<char>> adj(26);
+    std::vector<bool> seen(26, false);
+    std::vector<int> in(26);
+    for (int i = 0; i < words.size() - 1; ++i) {
+      int j = 0;
+      for (; j < words[i].size() && j < words[i + 1].size();
+           ++j) {
+        if (words[i][j] != words[i+1][j]) {
+          if (!adj[words[i][j] - 'a'].count(words[i+1][j])) {
+            in[words[i+1][j]-'a']++;
+            adj[words[i][j] - 'a'].insert(words[i+1][j]);
+          }
+          break;
+        }
+      }
+
+      if (j < words[i].size() && j >= words[i+1].size()) return "";
+    }
+
+    for (int i = 0; i < words.size(); ++i) {
+      for (int j = 0; j < words[i].size(); ++j) {
+        seen[words[i][j]-'a'] = true;
+      }
+    }
+
+    std::queue<char> q;
+    for (int i = 0; i < 26; ++i) {
+      if (in[i] == 0 && seen[i]) {
+        q.push('a' + i);
+      }
+    }
+
+    std::string res;
+    while (!q.empty()) {
+      char c = q.front();
+      q.pop();
+      res.push_back(c);
+      for (auto i : adj[c - 'a']) {
+        in[i-'a']--;
+        if (in[i-'a'] < 0) return "";
+        else if (in[i-'a'] == 0) q.push(i);
+      }
+    }
+
+    for (int i = 0; i < 26; ++i) {
+      if (in[i] > 0) return "";
+    }
+
+    return res;
+  }
+};
+
+int main(int argc, char **argv) {
+  std::vector<std::string> words = {
+"ac","ab","zc","zb"
+  };
+
+  std::cout << Solution().alienOrder(words) << "\n";
+
+  return 0;
+}

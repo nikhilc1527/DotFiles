@@ -1,0 +1,34 @@
+body {          
+    width: 600px;
+    min-width: 400px;
+    
+    margin: 0 auto;
+    
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+}
+
+.div {
+    border: 1px solid green;
+}
+
+.welcome-header {
+    float:left;
+    /* width:auto; */
+    margin-right:1em;
+}
+
+.about-me-h2 {
+    float: left;
+    margin-right: 3px;
+}
+
+.vid1 {
+    float:left;
+    width:auto;
+    margin-right:14px;
+}
+
+.vid2 {
+    float:left;
+    width:auto;
+}

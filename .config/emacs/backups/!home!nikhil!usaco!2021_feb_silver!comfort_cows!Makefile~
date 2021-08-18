@@ -1,0 +1,2 @@
+out: main.cpp
+	g++ -g -fsanitize=address main.cpp -DDEBUG -oout

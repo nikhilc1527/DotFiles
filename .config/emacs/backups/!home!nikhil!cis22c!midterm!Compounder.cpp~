@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+void merge(std::string *words, int min, int mid, int max) {
+  std::string *newVals = new std::string[max - min];
+  int i = min, j = mid, k = 0;
+  while (i < mid && j < max) {
+    if (words[i] > words[j]) {
+      newVals[k++] = words[j++];
+    } else {
+      newVals[k++] = words[i++];
+    }
+  }
+
+  while (i < mid) {
+    newVals[k++] = words[i++];
+  }
+  while (j < max) {
+    newVals[k++] = words[j++];
+  }
+
+  for (int l = min; l < max; ++l) {
+    words[l] = newVals[l-min];
+  }
+}
+
+void sort(std::string *words, int min, int max) {
+  if (max - min == 1) {
+    return;
+  } else if (max-min == 2) {
+    if (words[min] > words[min + 1]) {
+      std::string temp = words[min];
+      words[min] = words[min+1];
+      words[min+1] = temp;
+    }
+  } else {
+    int mid = (min + max) / 2;
+    sort(words, min, mid);
+    sort(words, mid, max);
+    merge(words, min, mid, max);
+  }
+}
+
+void find_compounds(std::string *inputs, int input_size, std::string *&results, int &result_count) {
+  results = new std::string[32 * 32];
+  result_count = 0;
+
+  for (int i = 0; i < input_size; ++i) {
+    for (int j = 0; j < input_size; ++j) {
+      if (i == j) {
+        continue;
+      }
+      std::string concatenation = inputs[i] + inputs[j];
+      bool unique = true;
+      for (int k = 0; k < result_count && unique; k++) {
+        if (results[k] == concatenation) {
+          unique = false;
+        }
+      }
+
+      if (unique) {
+        results[result_count++] = concatenation;
+      }
+    }
+  }
+}
+
+int main(int argc, char **argv) {
+  int size = 32;
+  std::string *inputs = new std::string[size];
+  
+  int input_size = 0;
+
+  std::string line;
+  std::getline(std::cin, line);
+  std::stringstream ss(line);
+  while (ss) {
+    ss >> inputs[input_size++];
+  }
+  input_size--;
+
+  std::string *results;
+  int result_count;
+  find_compounds(inputs, input_size, results, result_count);
+
+  sort(results, 0, result_count);
+
+  for (int i = 0; i < result_count; ++i) {
+    std::cout << results[i] << " ";
+  }
+  std::cout << "\n";
+
+  delete [] inputs;
+  delete [] results;
+
+  return 0;
+}

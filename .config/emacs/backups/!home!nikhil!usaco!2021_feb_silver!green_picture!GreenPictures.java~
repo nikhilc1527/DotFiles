@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+
+public class GreenPictures {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        s.nextLine();
+        List<List<Integer>> green = new ArrayList<>();
+        for (int i = 0; i < n; ++i) {
+            green.add(new ArrayList<>());
+            for (int j = 0; j < n; ++j) {
+                green.get(i).add(0);
+                green.get(i).set(j, s.nextInt());
+            }
+        }
+
+        // if (n == 1) {
+        //     if (green.get(0).get(0) == 1)
+        //         System.out.println(1);
+        //     else System.out.println(0);
+        // }
+
+        int finalAns = 0;
+        for (int i = 0; i < green.size(); ++i) {
+            for (int j = 0; j < green.get(i).size(); ++j) {
+                if (green.get(i).get(j) == 100) {
+                    HashSet<Integer> dp = new HashSet<>();
+                    finalAns += picSearch(i, j, i, j, green, dp);
+                    green.get(i).set(j, 99);
+                }
+            }
+        }
+        System.out.println(finalAns);
+
+    }
+
+    static int valueOf(int a, int b, int c, int d) {
+        return a * 501 * 501 * 501 + b * 501 * 501 + c * 501 + d;
+    }
+
+    static int picSearch(int bot, int left, int top, int right, List<List<Integer>> green,
+                         HashSet<Integer> dp) {
+        if (dp.contains(valueOf(bot, left, top, right))) return 0;
+        if (bot < 0 || left < 0 || top >= green.size() || right >= green.get(top).size()) return 0;
+        if (green.get(bot).get(left) < 100 || green.get(top).get(right) < 100)
+            return 0;
+
+        for (int i = left; i <= right; ++i) {
+            if (green.get(top).get(i) < 100) return 0;
+            if (green.get(bot).get(i) < 100) return 0;
+        }
+
+        for (int i = bot; i <= top; ++i) {
+            if (green.get(i).get(left) < 100) return 0;
+            if (green.get(i).get(right) < 100) return 0;
+        }
+
+        dp.add(valueOf(bot, left, top, right));
+
+
+        int ans = 1;
+        ans += picSearch(bot - 1, left, top, right, green, dp) +
+                picSearch(bot, left - 1, top, right, green, dp);
+        ans += picSearch(bot, left, top + 1, right, green, dp) +
+                picSearch(bot, left, top, right + 1, green, dp);
+
+        return ans;
+    }
+}

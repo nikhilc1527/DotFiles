@@ -1,0 +1,110 @@
+#include <algorithm>
+#include <bitset>
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <stack>
+#include <vector>
+
+#ifdef DEUB
+std::ifstream fin("input.txt");
+std::ofstream fout("output.txt");
+#else
+auto &fin = std::cin;
+auto &fout = std::cout;
+#endif
+
+const int offset = 10;
+std::uint8_t state[1000 + 2*offset+1][1000 + 2*offset+1];
+int res = 0;
+
+void dfs(int i, int j, std::stack<std::pair<int, int>> &stack) {
+  if (!state[i][j]) return;
+
+  int adj = 0;
+  int vx = 0, vy = 0;
+
+  if (!state[i + 1][j]) {
+    vx = 1;
+  } else {
+    ++adj;
+  }
+
+  if (!state[i - 1][j]) {
+    vx = -1;
+  } else {
+    ++adj;
+  }
+
+  if (!state[i][j + 1]) {
+    vy = 1;
+  } else {
+    ++adj;
+  }
+
+  if (!state[i][j - 1]) {
+    vy = -1;
+  } else {
+    ++adj;
+  }
+
+  if (adj == 3) {
+    state[i+vx][j+vy] = 1;
+    res ++;
+
+    stack.push({i + vx, j + vy});
+    stack.push({i + vx + 1, j + vy});
+    stack.push({i + vx - 1, j + vy});
+    stack.push({i + vx, j + vy + 1});
+    stack.push({i + vx, j + vy - 1});
+  }
+}
+
+void print_array(int max_j, int max_k) {
+  for (int i = 0; i < max_j; ++i) {
+    for (int j = 0; j < max_k; ++j) {
+      fout << (char)(state[i][j]+'0') << " ";
+    }
+    fout << "\n";
+  }
+}
+
+int main() {
+  int n;
+  fin >> n;
+
+  std::memset(state, 0, sizeof(state));
+
+  int max_j = -1, max_k = -1;
+
+  for (int i = 0; i < n; i ++) {
+    int j, k;
+    fin >> j >> k;
+
+    j += offset;
+    k += offset;
+    max_j = std::max(j+offset, max_j);
+    max_k = std::max(k+offset, max_k);
+
+    if (state[j][k]==1) --res;
+
+    state[j][k] = 2;
+
+    std::stack<std::pair<int, int>> stack;
+    stack.push({j, k});
+    stack.push({j + 1, k});
+    stack.push({j-1,k});
+    stack.push({j, k + 1});
+    stack.push({j,k-1});
+
+    while (!stack.empty()) {
+      auto [i, j] = stack.top();
+      stack.pop();
+      dfs(i,j,stack);
+    }
+
+    fout << res << "\n";
+  }
+
+  return 0;
+}

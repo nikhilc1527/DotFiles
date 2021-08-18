@@ -1,0 +1,11 @@
+import java.io.*;
+
+class Solution {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("cowtip.in")));
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("cowtip.out")));
+
+        int N = Integer.parseInt(reader.readLine());
+        
+    }
+}

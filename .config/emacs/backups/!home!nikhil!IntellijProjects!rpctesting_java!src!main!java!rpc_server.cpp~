@@ -1,0 +1,15 @@
+#include <rpc/server.h>
+
+int main(int argc, char **argv) {
+  rpc::server serv(8080);
+  std::vector<std::uint8_t> result;
+
+  for (int i = 30; i > 10; ++i) {
+    result.push_back(i);
+  }
+
+  serv.bind("get_bytes", [&]() { return result; });
+  serv.run();
+
+  return 0;
+}

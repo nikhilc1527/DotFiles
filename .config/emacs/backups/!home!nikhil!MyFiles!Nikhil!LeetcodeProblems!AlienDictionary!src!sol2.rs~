@@ -1,0 +1,81 @@
+use std::collections::HashSet;
+use std::collections::LinkedList;
+
+#[derive(Debug)]
+struct Solution;
+
+impl Solution {
+    fn top_sort(
+        res: &mut LinkedList<char>,
+        state: &mut Vec<u8>,
+        i: char,
+        adj: &[HashSet<char>],
+    ) -> bool {
+        fn ctosz(c: char) -> usize {
+            (c as u8 - b'a') as usize
+        }
+        if state[ctosz(i)] == 1 {
+            return false;
+        }
+
+        if state[ctosz(i)] == 2 {
+            return true;
+        }
+
+        state[ctosz(i)] = 1;
+        for &next in &adj[ctosz(i)] {
+            if !Self::top_sort(res, state, next, adj) {
+                return false;
+            }
+        }
+
+        res.push_front(i);
+        state[ctosz(i)] = 2;
+
+        true
+    }
+
+    pub fn alien_order(words_bad: Vec<String>) -> String {
+        let ctosz = |c: char| -> usize { (c as u32 - 'a' as u32) as usize };
+
+        let mut words: Vec<Vec<char>> = Vec::new();
+        for s in words_bad {
+            words.push(s.chars().collect());
+        }
+        let mut adj: Vec<HashSet<char>> = vec![HashSet::new(); 26];
+        let mut seen = [false; 26];
+        for i in 0..(&words).len() - 1 {
+            let mut j = 0;
+            while j < words[i + 1].len() && j < words[i].len() {
+                if words[i][j] != words[i + 1][j] {
+                    adj[ctosz(words[i][j])].insert(words[i + 1][j]);
+                    break;
+                }
+                j += 1;
+            }
+            if j < words[i].len() && j >= words[i + 1].len() {
+                return String::from("");
+            }
+        }
+
+        for word in (&words).iter() {
+            for &c in word.iter() {
+                seen[ctosz(c)] = true;
+            }
+        }
+
+        let mut res: LinkedList<char> = LinkedList::new();
+        let mut state: Vec<u8> = vec![0; 26];
+        for i in 0..26 {
+            if seen[i] && !Self::top_sort(&mut res, &mut state, (i as u8 + b'a') as char, &adj) {
+                return String::from("");
+            }
+        }
+
+        let mut res_str = String::new();
+        for &i in res.iter() {
+            res_str.push(i);
+        }
+        res_str
+    }
+}

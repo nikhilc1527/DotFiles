@@ -1,0 +1,51 @@
+#include <string>
+#include <vector>
+#include <queue>
+
+class Solution {
+public:
+  int ladderLength(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {
+    wordList.push_back(beginWord);
+    std::vector<std::vector<int>> adj(wordList.size());
+    int start = wordList.size() - 1, end = -1;
+    for (int i = 0; i < wordList.size(); ++i) {
+      if (wordList[i] == endWord) end = i;
+      for (int j = 0; j < wordList.size(); ++j) {
+        if (i == j) continue;
+
+        int diff = 0;
+        for (int k = 0; k < wordList[j].size(); ++k) {
+          if (wordList[i][k] != wordList[j][k]) ++diff;
+        }
+        if (diff <= 1) {
+          adj[i].push_back(j);
+        }
+      }
+    }
+
+    if (end < 0) return 0;
+
+    std::vector<int> dp(wordList.size(), 0);
+    auto comp = [&dp](int a, int b) {return dp[a] > dp[b];};
+    std::priority_queue<int, std::vector<int>, decltype(comp)> pq(comp);
+    pq.push(start);
+    while (!pq.empty()) {
+      int top = pq.top();
+      pq.pop();
+      for (auto i : adj[top]) {
+        if (dp[i] == 0) {
+          dp[i] = dp[top] + 1;
+          pq.push(i);
+        }
+      }
+    }
+
+    return !dp[end] ? 0 : dp[end] + 1;
+  }
+};
+
+int main(int argc, char *argv[]) {
+  std::string begin ;
+  
+  return 0;
+}

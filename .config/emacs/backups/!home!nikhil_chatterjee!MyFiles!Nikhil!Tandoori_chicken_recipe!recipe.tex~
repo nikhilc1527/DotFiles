@@ -1,0 +1,47 @@
+% Created 2020-11-07 Sat 15:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\author{Nikhil Chatterjee}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Nikhil Chatterjee},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+Recipe for 16 leg and thigh pieces
+\begin{center}
+\begin{tabular}{ll}
+Ingredient & Amount\\
+\hline
+Garlic Paste & 8 spoons\\
+Ginger Paste & 6 spoons\\
+Kosher Salt OR Table Salt & 5 spoons OR 3.5 spoons\\
+Ground Pepper & andaj\\
+Chili Powder & 2 spoons\\
+Tandoori Powder (Laziza) & 1 packet\\
+Lime Juice OR Whole Lime & 3 spoons OR 2 halves\\
+EVOO & 2 spoons\\
+Mustard Oil & 2 spoons\\
+Yogurt & 11 spoons\\
+\end{tabular}
+\end{center}
+\end{document}

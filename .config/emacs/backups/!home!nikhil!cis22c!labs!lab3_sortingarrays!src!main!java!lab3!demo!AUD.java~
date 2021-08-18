@@ -1,0 +1,38 @@
+/*
+AUD.java
+Nikhil Chatterjee
+Lab 1
+CIS 22C Class - Manish Goel
+Description: A class extending the dollar class, which represents an australian dollar
+*/
+
+public class AUD extends Dollar {
+  String nationality;
+
+  public AUD(int whole, int fractional) {
+    super(whole, fractional);
+    nationality = "Australia";
+  }
+
+  public AUD(Dollar other) {
+    super(other);
+    nationality = "Australia";
+  }
+
+  public AUD() {
+    this(0, 0);
+  }
+
+  /*
+  * Prints details about the object to the terminal
+  * pre: none
+  * post: details printed to terminal
+  * returns: nothing
+   */
+  @Override
+  public void printDetails() {
+    System.out.println(nationality + " " + super.getString());
+  }
+
+
+}

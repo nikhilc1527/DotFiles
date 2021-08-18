@@ -1,0 +1,38 @@
+impl Solution {
+    pub fn find_redundant_connection(mut edges: Vec<Vec<i32>>) -> Vec<i32> {
+        let mut n = 0;
+        for i in 0..edges.len() {
+            if edges[i][1] > n {
+                n = edges[i][1];
+            }
+        }
+        
+        let mut uf: Vec<i32> = Vec::new();
+        for i in 0..n {
+            uf.push(i);
+        }
+        
+        fn find (mut uf: &mut Vec<i32>, a: usize) -> i32 {
+            if uf[a] != a as i32 {
+                let x = uf[a] as usize;
+                uf[a] = find(&mut uf, x);
+            }
+            uf[a]
+        }
+        
+        fn union (mut uf: &mut Vec<i32>, a: usize, b: usize) -> i32 {
+            let x = find(&mut uf, a);
+            let y = find(&mut uf, b);
+            if x != y {
+                uf[x as usize] = y;
+            }
+            y
+        }
+        
+        for i in 0..edges.len() {
+            if find(&mut edges, )
+        }
+        
+        return vec![0,1];
+    }
+}

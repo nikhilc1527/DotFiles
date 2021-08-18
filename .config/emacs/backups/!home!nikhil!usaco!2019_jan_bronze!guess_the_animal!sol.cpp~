@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+  freopen("guess.in", "r", stdin);
+  freopen("guess.out", "w", stdout);
+  
+  int N; cin >> N;
+  vector<unordered_set<string>> characteristics(N);
+
+  for (int i = 0; i < N; ++i) {
+    string name; cin >> name;
+    int K; cin >> K;
+    for (int j = 0; j < K; ++j) {
+      string characteristic; cin >> characteristic;
+      characteristics[i].insert(characteristic);
+    }
+  }
+
+  int greatest_common = 0;
+
+  for (int i = 0; i < N; ++i) {
+    for (int j = i+1; j < N; ++j) {
+      int greater, lesser;
+      if (characteristics[i].size() > characteristics[j].size()) {
+        greater = i; lesser = j;
+      } else {
+        greater = j; lesser = i;
+      }
+      int common = 0;
+      for (const auto &characteristic : characteristics[greater]) {
+        if (characteristics[lesser].count(characteristic)) {
+          common++;
+        }
+      }
+
+      greatest_common = max(greatest_common, common);
+    }
+  }
+
+  cout << greatest_common+1 << "\n";
+  
+  return 0;
+}

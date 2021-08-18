@@ -1,0 +1,36 @@
+#include "book.h"
+
+Book::Book(const Book &other)
+      : isbn(other.isbn), title(other.title), author(other.author),
+        publisher(other.publisher), date_added(other.date_added),
+        quantity_on_hand(other.quantity_on_hand),
+        wholesale_cost(other.wholesale_cost), retail_price(other.retail_price) {}
+
+Book::Book(const str &isbn, const str &title, const str &author,
+       const str &publisher, const str &date_added, const str &quantity_on_hand,
+       const str &wholesale_cost, const str &retail_price)
+      : isbn(isbn), title(title), author(author), publisher(publisher),
+        date_added(date_added), quantity_on_hand(quantity_on_hand),
+        wholesale_cost(wholesale_cost), retail_price(retail_price) {}
+
+Book::Book() {}
+
+Book::~Book() {}
+
+std::istream& operator>>(std::istream &in, Book &book) {
+  std::getline(in, book.isbn);
+  std::getline(in, book.title);
+  std::getline(in, book.author);
+  std::getline(in, book.publisher);
+  std::getline(in, book.date_added);
+  std::getline(in, book.quantity_on_hand);
+  std::getline(in, book.wholesale_cost);
+  std::getline(in, book.retail_price);
+  return in;
+}
+
+std::ostream &operator<<(std::ostream &out, Book &book) {
+  std::cout << "ISBN: " << book.get_isbn() << ", Title: " << book.get_title() << ", Author: " << book.get_author() << ", Publisher: " << book.get_publisher() << ", Date added: " << book.get_date_added() << ", Quantity on hand: " << book.get_quantity_on_hand() << ", Wholesale Cost: " << book.get_wholesale_cost() << ", Retail Price: " << book.get_retail_price();
+
+  return out;
+}

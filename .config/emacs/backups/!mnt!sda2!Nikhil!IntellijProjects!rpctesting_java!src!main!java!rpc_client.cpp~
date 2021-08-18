@@ -1,0 +1,10 @@
+#include <bits/stdc++.h>
+
+#include <rpc/client.h>
+
+std::vector<std::uint8_t> get_bytes() {
+  rpc::client client("localhost", 8080);
+
+  auto res = client.async_call("get_bytes").get().as<std::vector<std::uint8_t>>();
+  return res;
+}

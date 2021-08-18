@@ -1,0 +1,21 @@
+# vim: filetype=neomuttrc
+source /usr/share/mutt-wizard/mutt-wizard.muttrc
+
+# macro index,pager i1 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/1-nikhilc1527@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to nikhilc1527@gmail.com"
+# macro index,pager i2 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/2-nchatterjee391@student.fuhsd.org.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to nchatterjee391@student.fuhsd.org"
+# macro index,pager i3 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/3-biglymasly@gmail.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to biglymasly@gmail.com"
+
+macro index,pager i1 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/1-nikhilc1527@gmail.com.muttrc<enter><change-folder>!<enter>' "switch to nikhilc1527@gmail.com"
+macro index,pager i2 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/2-nchatterjee391@student.fuhsd.org.muttrc<enter><change-folder>!<enter>' "switch to nchatterjee391@student.fuhsd.org"
+macro index,pager i3 '<sync-mailbox><enter-command>source /home/nikhil/.config/mutt/accounts/3-biglymasly@gmail.com.muttrc<enter><change-folder>!<enter>' "switch to biglymasly@gmail.com"
+
+source /home/nikhil/.config/mutt/accounts/3-biglymasly@gmail.com.muttrc
+source /home/nikhil/.config/mutt/accounts/2-nchatterjee391@student.fuhsd.org.muttrc
+source /home/nikhil/.config/mutt/accounts/1-nikhilc1527@gmail.com.muttrc
+
+
+
+
+# custom
+macro index,pager U "<pipe-message> w3m -I "utf-8" -T text/html | urlscan<Enter>"
+macro attach,compose U "<pipe-entry> w3m -I "utf-8" -T text/html | urlscan<Enter>"

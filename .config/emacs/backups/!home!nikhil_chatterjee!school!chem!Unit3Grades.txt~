@@ -1,0 +1,33 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with <open> and enter text in its buffer.
+
+3.4  - 10
+3.5  - 7.5
+3.6  - 8.5
+3.7  - 9.3
+3.8  - 8.5
+3.9  - 7.5
+3.10 - 10
+3.11 - 7.5
+3.12 - 7.5
+3.13 - 8.5
+
+3.4-3.6 SPs
+SP5 - 10
+SP6 - 10
+SP1 - 7.5
+
+3.7-3.10 SPs
+SP2 - 10
+SP3 - 10
+SP1 - 7.5
+
+
+Order:
+
+3.4-3.6 SP1
+3.7-3.10 SP1
+3.5
+3.9
+3.11
+3.12

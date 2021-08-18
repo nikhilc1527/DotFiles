@@ -1,0 +1,13 @@
+#!/bin/bash
+
+commands="
+add\n
+list\n
+done\n
+"
+
+cmd=$(echo -e $commands | dmenu)
+case $cmd in
+    "list")
+        "$TERMINAL" -e task list | "$PAGER"
+esac

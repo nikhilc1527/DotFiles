@@ -1,0 +1,77 @@
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+
+#ifdef DEBUG
+auto fin = std::ifstream("input.txt");
+auto fout = std::ofstream("output.txt");
+#else
+auto &fin = std::cin;
+auto &fout = std::cout;
+#endif
+
+int ind(int a, int b, int c, int d) {
+  return a * 501 * 501 * 501 + b * 501 * 501 + c * 501 + d;
+}
+
+int dfs(int b, int l, int t, int r, std::vector<std::vector<int>> &gr,
+        std::unordered_set<int> &seen, int x) {
+  if (seen.count(ind(b, l, t, r))) return 0;
+  if (b < 0 || l < 0 || t >= gr.size() || r >= gr[t].size()) return 0;
+  if (gr[b][l] < 100 || gr[t][r] < 100)
+    return 0;
+
+  for (int i = l; i <= r; ++i) {
+    if (gr[t][i]<100) return 0;
+    if (gr[b][i]<100) return 0;
+  }
+
+  for (int i = b; i <= t; ++i) {
+    if (gr[i][l]<100) return 0;
+    if (gr[i][r]<100) return 0;
+  }
+
+  seen.insert(ind(b, l, t, r));
+
+  std::cout << b << ' ' << l << ' ' << t << ' ' << r << "\n";
+
+  int res = 1;
+  res += dfs(b - 1, l, t, r, gr, seen, 0) +
+         dfs(b, l - 1, t, r, gr, seen, 1);  // +dfs(b-1,l-1,t,r,gr);
+  res += dfs(b, l, t + 1, r, gr, seen, 2) +
+         dfs(b, l, t, r + 1, gr, seen, 3);  // +dfs(b,l,t+1,r+1,gr);
+  return res;
+}
+
+int main(int argc, char **argv) {
+  int N;
+  fin >> N;
+  std::vector<std::vector<int>> greenness;
+  for (int i = 0; i < N; ++i) {
+    greenness.emplace_back();
+    for (int j = 0; j < N; ++j) {
+      greenness[i].emplace_back();
+      fin >> greenness[i][j];
+    }
+  }
+
+  if (N == 1) {
+    std::cout << (greenness[0][0] == 1) << "\n";
+    return 0;
+  }
+
+  int res = 0;
+  for (int i = 0; i < greenness.size(); ++i) {
+    for (int j = 0; j < greenness[i].size(); ++j) {
+      if (greenness[i][j] == 100) {
+        std::unordered_set<int> seen;
+        res += dfs(i, j, i, j, greenness, seen, -1);
+      }
+    }
+  }
+  std::cout << res << "\n";
+
+  return 0;
+}

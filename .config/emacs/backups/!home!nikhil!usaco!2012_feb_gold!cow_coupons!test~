@@ -1,0 +1,43 @@
+#!/usr/bin/python3
+
+import subprocess
+import sys
+import itertools
+
+
+def main():
+
+    progname = sys.argv[1]
+    subprocess.run("g++ -fsanitize=address,undefined -g -oout -std=c++17 {}.cpp".format(progname), text=True, shell=True)
+    sub = subprocess.run(["ls", progname], text=True, stdout=subprocess.PIPE)
+
+    count = int(len(list(sub.stdout.split()))/2)
+
+    for i in range(1, count+1):
+        subprocess.run(["/usr/bin/cp {}/{}.in {}.in".format(progname, i, progname)], text=True, shell=True)
+        subprocess.run(["./out"], text=True, shell=True)
+        if i == 3:
+            exit(0)
+        wrong = False
+        with open("{}.out".format(progname), "r") as progout:
+            with open("{}/{}.out".format(progname, i), "r") as desout:
+                for progline, desline in itertools.zip_longest(progout, desout, fillvalue=None):
+                    if wrong:
+                        break
+                    if not (progline == desline):
+                        wrong = True
+        if wrong:
+            print("Test case #{} is wrong".format(i))
+            print("Your output:")
+            with open("{}.out".format(progname), "r") as progout:
+                for line in progout:
+                    print(line, end='')
+            print("\nDesired output:")
+            with open("{}/{}.out".format(progname, i), "r") as desout:
+                for line in desout:
+                    print(line, end='')
+            print()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,14 @@
+[database]
+path=/home/nikhil/.local/share/mail/nikhilc1527@gmail.com
+[user]
+name=Nikhil Chatterjee
+primary_email=nikhilc1527@gmail.com
+[new]
+tags=unread;inbox;
+ignore=.mbsyncstate;.uidvalidity
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=/home/nikhil/.local/share/gnupg

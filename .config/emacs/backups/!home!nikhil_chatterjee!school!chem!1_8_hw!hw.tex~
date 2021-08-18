@@ -1,0 +1,56 @@
+% Created 2021-01-06 Wed 10:01
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\author{Nikhil Chatterjee}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Nikhil Chatterjee},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3.6)}, 
+ pdflang={English}}
+\begin{document}
+
+Problems:
+\begin{itemize}
+\item 5.1 \#1, 29
+\item 5.2 \#37, 39, 45
+\item 5.3 \#47, 49, 53, 57
+\item 5.4 \#1(part 1, 2)
+\item 5.5 \#1, 2
+\end{itemize}
+
+\section*{5.1}
+\label{sec:org01900f8}
+\begin{enumerate}
+\item In cold weather, with colder temperatures, the molecules move around slower and with less kinetic energy
+\setcounter{enumi}{28}
+\item \(\frac{\Delta[F_2]}{\Delta t} = -0.012 \times 3 = -0.036 \frac{M}{s}\)
+\end{enumerate}
+
+\section*{5.2}
+\label{sec:org72c40e3}
+\begin{enumerate}
+\setcounter{enumi}{36}
+\item \(R = k [A]\)
+\end{enumerate}
+\(k = \frac{R}{[A]}\)
+\(k = \frac{\frac{M}{s}}{M}\)
+ \(k = s^{-1}\)
+\end{document}

@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+get_dmenu_packages() {
+	r=$(mktemp)
+	/usr/bin/cat /home/nikhil/.cache/pkglist | dmenu -l 30 | awk '{print $2}' > $r
+}
+
+[ -z $1 ] || r=$1
+[ -z $1 ] && get_dmenu_packages
+
+[ $(wc -w $r | awk '{print $1}') = "0" ] && notify-send "no packages to install" && exit
+# gpg -d ~/.password.gpg | yay --sudoflags -S -S --noconfirm $(/usr/bin/cat $r)
+
+/usr/bin/cat $r | while read line; do
+    gpg -d ~/.password.gpg | yay --sudoflags "-k -S" -S --noconfirm $line
+    [ "$?" = "0" ] && notify-send "successfully installed:" "$line"
+    [ "$?" = "0" ] || notify-send -u critical "unsuccessfully installed:" "$line"
+done
+
+# out=$?
+
+# [ "$out" = "0" ] && notify-send "successfully installed:" "$(/usr/bin/cat $r | tr ' ' '\n')"
+# [ "$out" = "0" ] || notify-send "unsuccessfully installed:" "$(/usr/bin/cat $r | tr ' ' '\n')"
+
+rm -f $r

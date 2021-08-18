@@ -1,0 +1,83 @@
+ude <fstream>
+#include <algorithm>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+typedef long long ll;
+
+struct pqitem
+{
+    ll value;
+    int index;
+
+    bool operator<(const pqitem &b) const
+    {
+        return value > b.value;
+    }
+
+    pqitem() {}
+    pqitem(ll value, int index) : value(value), index(index) {}
+};
+
+int main()
+{
+    ifstream in("coupons.in");
+    ofstream out("coupons.out");
+    int N, K;
+    ll M;
+    in >> N >> K >> M;
+
+    vector<ll> P(N), C(N);
+    for (int i = 0; i < N; i++)
+    {
+        in >> P[i] >> C[i];
+    }
+
+    typedef priority_queue<pqitem> pqtype;
+    priority_queue<ll, vector<ll>, greater<ll> > recover;
+    pqtype cheap;
+    pqtype expensive;
+    for (int i = 0; i < K; i++)
+        recover.push(0LL);
+    for (int i = 0; i < N; i++)
+    {
+        cheap.push(pqitem(C[i], i));
+        expensive.push(pqitem(P[i], i));
+    }
+
+    vector<bool> used(N, false);
+    int nused = 0;
+    while (M > 0 && nused < N)
+    {
+        while (used[cheap.top().index])
+            cheap.pop();
+        while (used[expensive.top().index])
+            expensive.pop();
+
+        if (recover.top() + cheap.top().value < expensive.top().value)
+        {
+            const pqitem top = cheap.top();
+            ll cost = recover.top() + top.value;
+            if (M < cost)
+                break;
+            M -= cost;
+            recover.pop();
+            recover.push(P[top.index] - C[top.index]);
+            used[top.index] = true;
+        }
+        else
+        {
+            const pqitem top = expensive.top();
+            ll cost = top.value;
+            if (M < cost)
+                break;
+            M -= cost;
+            used[top.index] = true;
+        }
+        nused++;
+    }
+    out << nused << "\n";
+    return 0;
+}

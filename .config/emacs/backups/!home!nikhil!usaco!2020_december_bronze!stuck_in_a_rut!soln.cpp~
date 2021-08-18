@@ -1,0 +1,67 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int main() {
+  int n;
+  std::cin >> n;
+  
+  std::vector<std::tuple<int, int, int>> N, E;
+  for (int i = 0; i < n; ++i) {
+    char c;
+    int x, y, dir;
+    std::cin >> c >> x >> y;
+    dir = c == 'N';
+    // dir=0: x + 1, dir=1: y + 1
+    if (dir) N.push_back({x, y, i});
+    else E.push_back({x, y, i});
+  }
+  std::vector<int> n_limits(N.size(), -1), e_limits(E.size(), -1);
+  for (int i = 0; i < E.size(); ++i) {
+    auto [e_x, e_y, ind1] = E[i];
+    for (int j = 0; j < N.size(); ++j) {
+      auto [n_x, n_y, ind2] = N[j];
+      int x_dist = n_x - e_x, y_dist = e_y - n_y;
+      if (x_dist < 0 || y_dist < 0 || x_dist == y_dist) continue;
+      if (x_dist < y_dist) {
+        if (n_limits[j] < 0) n_limits[j] = y_dist;
+        else n_limits[j] = std::min(n_limits[j], y_dist);
+      } else {
+        if (e_limits[i] < 0) e_limits[i] = x_dist;
+        else e_limits[i] = std::min(e_limits[i], x_dist);
+      }
+    }
+  }
+
+  int i = 0, j = 0;
+  while (i < N.size() && j < E.size()) {
+    if (std::get<2>(N[i]) < std::get<2>(E[j])) {
+      std::cout << (n_limits[i] < 0 ? "Infinity" : std::to_string(n_limits[i])) << std::endl;
+      ++i;
+    } else {
+      std::cout << (e_limits[j] < 0 ? "Infinity" : std::to_string(e_limits[j])) << std::endl;
+      ++j;
+    }
+  }
+
+  while (i < N.size()) {
+    std::cout << (n_limits[i] < 0 ? "Infinity" : std::to_string(n_limits[i])) << std::endl;
+    ++i;    
+  }
+
+  while (j < E.size()) {
+    std::cout << (e_limits[j] < 0 ? "Infinity" : std::to_string(e_limits[j])) << std::endl;
+    ++j;    
+  }
+
+  return 0;
+}

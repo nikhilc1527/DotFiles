@@ -1,0 +1,39 @@
+\documentclass{article}
+
+\usepackage{authblk}
+\usepackage{indentfirst}
+
+\title{Assignment \#5}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time Spent: 65 min}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Explain the difference between classical and quantum physics (1 to 2 paragraphs).}
+
+The main difference between classical and quantum mechanics is that classical mechanics deals with relatively large objects, that humans deal
+with in everyday life, and where the uncertainty of these objects is very small compared to the mass and energy, while quantum mechanics
+deals with extremely small particles, on the subatomic scale, where the uncertainty is very large compared to the particles. On the large
+scale, there is very little uncertainty regarding where the object is, because the object is so massive and contains so many atoms, and
+therefore the classical equations, like Newton's laws of motion, apply and are precise enough that we cannot perceive the uncertainty.
+However, on the quantum scale, everything is in a state of uncertainty, because the very act of perceiving can change the state of the
+particle.
+
+\section{Explain why the beta decay energy distribution suggested the existence of neutrinos (1 paragraph).}
+
+In the process of beta decay, neutrons or protons are in higher energy levels than the other, while there is also an spot energy vacant in a
+lower energy level, prompting one to turn into the other. Since the charge is not conserved during this process, an extra electron must be
+ejected, with a very high kinetic energy, to conserve the total energy of the system. The kinetic energy of this ejected electron could be
+theoretically calculated, because the mass and energies of protons and neutrons are fixed, and in order for the mass/energy to be conserved,
+the ejected electron must also have a fixed kinetic energy level. However, this was experimentally disproven, because the ejected electrons
+were seen to have kinetic energy levels following a probability distribution, rather than only one fixed point, and with the kinetic energies
+of the electrons being anywhere betweeen 0 and the maximum possible (expected value). Since the very fundamental laws of conservation
+of momentum and energy were being violated by this process, some other explanation was needed to make this process conform to the laws
+of conservation of energy and momentum. The neutrino was the magic particle that would solve this, because if there was another particle
+that is part of this reaction
+
+\section{Describe how the Cowan-Reines experiment directly observed neutrinos (2 to 3 paragraphs).}
+
+\end{document}

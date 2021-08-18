@@ -1,0 +1,26 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int main() {
+  int nums[7];
+  for (int i = 0; i < 7; ++i) {
+    std::cin >> nums[i];
+  }
+
+  std::sort(nums, nums + 7);
+
+  if (nums[0] + nums[1] + nums[2] == nums[6]) std::cout << nums[0] << ' ' << nums[1] << ' ' << nums[2] << '\n';
+  else std::cout << nums[0] << ' ' << nums[1] << ' ' << nums[3] << '\n';
+
+  return 0;
+}

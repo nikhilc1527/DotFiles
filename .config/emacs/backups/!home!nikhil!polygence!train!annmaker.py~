@@ -1,0 +1,23 @@
+with open('ann2.txt', 'r') as f:
+    lines = f.readlines()
+
+with open('anns.txt', 'w') as f:
+    for line in lines:
+        line = line.split(' ')
+        print(line)
+        f.write("""
+        {{
+            "id": {},
+            "image_id": 5,
+            "category_id": {},
+            "bbox": [
+                {},
+                {},
+                15,
+                15
+            ],
+            "area": 225,
+            "segmentation": [],
+            "iscrowd": 0
+        }},
+""".format(line[0], line[1], line[2], int(line[3])))

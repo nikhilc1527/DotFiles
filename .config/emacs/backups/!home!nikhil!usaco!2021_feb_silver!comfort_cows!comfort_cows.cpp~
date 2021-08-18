@@ -1,0 +1,104 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <cstring>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+#ifdef DEBUG
+auto fin = std::ifstream("input.txt");
+auto fout = std::ofstream("output.txt");
+#else
+auto &fin = std::cin;
+auto &fout = std::cout;
+#endif
+
+const int offset = 4;
+short state[1000 + 2*offset+1][1000 + 2*offset+1];  // 0: empty, 1: auxilary , 2: cow there
+int res = 0;
+// int maxx, maxy;
+
+void check(int x, int y) {
+  if (state[x][y] == 0) return;
+  int adj = 0;
+  int dx = 0, dy = 0;
+  if (state[x + 1][y] == 0)
+    dx = 1;
+  else
+    ++adj;
+  if (state[x - 1][y] == 0)
+    dx = -1;
+  else
+    ++adj;
+  if (state[x][y + 1] == 0)
+    dy = 1;
+  else
+    ++adj;
+  if (state[x][y - 1] == 0)
+    dy = -1;
+  else
+    ++adj;
+
+  if (adj == 3) {
+    state[x + dx][y + dy] = 1;
+    // maxx = std::max(maxx, x+dx+offset);
+    // maxy = std::max(maxy, y+dy+offset);
+    ++res;
+    check(x + dx, y + dy);
+    check(x+dx+1, y+dy);
+    check(x+dx-1, y+dy);
+    check(x+dx, y+dy+1);
+    check(x+dx, y+dy-1);
+  }
+}
+
+void print_states(int maxx, int maxy) {
+  for (int i = 0; i < maxx; ++i) {
+    for (int j = 0; j < maxy; ++j) {
+      std::cout << state[i][j] << " ";
+    }
+    std::cout << "\n";
+  }
+}
+
+int main() {
+  int N;
+  fin >> N;
+
+  std::memset(state, 0, sizeof(state));
+
+  // maxx = -1; maxy = -1;
+
+  for (int i = 0; i < N; ++i) {
+    int x, y;
+    fin >> x >> y;
+    x += offset;
+    y += offset;
+
+    // maxx = std::max(maxx, x + offset);
+    // maxy = std::max(maxy, y + offset);
+
+    if (state[x][y] == 1) --res;
+    state[x][y] = 2;
+    check(x, y);
+    check(x + 1, y);
+    check(x - 1, y);
+    check(x, y + 1);
+    check(x, y - 1);
+
+    // std::cout << i << "\n";
+    // print_states(maxx, maxy);
+    // std::cout << "\n" << "\n";
+
+    fout << res << "\n";
+  }
+
+  return 0;
+}

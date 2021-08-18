@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        auto out_of_bounds = [n] (auto a) {return a < 0 || a >= n;};
+        
+        vector<vector<int>> res(n, vector<int>(n));
+        int index = 0;
+        int off[] = {1, n, -1, -n};
+        int j = 0;
+        
+        int count = 1;
+        while (!res[(index+off[j])/n][(index+off[j])%n]) {
+            while ((!out_of_bounds(index + off[j]) / n) && !out_of_bounds((index + off[j]) % n) && !res[(index+off[j])/n][(index+off[j])%n]) {
+                cout << index/n << " " << index%n << endl;
+                res[index / n][index % n] = count++;
+                index += off[j];
+            }
+            j = (j + 1)%4;
+        }
+        
+        return res;
+    }
+};

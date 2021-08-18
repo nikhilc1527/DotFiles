@@ -1,0 +1,48 @@
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        final int MAX_SIZE = 16;
+        Dollar[] dollars;
+        System.out.print("Type in the size of the array that you want -- ");
+        int inputSize = s.nextInt();
+        while (inputSize > MAX_SIZE || inputSize <= 0) {
+            System.out.print("Type in the size of the array that you want -- ");
+            inputSize = s.nextInt();
+        }
+        dollars = new Dollar[inputSize];
+        System.out.print("Type in AUD, CAD, or USD for which type of dollar you will be using today");
+        String inputType = s.nextLine();
+        while (!(inputType.equals("AUD") || inputType.equals("CAD") || inputType.equals("USD"))) {
+            System.out.print("Type in AUD, CAD, or USD for which type of dollar you will be using today");
+            inputType = s.nextLine();
+        }
+        for (int i = 0; i < inputSize; i++) {
+            System.out.print("Please input a value for the " + i + "th dollar: ");
+            String value = s.nextLine();
+            Number n = null;
+            try {
+                n = NumberFormat.getCurrencyInstance(Locale.US).parse(value);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            while (n == null) {
+                System.out.print("Please input a value for the " + i + "th dollar: ");
+                value = s.nextLine();
+                n = null;
+                try {
+                    n = NumberFormat.getCurrencyInstance(Locale.US).parse(value);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            dollars[i] = new AUD((int)(n.doubleValue()), (int)(n.doubleValue() * 100 % 100));
+        }
+    }
+}

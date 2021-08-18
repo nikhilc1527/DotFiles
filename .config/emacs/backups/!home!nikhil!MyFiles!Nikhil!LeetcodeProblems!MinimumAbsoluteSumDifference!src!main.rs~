@@ -1,0 +1,27 @@
+struct Solution;
+
+impl Solution {
+    pub fn min_absolute_sum_diff(nums1: Vec<i32>, nums2: Vec<i32>) -> i32 {
+        let mut nums = std::collections::BinaryHeap::<i32>::new();
+        // let en1 = (&nums1).iter().enumerate();
+        // let mut en2 = (&nums2).iter().enumerate();
+        let mut sum = 0;
+
+        for (x, y) in (&nums1).iter().enumerate().zip((&nums2).iter().enumerate()) {
+            sum += (x.1 - y.1).abs();
+            nums.push(x.0 as i32);
+        }
+
+        let nums_vec = nums.into_sorted_vec();
+        let mut max_dif = 0;
+        for (i, j) in (&nums1).iter().enumerate() {
+            let closest = nums_vec.binary_search(j);
+        }
+
+        sum
+    }
+}
+
+fn main() {
+    println!("Hello, world!");
+}

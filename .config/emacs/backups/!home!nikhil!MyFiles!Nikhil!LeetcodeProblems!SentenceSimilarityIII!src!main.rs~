@@ -1,0 +1,32 @@
+struct Solution;
+
+impl Solution {
+    pub fn are_sentences_similar(sentence1: String, sentence2: String) -> bool {
+        for (i, j) in sentence1
+            .chars()
+            .enumerate()
+            .zip(sentence2.chars().enumerate())
+        {
+            if i.1 != j.1 {
+                break;
+            }
+
+            let good = true;
+            for (a, b) in sentence1
+                .chars()
+                .rev()
+                .enumerate()
+                .zip(sentence2.chars().rev().enumerate())
+            {
+                if !good || b.1 == j.1 {
+                    break;
+                }
+            }
+        }
+        false
+    }
+}
+
+fn main() {
+    println!("Hello, world!");
+}

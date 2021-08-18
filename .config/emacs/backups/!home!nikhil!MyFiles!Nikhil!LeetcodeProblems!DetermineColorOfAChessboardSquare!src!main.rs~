@@ -1,0 +1,22 @@
+struct Solution {}
+
+impl Solution {
+    pub fn square_is_white(coordinates: String) -> bool {
+        let mut chars = coordinates.chars();
+        // (((chars.next().unwrap() as u8) - ('a' as u8)) + (chars.nth(1).unwrap() as u8)) % 2 == 0
+
+        let c1 = chars.next().unwrap();
+        let c2 = chars.next().unwrap();
+        // ((chars.next().unwrap().to_digit(10).unwrap() - 'a'.to_digit(10).unwrap() + 1)
+        //     + (chars.next().unwrap().to_digit(10).unwrap() - '0'.to_digit(10).unwrap()))
+        //     % 2
+        //     == 0
+
+        // print!("{}, {}", c1, c2);
+        ((c1 as u32 - 'a' as u32 + 1) + (c2 as u32 - '0' as u32)) % 2 == 0
+    }
+}
+
+fn main() {
+    print!("{}", Solution::square_is_white(String::from("a1")));
+}

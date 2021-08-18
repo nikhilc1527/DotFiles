@@ -1,0 +1,14 @@
+#!/bin/bash
+
+msgId="991049"
+
+pamixer --set-volume "$@" > /dev/null
+
+volume=$(pamixer --get-volume)
+if [[ $volume == 0 ]]; then
+    dunstify -a "changeVolume" -u low -i audio-volume-muted -r "$msgId" "Volume muted" 
+else
+    dunstify -a "changeVolume" -u low -i audio-volume-high -r "$msgId" -h int:value:"$volume" "Volume: ${volume}%"
+fi
+
+canberra-gtk-play -i audio-volume-change -d "changeVolume"

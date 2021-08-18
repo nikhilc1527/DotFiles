@@ -1,0 +1,37 @@
+#include <vector>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <random>
+
+int main(int argc, char *argv[]) {
+  std::string in_filename, out_filename;
+
+  std::cout << "Please type the full name of the file that you want to take input from: ";
+  std::getline(std::cin, in_filename);
+  std::cout << "Please type the full name of the file that you want to feed output into: ";
+  std::getline(std::cin, out_filename);
+
+  std::ifstream in_file(in_filename);
+  if (!in_file.is_open()) {
+    std::cout << "The input file that you specified does not exist. Please try again next time!\n";
+  }
+  else {
+    std::vector<std::string> words;
+    std::ofstream out_file(out_filename);
+    std::string cur_word;
+    for (int i = 0; i < 1024 && in_file >> cur_word; ++i) {
+      words.push_back(cur_word);
+    }
+
+    for (int i = words.size() - 1; i >= 0; --i) {
+      out_file << words[i] << '\n';
+      std::cout << words[i] << '\n';
+    }
+  }
+
+  std::cout << "The program is finished. Please press the enter key to exit the program";
+  std::cin.get();
+    
+  return 0;
+}

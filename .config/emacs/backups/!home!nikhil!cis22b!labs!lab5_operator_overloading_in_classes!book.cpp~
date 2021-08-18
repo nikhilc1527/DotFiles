@@ -1,0 +1,65 @@
+/*
+ * The empty constructor and destructor are completely empty, since std strings also have simple constructors and destructors
+ * The copy constructor copies over each field from the other instance
+ * The data constructor initializes each field with the corresponding parameter for the constructor
+ */
+
+#include "book.h"
+
+Book::Book(const Book &other)
+      : isbn(other.isbn), title(other.title), author(other.author),
+        publisher(other.publisher), date_added(other.date_added),
+        quantity_on_hand(other.quantity_on_hand),
+        wholesale_cost(other.wholesale_cost), retail_price(other.retail_price) {}
+
+Book::Book(long long isbn, const std::string &title, const std::string &author,
+       const std::string &publisher, const std::string &date_added, const std::string &quantity_on_hand,
+       const std::string &wholesale_cost, const std::string &retail_price)
+      : isbn(isbn), title(title), author(author), publisher(publisher),
+        date_added(date_added), quantity_on_hand(quantity_on_hand),
+        wholesale_cost(wholesale_cost), retail_price(retail_price) {}
+
+Book::Book() {}
+
+Book::~Book() {}
+
+// could overload these operators to add readability in the main file
+std::istream& operator>>(std::istream &in, Book &book) {
+  std::string isbn_str;
+  std::getline(in, isbn_str);
+  book.isbn = std::stoll(isbn_str);
+  std::getline(in, book.title);
+  std::getline(in, book.author);
+  std::getline(in, book.publisher);
+  std::getline(in, book.date_added);
+  std::getline(in, book.quantity_on_hand);
+  std::getline(in, book.wholesale_cost);
+  std::getline(in, book.retail_price);
+  return in;
+}
+
+std::ostream &operator<<(std::ostream &out, const Book &book) {
+  std::cout << "ISBN: " << book.get_isbn() << ", Title: " << book.get_title() << ", Author: " << book.get_author() << ", Publisher: " << book.get_publisher() << ", Date added: " << book.get_date_added() << ", Quantity on hand: " << book.get_quantity_on_hand() << ", Wholesale Cost: " << book.get_wholesale_cost() << ", Retail Price: " << book.get_retail_price();
+
+  return out;
+}
+
+Book::operator int() const {
+  return (int)isbn;
+}
+
+bool operator==(const Book &first, const Book &second) {
+  return true;
+}
+
+Book& Book::operator=(const Book &other) {
+  isbn = other.isbn;
+  title = other.title;
+  author = other.author;
+  publisher = other.publisher;
+  date_added = other.date_added;
+  quantity_on_hand = other.quantity_on_hand;
+  wholesale_cost = other.wholesale_cost;
+  retail_price = other.retail_price;
+  return *this;
+}

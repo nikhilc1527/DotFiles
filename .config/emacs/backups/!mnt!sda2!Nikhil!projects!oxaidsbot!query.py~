@@ -1,0 +1,8 @@
+import sqlite3
+from pprint import pprint
+
+conn = sqlite3.connect('brains.db.txt')
+cursor = conn.cursor()
+cursor.execute('SELECT * FROM breins')
+res = cursor.fetchall()
+pprint(res)

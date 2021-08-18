@@ -1,0 +1,2 @@
+out: prefix.cpp
+	g++-10 prefix.cpp -oout

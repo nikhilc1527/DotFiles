@@ -1,0 +1,21 @@
+with open('planting.in', 'r') as input_file:
+    N = int(input_file.readline())
+    degree = [0] * N
+    a = 0
+    b = 0
+    for i in range(1, N):
+        line = input_file.readline().split(' ')
+        a = int(line[0])
+        b = int(line[1])
+        degree[a-1] += 1
+        degree[b-1] += 1
+
+
+result = 0
+for i in range(N):
+    result = max(result, degree[i])
+
+
+with open('planting.out', 'w') as output_file:
+    output_file.write(str(result+1))
+    output_file.write('\n')

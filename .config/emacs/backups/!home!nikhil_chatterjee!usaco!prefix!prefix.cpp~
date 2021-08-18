@@ -1,0 +1,62 @@
+/*
+ID: nikhilc1
+LANG: C++14
+TASK: prefix
+ */
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int find(std::vector<int>& dp, const std::set<std::string>& prims, const std::string& str, int i) {
+  if (i >= str.size()) return 0;
+  if (dp[i] >= 0) return dp[i];
+  int max = 0;
+  for (int j = i; j < str.size(); ++j) {
+    if (prims.count(str.substr(i, j - i + 1))) {
+      int res = find(dp, prims, str, j + 1);
+      max = std::max(max, j - i + 1 + res);
+    }
+  }
+  return dp[i] = max;
+}
+
+int main() {
+  const std::string progName = "prefix";
+  std::ifstream fin(progName + ".in");
+  std::ofstream fout(progName + ".out");
+
+  std::set<std::string> prims;
+  std::string line;
+  while (std::getline(fin, line, '\n')) {
+    if (line == ".") break;
+    std::stringstream ss(line);
+    while (std::getline(ss, line, ' ')) {
+      prims.insert(line);
+    }
+  }
+
+  std::string str;
+  while (std::getline(fin, line)) {
+    str += line;
+  }
+
+  // std::cout << "\n" << str << "\n";
+  // for (auto i : prims) std::cout << i << " ";
+
+  int n = line.size();
+  std::vector<int> dp(n, -1);
+  int res = find(dp, prims, line, 0);
+  fout << res << std::endl;
+
+  return 0;
+}

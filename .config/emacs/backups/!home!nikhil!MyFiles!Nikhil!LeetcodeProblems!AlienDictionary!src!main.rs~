@@ -1,0 +1,85 @@
+mod sol2;
+
+use std::collections::HashSet;
+use std::collections::LinkedList;
+
+#[derive(Debug)]
+struct Solution;
+
+impl Solution {
+    pub fn alien_order(words_bad: Vec<String>) -> String {
+        let ctosz = |c: char| -> usize { (c as u32 - 'a' as u32) as usize };
+
+        let mut words: Vec<Vec<char>> = Vec::new();
+        for s in words_bad {
+            words.push(s.chars().collect());
+        }
+        let mut adj: Vec<HashSet<char>> = vec![HashSet::new(); 26];
+        let mut seen = [false; 26];
+        let mut ins = vec![0; 26];
+        for i in 0..(&words).len() - 1 {
+            let mut j = 0;
+            while j < words[i + 1].len() && j < words[i].len() {
+                if words[i][j] != words[i + 1][j] {
+                    if !adj[ctosz(words[i][j])].contains(&words[i + 1][j]) {
+                        ins[ctosz(words[i + 1][j])] += 1;
+                        adj[ctosz(words[i][j])].insert(words[i + 1][j]);
+                    }
+                    break;
+                }
+                j += 1;
+            }
+            if j < words[i].len() && j >= words[i + 1].len() {
+                return String::from("");
+            }
+        }
+
+        for word in (&words).iter() {
+            for &c in word.iter() {
+                seen[ctosz(c)] = true;
+            }
+        }
+
+        let mut q: LinkedList<_> = LinkedList::new();
+        for i in 0..26 {
+            if ins[i] == 0 && seen[i] {
+                q.push_back((i as u8 + 'a' as u8) as char);
+            }
+        }
+
+        let mut res: String = String::new();
+        while !q.is_empty() {
+            let &c = q.front().unwrap();
+            q.pop_front();
+            res.push(c);
+            for &i in &adj[ctosz(c)] {
+                ins[ctosz(i)] -= 1;
+                if ins[ctosz(i)] == 0 {
+                    q.push_back(i);
+                }
+            }
+        }
+
+        for i in 0..26 {
+            if ins[i] > 0 {
+                return String::from("");
+            }
+        }
+
+        res
+    }
+}
+
+fn main() {
+    println!("Hello, world!");
+
+    let strs = vec![
+        String::from("wrt"),
+        String::from("wrf"),
+        String::from("er"),
+        String::from("ett"),
+        String::from("rftt"),
+    ];
+
+    println!("{}", Solution::alien_order(strs));
+}

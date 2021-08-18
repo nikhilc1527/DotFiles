@@ -1,0 +1,93 @@
+import subprocess
+import glob
+from PIL import Image,ImageDraw
+import PIL.ImageShow
+import math
+import random
+
+
+class MyViewer(PIL.ImageShow.UnixViewer):
+    def get_command_ex(self, file, **options):
+        command = executable = "sxiv"
+        return command, executable
+
+
+PIL.ImageShow.register(MyViewer, -1)
+
+imgs = glob.glob("images/*")
+labels = glob.glob("labels/*")
+
+
+def rotate(pt, theta):
+    x = pt[0]
+    y = pt[1]
+    x2 = x*math.cos(theta) - y*math.sin(theta)
+    y2 = x*math.sin(theta) + y*math.cos(theta)
+    return (x2, y2)
+
+
+def draw_img_labels(img, labels):
+    imgdraw = ImageDraw.Draw(img)
+    for label in labels:
+        top_left = (label[1]-label[3]/2, label[2]-label[4]/2)
+        bottom_right = (top_left[0] + label[3], top_left[1] + label[4])
+        imgdraw.rectangle([top_left, bottom_right], outline="red")
+
+def write_labels(labels, outfile_name):
+    with open(outfile_name, 'w') as out:
+        for label in labels:
+            out.write(str(label[0]))
+            for i in range(1,5):
+                out.write(" {}".format(label[i]))
+
+# rotate image counter clockwise
+def augment_rotate(imgname, labels, degs, out, label_out):
+    img = Image.open(imgname)
+    img = img.rotate(degs)
+    for label in labels:
+        rotated_pt = rotate((label[1] - img.width/2, label[2] - img.height/2), math.radians(degs))
+        label[1] = rotated_pt[0] + img.width/2
+        label[2] = rotated_pt[1] + img.height/2
+        tmp = label[3]
+        label[3] = label[4]
+        label[4] = tmp
+        label[1] /= img.width
+        label[3] /= img.width
+        label[2] /= img.height
+        label[4] /= img.height
+    img.save(out)
+    write_labels(labels, label_out)
+
+# add random noise to images
+def augment_noise(imgname, labels, degs, out, label_out):
+    img = Image.open(imgname)
+    noises = list((random.randint(0, img.width), random.randint(0, img.height)) for i in range(20))
+    imgdraw = ImageDraw.Draw(img)
+    imgdraw.point(noises, 'white')
+
+    for label in labels:
+        label[1] /= img.width
+        label[3] /= img.width
+        label[2] /= img.height
+        label[4] /= img.height
+    img.save(out)
+    write_labels(labels, label_out)
+
+
+for img_name in imgs:
+    root = img_name.split("/")[1].split(".rf.")[0]
+    label_name = "labels/{}.txt".format(img_name.split("/")[1].split(".jpg")[0])
+    labels = []
+    with open(label_name, "r") as label_file:
+        lines = label_file.readlines()
+    img = Image.open(img_name)
+    for line in lines:
+        labels.append(list(float(s) for s in line.split()))
+        for i in range(1, 5):
+            labels[-1][i] *= img.width
+
+    # augment_rotate(img_name, labels, 90, "images_augmented/{}.rotate1.jpg".format(root), "labels_augmented/{}.rotate1.text".format(root))
+    # augment_rotate(img_name, labels, 180, "images_augmented/{}.rotate2.jpg".format(root), "labels_augmented/{}.rotate2.text".format(root))
+    # augment_rotate(img_name, labels, 270, "images_augmented/{}.rotate3.jpg".format(root), "labels_augmented/{}.rotate3.text".format(root))
+    # augment_rotate(img_name, labels, 360, "images_augmented/{}.rotate4.jpg".format(root), "labels_augmented/{}.rotate4.text".format(root))
+    # augment_noise(img_name, labels, 360, "images_augmented/{}.noise1.jpg".format(root), "labels_augmented/{}.noise1.text".format(root))

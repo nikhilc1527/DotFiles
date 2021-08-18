@@ -1,0 +1,76 @@
+/*
+ * CIS 22B
+ * Lab 5: Operator Overloading in Classes
+ * Nikhil Chatterjee
+ * 
+
+PSEUDOCODE:
+create input file stream from input file, whose name is known always
+create an array of books, in which books will be stored
+loop for each of the books
+create an array of 8 strings to represent the 8 data fields that each book will have
+read in the next 8 lines to each of the strings in the array of strings
+initialize the book with the 8 strings, passing all 8 to the constructor of the book
+after books are created:
+loop for each of the books again
+for each book, print out all 8 books, using the getter methods to get the information from each book
+ */
+
+#include <fstream>
+#include <iostream>
+#include <cstring>
+
+#include "book.h"
+
+int main(int argc, char **argv) {
+  std::ifstream infile;
+  infile.open("bookdata.txt");
+  if (!infile) {
+    std::cout << "The bookdata file could not be opened. Please put this file in the same directory as the program and try again!" << "\n";
+  } else {
+    std::string line;
+    const int num_books = 10;
+    Book books[num_books];
+    int i;
+    for (i = 0; i < num_books/2; ++i) {
+      std::string data[8];
+
+      // read in the next 4 lines to the 8 positions in the data array
+      books[i] = Book();
+      infile >> books[i];
+      // advance the infile file stream until the it does not see whitespace anymore
+      while (infile && std::isspace(infile.peek())) {
+        infile.ignore();
+      }
+    }
+    for (; i < num_books; ++i) {
+      std::string data[8];
+
+      // read in the next 4 lines to the 8 positions in the data array
+      for (int j = 0; j < 8 && std::getline(infile, data[j]); ++j);
+
+      books[i] = Book();
+      Book tmp(std::stoll(data[0]), data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+      books[i] = tmp;
+      // advance the infile file stream until the it does not see whitespace anymore
+      while (infile && std::isspace(infile.peek())) {
+         infile.ignore();
+      }
+    }
+
+    for (i = 0; i < num_books/2; ++i) {
+      std::cout << "ISBN: " << books[i].get_isbn() << ", Title: " << books[i].get_title() << ", Author: " << books[i].get_author() << ", Publisher: " << books[i].get_publisher() << ", Date added: " << books[i].get_date_added() << ", Quantity on hand: " << books[i].get_quantity_on_hand() << ", Wholesale Cost: " << books[i].get_wholesale_cost() << ", Retail Price: " << books[i].get_retail_price() << "\n";
+    }
+
+    for (; i < num_books; ++i) {
+      std::cout << books[i] << '\n';
+    }
+  }
+
+  infile.close();
+
+  std::cout << "\nThank you for using this program. Please press the <Enter> key to exit ...";
+  std::cin.get();
+
+  return 0;
+}

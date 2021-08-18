@@ -1,0 +1,21 @@
+#include <iostream>
+#include <rand.h>
+
+int main(int argc, char **argv) {
+  bool used[1001][1001];
+  int n = (int)20;
+  std::cout << n << "\n";
+
+  for (int i = 0; i < n; ++i) {
+    int x, y;
+    do
+      {
+        x = (int)get_rand(0,10);
+        y = (int)get_rand(0,10);
+      } while (used[x][y]);
+    used[x][y] = true;
+    std::cout << x << ' ' << y << "\n";
+  }
+  
+  return 0;
+}

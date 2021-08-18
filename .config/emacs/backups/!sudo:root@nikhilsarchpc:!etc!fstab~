@@ -1,0 +1,17 @@
+# /dev/nvme0n1p3 LABEL=arch
+UUID=da2c22a0-5fb2-4a15-97fb-697990da4fea	/         	btrfs     	rw,relatime,ssd,space_cache,subvolid=257,subvol=/_active/rootvol	0 0
+
+# /dev/nvme0n1p1
+UUID=AC09-8ACF      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p3 LABEL=arch
+UUID=da2c22a0-5fb2-4a15-97fb-697990da4fea	/home     	btrfs     	rw,relatime,ssd,space_cache,subvolid=258,subvol=/_active/homevol	0 0
+
+# /dev/nvme0n1p3 LABEL=arch
+UUID=da2c22a0-5fb2-4a15-97fb-697990da4fea	/mnt/defvol	btrfs     	rw,relatime,ssd,space_cache,subvolid=5,subvol=/	0 0
+
+# /dev/nvme0n1p2
+UUID=bc303526-a602-474b-9931-02bf03c38d6c	none      	swap      	defaults  	0 0
+
+# /dev/sda2
+UUID=4254E3F154E3E59F /mnt/sda2 ntfs defaults 0 0

@@ -1,0 +1,26 @@
+/*
+ID: nikhilc1
+LANG: C++14
+TASK:
+ */
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int main() {
+  const std::string progName = "";
+  std::ifstream fin(progName + ".in");
+  std::ofstream fout(progName + ".out");
+
+  return 0;
+}

@@ -1,0 +1,5 @@
+class Neural_Network {
+ public:
+  Neural_Network();
+  ~Neural_Network();
+};

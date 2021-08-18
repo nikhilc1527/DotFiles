@@ -1,0 +1,46 @@
+import urllib.request
+
+
+class hw_getter():
+    base_url = "http://mvhs-fuhsd.org/john_conlin/CalcBC/\
+HW_folder_BC/HW_20-21/BC_"
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug",
+              "Sep", "Oct", "Nov", "Dec"]
+    end_url = "20.html"
+
+    def get_html_from_url(self, url):
+        fp = urllib.request.urlopen(url)
+        mybytes = fp.read()
+        mystr = mybytes.decode("utf8")
+        fp.close()
+        return mystr
+
+    def get_html_page(self, date):
+        splitted = date.split("/")
+        month = self.months[(int)(splitted[0]) - 1]
+        full_url = self.base_url + month + self.end_url
+        html_str = self.get_html_from_url(full_url)
+        return html_str
+
+    def get_html_section(self, date):
+        html_page = self.get_html_page(date)
+        i = html_page.find(date)
+        if (i < 0):
+            return "Date Not Found"
+        for _ in range(6):
+            i = html_page.find("td", i + 1, len(html_page))
+        i = html_page.find(">", i + 1, len(html_page))
+        j = html_page.find("</td", i + 1, len(html_page))
+        html_section = html_page[i + 1:j]
+        return html_section
+
+
+def main():
+    hw_getter_obj = hw_getter()
+    html_str = hw_getter_obj.get_html_page("11/20")
+    print(html_str)
+    html_sec = hw_getter_obj.get_html_section("11/20")
+    print(html_sec)
+
+
+main()

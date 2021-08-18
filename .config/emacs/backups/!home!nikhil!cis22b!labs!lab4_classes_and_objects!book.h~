@@ -1,0 +1,70 @@
+#include <string>
+#include <iostream>
+
+class Book {
+ private:
+  using str = std::string;
+  str isbn;
+  str title;
+  str author;
+  str publisher;
+  str date_added;
+  str quantity_on_hand;
+  str wholesale_cost;
+  str retail_price;
+
+public:
+  str get_retail_price() const { return retail_price; }
+
+  void set_retail_price(const str& retail_price) {
+    this->retail_price = retail_price;
+  }
+
+  str get_wholesale_cost() const { return wholesale_cost; }
+
+  void set_wholesale_cost(const str& wholesale_cost) {
+    this->wholesale_cost = wholesale_cost;
+  }
+
+  str get_quantity_on_hand() const { return quantity_on_hand; }
+
+  void set_quantity_on_hand(const str& quantity_on_hand) {
+    this->quantity_on_hand = quantity_on_hand;
+  }
+
+  str get_date_added() const { return date_added; }
+
+  void set_date_added(const str& date_added) {
+    this->date_added = date_added;
+  }
+
+  str get_publisher() const { return publisher; }
+
+  void set_publisher(const str& publisher) {
+    this->publisher = publisher;
+  }
+
+  str get_author() const { return author; }
+
+  void set_author(const str& author) { this->author = author; }
+
+  str get_title() const { return title; }
+
+  void set_title(const str& title) { this->title = title; }
+
+  str get_isbn() const { return isbn; }
+
+  void set_isbn(const str& isbn) { this->isbn = isbn; }
+
+  Book(const str &isbn, const str &title, const str &author,
+       const str &publisher, const str &date_added, const str &quantity_on_hand,
+       const str &wholesale_cost, const str &retail_price);
+  Book();
+
+  Book(const Book &other);
+
+  ~Book();
+
+  friend std::istream& operator>>(std::istream&, Book&);
+  friend std::ostream& operator<<(std::ostream&, Book&);
+};

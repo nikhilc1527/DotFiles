@@ -1,0 +1,15 @@
+package src;
+
+import java.io.*;
+
+/**
+ * Solution
+ */
+public class Solution {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("cowtip.in")));
+        
+        
+        int N; 
+    }
+}

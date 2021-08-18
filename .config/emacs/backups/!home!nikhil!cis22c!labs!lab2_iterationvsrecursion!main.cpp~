@@ -1,0 +1,121 @@
+#include <iostream>
+#include <cstring>
+#include <array>
+
+bool isArrayPrimeIter(int *array, std::size_t length) {
+  std::cout << "Entering " << "isArrayPrimeIter(int*, size_t)" << "\n";
+  
+  bool *is_prime = new bool[100];
+  std::memset(is_prime, true, 100 * sizeof(bool));
+  is_prime[1] = false;
+  for (int i = 2; i < 100; ++i) {
+    if (!is_prime[i]) {
+      continue;
+    }
+    for (int j = i*2; j < 100; j += i) {
+      is_prime[j] = false;
+    }
+  }
+
+  for (int i = 0; i < length; ++i) {
+    if (!is_prime[array[i]]) {
+      delete[] is_prime;
+      std::cout << "Leaving " << "isArrayPrimeIter(int*, size_t)" << "\n";
+      return false;
+    }
+  }
+
+  delete[] is_prime;
+  std::cout << "Leaving " << "isArrayPrimeIter(int*, size_t)" << "\n";
+  return true;
+}
+
+bool isArrayPrimeRecur(int *array, std::size_t length, bool *is_prime) {
+  std::cout << "Entering " << "isArrayPrimeRecur(int*, size_t, bool*)" << "\n";
+  if (length <= 0) {
+    std::cout << "Leaving " << "isArrayPrimeRecur(int*, size_t, bool*)" << "\n";
+    return true;
+  }
+  if (!is_prime[array[0]]) {
+    std::cout << "Leaving " << "isArrayPrimeRecur(int*, size_t, bool*)" << "\n";
+    return false;
+  }
+  auto result = isArrayPrimeRecur(array+1, length-1, is_prime);
+  std::cout << "Leaving " << "isArrayPrimeRecur(int*, size_t, bool*)" << "\n";
+  return result;
+}
+
+void setFalse(bool *arr, int length, int i, int offset) {
+  std::cout << "Entering " << "setFalse(bool*, int, int)" << "\n";
+  if (i >= length) {
+    std::cout << "Leaving " << "setFalse(bool*, int, int)" << "\n";
+    return;
+  }
+  arr[i] = false;
+  setFalse(arr, length, i + offset, offset);
+  std::cout << "Leaving " << "setFalse(bool*, int, int)" << "\n";
+}
+
+void findIsPrime(bool *is_prime, std::size_t length, int i) {
+  std::cout << "Entering " << "findIsPrime(bool*, size_t, int)" << "\n";
+  if (i >= length) {
+    return;
+  }
+  if (is_prime[i]) {
+    setFalse(is_prime, length, i * 2, i);
+  }
+  findIsPrime(is_prime, length, i+1);
+  std::cout << "Leaving " << "findIsPrime(bool*, size_t, int)" << "\n";
+}
+
+bool isArrayPrimeRecur(int *array, std::size_t length) {
+  std::cout << "Entering " << "isArrayPrimeRecur(int*, size_t)" << "\n";
+  int prime_length = 100;
+  bool *is_prime = new bool[prime_length];
+  std::memset(is_prime, true, prime_length * sizeof(bool));
+  is_prime[1] = false;
+  findIsPrime(is_prime, prime_length, 2);
+  bool result = isArrayPrimeRecur(array, length, is_prime);
+
+  std::cout << "Leaving " << "isArrayPrimeRecur(int*, size_t)" << "\n";
+  delete[] is_prime;
+  return result;
+}
+
+int main(int argc, char **argv) {
+  const int MAX_ARRAY_LENGTH = 16, MAX_NUM_SIZE = 100;
+  int size;
+  do
+    {
+      std::cout << "Please pick a number between 1 and 16 which represents the size of the input array" << ": ";
+      std::cin >> size;
+    } while (size < 1 || size > MAX_ARRAY_LENGTH);
+
+  int *nums = new int[size];
+  for (int i = 0; i < size; ++i) {
+    int num;
+    do
+      {
+        std::cout << "Please input a number which you want to test for being prime" << ": ";
+        std::cin >> num;
+      } while (num < 1 || num > 99);
+    nums[i] = num;
+  }
+
+  std::cout << "\n";
+
+  bool iter_res = isArrayPrimeIter(nums, size);
+  bool recur_res = isArrayPrimeRecur(nums, size);
+
+  std::cout << "\n";
+
+  std::cout << "Iterative method says that " << (iter_res ? "" : "not ") << "all numbers inputted are prime.\n";
+  std::cout << "Recursive method says that " << (recur_res ? "" : "not ") << "all numbers inputted are prime.\n";
+
+  delete[] nums;
+
+  std::cout << "Thank you for using this program. Please come again!" << "\n";
+  
+  return 0;
+}
+

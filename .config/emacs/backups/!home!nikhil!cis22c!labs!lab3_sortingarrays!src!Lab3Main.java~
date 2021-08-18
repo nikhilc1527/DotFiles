@@ -1,0 +1,186 @@
+/*
+* Nikhil Chatterjee
+* Manish Goel
+* 5/7/21
+* Lab 3 - Merge Sorting
+* Description: Takes in a number of input dollars, sorts them based on the comparison of the Dollar, and then prints the sorted values of the dollars
+* PSEUDOCODE:
+*     Takes input of size of array
+*     Takes input type (USD, CAD, or AUD)
+*     Takes input dollars from terminal
+*     Sorts the dollars using the merge sort algorithm, printing the array for each recursive call
+*     Prints the sorted array to the terminal
+ */
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.*;
+
+public class Lab3Main {
+    public static PrintWriter writer = null;
+    /*
+    * Takes inputs, calls merge sort algorithm, prints sorted array of dollars
+    * Pre: None
+    * Post: None
+    * Parameters: Command Line Args
+    * Returns: none
+    * Terminal input: size of input array, type of input dollar, values of input dollars
+    * Terminal output: printing status of array for each recursive call
+    * File output: everything in terminal printed to output file ("output.txt")
+     */
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        try {
+            writer = new PrintWriter("output.txt");
+        } catch (FileNotFoundException ignored) {}
+        final int MAX_SIZE = 16;
+        Dollar[] dollars;
+        int inputSize;
+        do {
+            System.out.print("Type in the size of the array that you want: ");
+            writer.print("Type in the size of the array that you want: ");
+            inputSize = Integer.parseInt(s.nextLine());
+            writer.println(inputSize);
+        } while (inputSize > MAX_SIZE || inputSize <= 0);
+        dollars = new Dollar[inputSize];
+        String inputType;
+        do {
+            System.out.print("Type in AUD, CAD, or USD for which type of dollar you will be using today: ");
+            inputType = s.nextLine();
+            writer.print("Type in AUD, CAD, or USD for which type of dollar you will be using today: ");
+            writer.println(inputType);
+        } while (!(inputType.equals("AUD") || inputType.equals("CAD") || inputType.equals("USD")));
+        for (int i = 0; i < inputSize; i++) {
+            Number n;
+            boolean good = false;
+            do {
+                System.out.print("Please input a value for the " + (i+1) + "th dollar: ");
+                writer.print("Please input a value for the " + (i+1) + "th dollar: ");
+                String value = s.nextLine();
+                writer.println(value);
+                n = null;
+                try {
+                    n = NumberFormat.getCurrencyInstance(Locale.US).parse(value);
+                    good = true;
+                } catch (ParseException ignored) {
+                    System.out.println("inputted number is not in the format of $123.45. please try again");
+                    writer.println("inputted number is not in the format of $123.45. please try again");
+                }
+            } while (!good);
+
+            if (inputType.equals("AUD")) {
+                dollars[i] = new AUD((int)(n.doubleValue()), (int)(n.doubleValue() * 100 % 100));
+            } else if (inputType.equals("CAD")) {
+                dollars[i] = new CAD((int)(n.doubleValue()), (int)(n.doubleValue() * 100 % 100));
+            } else {
+                dollars[i] = new USD((int)(n.doubleValue()), (int)(n.doubleValue() * 100 % 100));
+            }
+        }
+
+        RecurMergeSort(dollars, dollars.length);
+
+        System.out.println("Sorted array:");
+        writer.println("Sorted array:");
+
+        for (Dollar dollar : dollars) {
+            dollar.printDetails();
+            dollar.printDetails(writer);
+        }
+
+        System.out.print("Thank you for using the program. Please come again!");
+        writer.print("Thank you for using the program. Please come again!");
+
+        new Scanner(System.in).nextLine();
+
+        writer.close();
+    }
+
+    /*
+    * Prints details of all dollars in the array
+    * Pre: None
+    * Post: Details of all dollars printed
+    * Parameters: input array of dollars
+    * Returns: none
+     */
+    public static void printDollars(Dollar[] dollars) {
+        for (int i = 0; i < dollars.length; ++i) {
+            System.out.printf("index %d: ", i);
+            dollars[i].printDetails();
+            writer.printf("index %d", i);
+            dollars[i].printDetails(writer);
+        }
+    }
+
+    /*
+     * Sorts the array using the merge sort algorithm
+     * Pre: None
+     * Post: All dollars in the input array are sorted
+     * Parameters: input array of dollars, size of dollars array
+     * Returns: none (input is changed)
+     */
+    public static void RecurMergeSort(Dollar[] dollars, int size) {
+        mergeSort(dollars, size, 0, size);
+    }
+
+    /*
+     * Sorts the array using the merge sort algorithm, between the indices input values of min and max
+     * Pre: None
+     * Post: All dollars in the input array are sorted between indices of min to max
+     * Parameters: input array of dollars, size of dollars array, min value of where to sort, max value of where to sort
+     * Returns: none (input is changed)
+     */
+    public static void mergeSort(Dollar[] dollars, int size, int min, int max) {
+        if (max-min == 1) { // only 1 element to be sorted, no need to do anything
+            return;
+        }
+        else if (max-min == 2) { // 2 elements to be sorted, then sort by swapping
+            Dollar maximum = dollars[min].compareTo(dollars[min+1]) > 0 ? dollars[min] : dollars[min+1];
+            dollars[min] = dollars[min].compareTo(dollars[min+1]) > 0 ? dollars[min+1] : dollars[min];
+            dollars[min+1] = maximum;
+        } else {
+            int mid = (min + max) / 2;
+            mergeSort(dollars, size, min, mid);
+            System.out.printf("After sorting indices from [%d, %d)%n", min, mid);
+            writer.printf("After sorting indices from [%d, %d)%n", min, mid);
+            printDollars(dollars);
+            mergeSort(dollars, size, mid, max);
+            System.out.printf("After sorting indices from [%d, %d)%n", mid, max);
+            writer.printf("After sorting indices from [%d, %d)%n", mid, max);
+            printDollars(dollars);
+            merge(dollars, min, mid, max);
+            System.out.printf("After merging indices from [%d, %d) and [%d, %d)%n", min, mid, mid, max);
+            writer.printf("After merging indices from [%d, %d) and [%d, %d)%n", min, mid, mid, max);
+            printDollars(dollars);
+        }
+    }
+
+    /*
+     * Merges the values between the min and mid values to mid to max values
+     * Pre: Each subarray of min to mid and mid to max are sorted
+     * Post: All dollars in the input array indices min to max are sorted
+     * Parameters: input array of dollars, size of dollars array
+     * Returns: none (input is changed)
+     */
+    public static void merge(Dollar[] dollars, int min, int mid, int max) {
+        Dollar[] newVals = new Dollar[max-min];
+        int i = min, j = mid, k = 0;
+        while (i < mid && j < max) {
+            if (dollars[i].compareTo(dollars[j]) > 0) {
+                newVals[k++] = dollars[j++];
+            } else {
+                newVals[k++] = dollars[i++];
+            }
+        }
+
+        while (i < mid) {
+            newVals[k++] = dollars[i++];
+        }
+        while (j < max) {
+            newVals[k++] = dollars[j++];
+        }
+
+        System.arraycopy(newVals, 0, dollars, min, max - min);
+    }
+}

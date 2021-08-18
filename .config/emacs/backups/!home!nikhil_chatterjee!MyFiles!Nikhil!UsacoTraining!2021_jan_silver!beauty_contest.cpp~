@@ -1,0 +1,8 @@
+#include <iostream>
+
+int main(int argc, char *argv[]) {
+  int i, j;
+  std::cin >> i >> j;
+  
+  return 0;
+}

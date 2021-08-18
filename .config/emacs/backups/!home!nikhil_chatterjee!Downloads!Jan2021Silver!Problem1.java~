@@ -1,0 +1,59 @@
+package Jan2021Silver;
+
+import java.util.*;
+
+public class Problem1 {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int k = s.nextInt();
+        s.nextLine();
+        List<Integer> positions = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            positions.add(i);
+        }
+        List<Set<Integer>> l = new ArrayList<Set<Integer>>();
+        for(int i=0; i<n; i++) {
+            l.add(new HashSet<Integer>());
+            l.get(i).add(i);
+        }
+        int s1, s2;
+        for(int i=0; i<k; i++){
+            s1 = s.nextInt()-1;
+            s2 = s.nextInt()-1;
+            s.nextLine();
+            swap(positions, s1, s2);
+            l.get(positions.get(s2)).add(s1);
+            l.get(positions.get(s1)).add(s2);
+        }
+        List<Integer> b = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            b.add(positions.indexOf(i));
+        }
+        System.out.println(l);
+        System.out.println("\n");
+        List<Integer> temp;
+        Set<Integer> tempSet;
+        int j;
+        for(int i=0; i<n; i++){
+            j = i;
+            temp = new ArrayList<Integer>();
+            tempSet = new HashSet<Integer>();
+            while(!temp.contains(j)) {
+                temp.add(j);
+                tempSet.addAll(l.get(j));
+                j = b.get(j);
+            }
+            System.out.println(tempSet.size());
+        }
+
+
+
+    }
+
+    public static void swap(List<Integer> a, int a1, int a2){
+        int temp = a.get(a1);
+        a.set(a1, a.get(a2));
+        a.set(a2, temp);
+    }
+}

@@ -1,0 +1,54 @@
+package Jan2021Silver;
+
+import java.util.*;
+
+public class Problem {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int k = s.nextInt();
+        s.nextLine();
+        List<Integer> positions = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            positions.add(i);
+        }
+        List<Set<Integer>> cowsVisited = new ArrayList<Set<Integer>>();
+        for(int i=0; i<n; i++) {
+            cowsVisited.add(new HashSet<Integer>());
+            cowsVisited.get(i).add(i);
+        }
+        int swap1, swap2;
+        for(int i=0; i<k; i++){
+            swap1 = s.nextInt()-1;
+            swap2 = s.nextInt()-1;
+            s.nextLine();
+            swap(positions, swap1, swap2);
+            cowsVisited.get(positions.get(swap2)).add(swap1);
+            cowsVisited.get(positions.get(swap1)).add(swap2);
+        }
+        List<Integer> cowEndPositions = new ArrayList<>();
+        for(int i=0; i<n; i++) {
+            cowEndPositions.add(positions.indexOf(i));
+        }
+        List<Integer> endPositionsVisited;
+        Set<Integer> positionsVisited;
+        int j;
+        for(int i=0; i<n; i++){
+            j = i;
+            endPositionsVisited = new ArrayList<Integer>();
+            positionsVisited = new HashSet<Integer>();
+            while(!endPositionsVisited.contains(j)) {
+                endPositionsVisited.add(j);
+                positionsVisited.addAll(cowsVisited.get(j));
+                j = cowEndPositions.get(j);
+            }
+            System.out.println(positionsVisited.size());
+        }
+    }
+
+    public static void swap(List<Integer> a, int a1, int a2){
+        int temp = a.get(a1);
+        a.set(a1, a.get(a2));
+        a.set(a2, temp);
+    }
+}

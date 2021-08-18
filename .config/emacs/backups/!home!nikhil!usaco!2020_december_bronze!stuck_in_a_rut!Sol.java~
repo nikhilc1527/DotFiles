@@ -1,0 +1,54 @@
+    import java.util.ArrayList;
+    import java.util.Comparator;
+    import java.util.List;
+    import java.util.Scanner;
+     
+    public class Sol {
+     
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            // Scanner in = new Scanner("input.txt");
+            List<Integer> eastCows = new ArrayList<>();
+            List<Integer> northCows = new ArrayList<>();
+            int n = in.nextInt();
+            int[] xs = new int[n];
+            int[] ys = new int[n];
+            char[] dirs = new char[n];
+            for (int j = 0; j < n; j++) {
+                char dir = in.next().charAt(0);
+                if (dir == 'E') {
+                    eastCows.add(j);
+                } else {
+                    northCows.add(j);
+                }
+                xs[j] = in.nextInt();
+                ys[j] = in.nextInt();
+                dirs[j] = dir;
+            }
+            eastCows.sort(Comparator.comparingInt(j -> ys[j]));
+            northCows.sort(Comparator.comparingInt(j -> xs[j]));
+            boolean[] isStopped = new boolean[n];
+            int[] stopPoint = new int[n];
+            int[] amtStopped = new int[n];
+            for (int j : eastCows) {
+                for (int k : northCows) {
+                    if (!isStopped[j] && !isStopped[k] && xs[k] > xs[j] && ys[j] > ys[k]) {
+                        if (xs[k] - xs[j] > ys[j] - ys[k]) {
+                            isStopped[j] = true;
+                            stopPoint[j] = xs[k];
+                            amtStopped[k] += 1 + amtStopped[j];
+                        } else if (ys[j] - ys[k] > xs[k] - xs[j]) {
+                            isStopped[k] = true;
+                            stopPoint[k] = ys[j];
+                            amtStopped[j] += 1 + amtStopped[k];
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < n; j++) {
+                if (!isStopped[j]) System.out.println();
+                if (dirs[j] == 'E') System.out.println(stopPoint[j] - xs[j]);
+                else System.out.println(stopPoint[j] - ys[j]);
+            }
+        }
+    }

@@ -1,0 +1,97 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+
+neofetch
+
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH=/home/nikhil_chatterjee/Downloads/node-v15.5.0-linux-x64/bin/:/home/nikhil_chatterjee/Downloads/google-cloud-sdk/bin:/home/nikhil_chatterjee/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nikhil_chatterjee/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release
+export JAVA_HOME=/usr
+
+export VISUAL="emacsclient -t"
+export EDITOR="$VISUAL"
+
+alias pip='pip3'
+alias python='python3'
+alias chdir='cd $(find -L . -type -not -name '.*' d | cut -c 3- | fzf)'
+
+alias ec='emacsclient -a \"\" -c'
+alias ect='emacsclient -a \"\" -t'
+
+alias sec='sudo emacs -q'
+alias sect='sudo emacs -q -nw'
+
+alias df='df -h'
+
+alias update='yay -Syyu --devel --timeupdate'
+
+# alias g++='/usr/bin/g++ -fsanitize=address -oout'
+
+ek() {
+    emacsclient -e '(save-buffers-kill-emacs)'
+}
+
+alias dual_scr='xsetwacom set "HID 256c:006d stylus" Area 0 0 44200 27600'
+alias right_scr='xsetwacom set "HID 256c:006d stylus" Area -44200 0 44200 27600'
+alias left_scr='xsetwacom set "HID 256c:006d stylus" Area 0 0 88400 27600'
+
+export CXX="/usr/bin/g++"
+export CC="/usr/bin/gcc"
+
+open() {
+    echo $1
+    $(xdg-open $1 > /dev/null 2>&1) &
+}
+
+. ~/.fancy-git/prompt.sh
+
+alias cat='bat'
+
+scale() {
+    ffmpeg -i $1 -vf scale=$2:$3 $4
+}
+
+mv_download() {
+    name=$(ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
+    # echo "mv ~/Downloads/$name $1"
+    echo ~/Downloads/$name $1 | xargs mv
+}
+
+mv_picture() {
+    name=$(ls -t ~/Pictures/ | head -n1 | sed 's/ /\\ /g')
+    # echo "mv ~/Downloads/$name $1"
+    echo ~/Pictures/$name $1 | xargs mv
+}
+
+network_scan() {
+    nmap -sL 192.168.86.* | grep \(1
+}
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/nikhil_chatterjee/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/nikhil_chatterjee/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/nikhil_chatterjee/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/nikhil_chatterjee/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

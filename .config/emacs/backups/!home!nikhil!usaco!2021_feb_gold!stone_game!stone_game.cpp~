@@ -1,0 +1,59 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+
+#ifdef DEBUG
+std::ifstream input("input.txt");
+std::ostream output("output.txt");
+#else
+auto &input = std::cin;
+auto &output = std::cout;
+#endif // DEBUG
+
+// std::size_t hash(const std::vector<int> &vec) {
+//   std::size_t seed = vec.size();
+//   for(auto& i : vec) {
+//     seed ^= i + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+//   }
+//   return seed;
+// }
+
+std::uint64_t find(std::vector<int> &vec, std::unordered_map<std::uint64_t, std::uint64_t> &dp, std::uint64_t hash, int prev) {
+  if (dp[hash]>0) return dp[hash];
+
+  int res = 0;
+  for (int i = 0; i < vec.size(); ++i) {
+    for (int j = prev; j < vec[i]; j += prev) {
+      
+    }
+  }
+}
+
+int main(int argc, char **argv) {
+  int N; input >> N;
+
+  std::vector<int> stones;
+  std::unordered_map<std::uint64_t, std::uint64_t> dp;
+  std::uint64_t hash = 0;
+  for (int i = 0; i < N; ++i) {
+    stones.emplace_back();
+    input >> stones[i];
+    hash += stones[i] * (i+1);
+  }
+
+  auto res = find(stones, dp, hash);
+
+  output << res << std::endl;
+  
+  return 0;
+}

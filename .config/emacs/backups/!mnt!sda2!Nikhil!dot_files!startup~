@@ -1,0 +1,67 @@
+#!/bin/bash
+
+dunst -follow none &
+
+update_packages() {
+	# gpg -d ~/.password.gpg | yay --sudoflags -S -Syyuu --noconfirm
+	r=$(mktemp)
+	yay -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
+        pacman -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
+        # cat $r
+	inst $r
+
+	# out=$?
+	# [ "$out" = "0" ] && notify-send "successfully updated all packages"
+	# [ "$out" = "0" ] || notify-send "unsuccessfully updated all packages"
+        notify-send -u low "finished updating all packages"
+}
+
+start_ngrok() {
+    killall ngrok
+    ngrok tcp --config ~/.config/ngrok.yml --log stdout 22 &
+    while [ ! $(curl -s localhost:4040/api/tunnels) ]; do
+        true;
+    done
+    sleep 1
+    url=$(curl -s localhost:4040/api/tunnels | jq ".tunnels | .[0] | .public_url")
+    echo $url > ~/.local/share/ngrok_url/url.txt
+    notify-send $url
+    cd ~/.local/share/ngrok_url/
+    git add url.txt
+    git commit -m "$(date)"
+    git push
+
+    notify-send "finished starting ngrok"
+}
+
+update_packages &
+start_ngrok > /tmp/ngrok_log.txt &
+
+rm ~/.cache/pkglist
+touch ~/.cache/pkglist 
+pacman -Sl core         >> ~/.cache/pkglist
+pacman -Sl community    >> ~/.cache/pkglist
+pacman -Sl extra        >> ~/.cache/pkglist
+pacman -Sl multilib     >> ~/.cache/pkglist
+yay    -Sl aur          >> ~/.cache/pkglist
+
+feh --bg-scale ~/MyFiles/Junk/Meee.png
+emacs --daemon &
+# betterlockscreen -u ~/MyFiles/Junk/Meee.png
+# bluetoothctl power on
+setxkbmap -option compose:ralt
+anamnesis --start
+gromit-mpx &
+sxhkd &
+
+update_mail() {
+    mailsync > /tmp/mailsync_startup.txt &
+    # neomutt &
+    
+    notify-send "indexing mail"
+}
+update_mail
+
+setxkbmap -option caps:swapescape
+
+notify-send -u low "finished startup script"

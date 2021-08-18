@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+r=$RANDOM
+echo "$r"
+paru -Sl | dmenu -l 30 | awk '{print $2}' | tr '\n' ' ' > /tmp/$r
+gksu "yay -S $(/usr/bin/cat /tmp/$r)"
+# rm -f /tmp/$r

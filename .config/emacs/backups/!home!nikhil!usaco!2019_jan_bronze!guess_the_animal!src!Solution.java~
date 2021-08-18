@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.HashSet;
+
+public class Solution {
+  public static void main(String[] args) throws IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("guess.in")));
+
+    int N = Integer.parseInt(reader.readLine());
+    HashSet<String>[] characteristics = new HashSet[N];
+    for (int i = 0; i < N; i++) {
+      characteristics[i] = new HashSet<>();
+      String[] words = reader.readLine().split(" ");
+      for (int j = 2; j < words.length; j++) {
+        characteristics[i].add(words[j]);
+      }
+    }
+    reader.close();
+
+    int greatestCommon = 0;
+    for (int i = 0; i < N; ++i) {
+      for (int j = i+1; j < N; ++j) {
+        int greater, lesser;
+        if (characteristics[i].size() > characteristics[j].size()) {
+          greater = i; lesser = j;
+        } else {
+          greater = j; lesser = i;
+        }
+        int common = 0;
+
+        for (String characteristic : characteristics[greater]) {
+          if (characteristics[lesser].contains(characteristic)) {
+            common++;
+          }
+        }
+
+        greatestCommon = Math.max(greatestCommon, common);
+      }
+    }
+
+    PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream("guess.out")));
+    writer.println(greatestCommon+1);
+    writer.close();
+  }
+}

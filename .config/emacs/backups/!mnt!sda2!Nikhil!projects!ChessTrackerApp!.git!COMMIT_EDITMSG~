@@ -1,0 +1,18 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   .idea/gradle.xml
+#	modified:   app/src/main/AndroidManifest.xml
+#	new file:   app/src/main/java/com/example/chesstrackerapp/ImageViewer.java
+#	modified:   app/src/main/java/com/example/chesstrackerapp/MainActivity.java
+#	new file:   app/src/main/java/com/example/chesstrackerapp/MainActivity2.java
+#	modified:   app/src/main/res/layout/activity_main.xml
+#	modified:   app/src/main/res/values/strings.xml
+#	modified:   build.gradle
+#

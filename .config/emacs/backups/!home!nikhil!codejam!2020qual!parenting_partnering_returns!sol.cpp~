@@ -1,0 +1,75 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int main(int argc, char **argv) {
+#ifdef debug
+  auto &in = std::cin;
+#endif
+#ifndef debug
+  auto in = std::ifstream("input.txt");
+#endif
+  int t;
+  in >> t;
+  int ta = t;
+  while (t-- > 0) {
+    int last_c = -1, last_j = -1;
+    std::string res;
+    int n;
+    in >> n;
+    // std::vector<std::pair<int, int>> vals;
+    // for (int i = 0; i < n; ++i) {
+    //   vals.emplace_back();
+    //   in >> vals.back().first >> vals.back().second;
+    // }
+
+    std::set<std::pair<int, int>> c, j;
+    bool imp = false;
+    for (int i = 0; i < n; ++i) {
+      std::pair<int, int> next;
+      in >> next.first >> next.second;
+      if (imp) continue;
+      auto last_c = std::upper_bound(c.begin(), c.end(), next),
+           last_j = std::upper_bound(j.begin(), j.end(), next);
+      // if (last_c == c.end()) last_c = c.rbegin();
+      // if (last_j == j.end()) last_j = j.rbegin();
+      if (c.empty()) {
+        res.push_back('C');
+        c.insert(next);
+      } else if (j.empty()) {
+        res.push_back('J');
+        c.insert(next);
+      }
+      else if (last_c == c.end() && (*c.rbegin()).second <= next.first) {
+        res.push_back('C');
+        c.insert(next);
+      } else if ((*last_c).first >= next.second && (*(--last_c)).second <= next.first) {
+        res.push_back('C');
+        c.insert(next);        
+      } else if (last_j == j.end() && (*j.rbegin()).second <= next.first) {
+        res.push_back('J');
+        j.insert(next);
+      } else if ((*last_j).first >= next.second && (*(--last_j)).second <= next.first) {
+        res.push_back('J');
+        j.insert(next);        
+      } else {
+        imp = true;
+        res = "IMPOSSIBLE";
+      }
+    }
+
+    std::cout << "Case #" << ta-t << ": " << res << "\n";
+  }
+
+  return 0;
+}
+

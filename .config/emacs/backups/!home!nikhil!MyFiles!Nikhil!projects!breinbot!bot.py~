@@ -1,0 +1,227 @@
+import discord
+import os
+import sys
+# from threading import Timer
+import sqlite3
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class MyClient(discord.Client):
+    def get_ids(self, guild):
+        members = guild.members
+        ids = [member.id for member in members if not member.bot]
+        return ids
+
+    async def on_ready(self):
+        if (len(sys.argv) < 2):
+            return
+        guild = client.get_guild(755982883373449277)
+        print('guild: {}'.format(guild))
+        brain = 129504
+        ids = self.get_ids(guild)
+        for id in ids:
+            print('id: {}'.format(id))
+
+        # for id in ids:
+        #     cursor.execute("""SELECT user FROM breins WHERE user={}""".
+        #                    format(id))
+        #     res = cursor.fetchall()
+        #     if (res is None or len(res) == 0):
+        #         cursor.execute("""INSERT INTO breins
+        #         VALUES ({}, 0, 0)""".format(id))
+
+        other_breins = dict((id, 0) for id in ids)
+        self_breins = dict((id, 0) for id in ids)
+
+        print('starting')
+
+        for channel in guild.channels:
+            # if (not(channel.id == 821077346865905725)):
+            #     continue
+            print('trying channel {}, type is: {}'.format(channel.name, channel.type))
+            # if (not (channel.type.text)):
+            #     continue
+            if (not(str(channel.type) == 'text')):
+                continue
+            print('in channel {}, type is: {}'.format(channel.name, channel.type))
+            i = 0
+            async for msg in channel.history(limit=None):
+                if (i % 100 == 0):
+                    print(i)
+                i += 1
+                if (msg.author.bot):
+                    continue
+                reactions = msg.reactions
+                for reaction in reactions:
+                    if (not reaction.custom_emoji and len(reaction.emoji) > 1):
+                        print(reaction.emoji)
+                    if (not reaction.custom_emoji and ord(reaction.emoji[0]) == brain):
+                        other_breins[msg.author.id] += reaction.count
+                        users = await reaction.users().flatten()
+                        # if (msg.author.id in users):
+                        for user in users:
+                            if (msg.author.id == user.id):
+                                other_breins[msg.author.id] -= 1
+                                self_breins[msg.author.id] += 1
+                                print('found self brein in \n {}'.format(msg.jump_url))
+                        print('found brein in \n {}'.format(msg.jump_url))
+
+        conn = sqlite3.connect('brains.db')
+        cursor = conn.cursor()
+        cursor.execute("""CREATE TABLE IF NOT EXISTS breins (
+        user int,
+        other_breins int,
+        self_breins int
+        )""")
+        cursor.execute('DELETE FROM breins')
+        print('done')
+        for id in ids:
+            cursor.execute("""INSERT INTO breins
+            VALUES ({}, {}, {})""".format(id, other_breins[id], self_breins[id]))
+
+        conn.commit()
+        conn.close()
+        # for (id, breins) in other_breins:
+        #     print('id {} has {} other breins'.format(id, breins))
+
+        # for (id, breins) in self_breins:
+        #     print('id {} has {} self breins'.format(id, breins))
+
+        for id in ids:
+            print('id {} has {} other breins, {} self breins'.format(id, other_breins[id], self_breins[id]))
+
+    # async def on_message(self, message):
+    #     print('message seen')
+
+    #     async def delete(msg):
+    #         await msg.delete()
+
+    #     if (message.author.id == 510789298321096704):
+    #         t = Timer(10.0, delete)
+    #         t.start()
+
+    def __init__(self, my_intents=None):
+        if (my_intents is None):
+            super(MyClient, self).__init__()
+        else:
+            super(MyClient, self).__init__(intents=my_intents)
+
+    async def count(self, message):
+        txt = message.content.lower()
+        guild = message.channel.guild
+        conn = sqlite3.connect('brains.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM breins')
+        breins = cursor.fetchall()
+        conn.commit()
+        conn.close()
+        allowed_ids = set()
+        commands = ['!count', '!breins', '!breincount']
+        queries: list(str) = txt.split(' ')
+        queries = [query.lower() for query in queries]
+        # commands_spaces = ['{} '.format(cmd) for cmd in commands]
+
+        if (txt not in commands and (# len(txt) < 7 or
+                                     queries[0] not in commands)):
+            return
+        if (txt not in commands):
+            # queries: str = txt[7:]
+            # queries: list(str) = queries.split(' ')
+            # queries = [query.lower() for query in queries]
+
+            queries = queries[1:]
+            print(queries)
+
+            roles_list = guild.roles
+            print(queries)
+
+            for role in roles_list:
+                if (role.name.lower() in queries):
+                    for member in role.members:
+                        if (member.bot):
+                            continue
+                        allowed_ids.add(member.id)
+                        print(member.id)
+            for member in guild.members:
+                if (member.bot):
+                    continue
+                if ((member.nick is not None and member.nick.lower() in queries) or (member.name is not None and member.name.lower() in queries)):
+                    allowed_ids.add(member.id)
+            breins = filter(lambda brein: brein[0] in allowed_ids, breins)
+        else:
+            ids = self.get_ids(guild)
+            for id in ids:
+                allowed_ids.add(id)
+
+        send_text = ''
+        if (len(allowed_ids) == 0):
+            send_text = 'haha youre dumb theres no roles like that (or that role doesnt apply to anyone)'
+        else:
+            for breincount in breins:
+                member = guild.get_member(breincount[0])
+                send_text = '{}\n{} has {} other breins and {} self breins'.format(send_text, member.nick, breincount[1], breincount[2])
+        sent_msg = await message.channel.send(send_text)
+
+        emoji_list = [(688576713197617223, 779118201039749130), (704138527977373756, 780594713471614986), (621521274203799568, 779117307817492540), (540359123850625025, 808562387187138610), (501407680334659586, 809120965845843979), (717205789621616711, 780594963419234314), (470066750252122113, 779115352378179624), (621562283377819648, 779179989076803625)]
+        # emojis = dict(id: emoji for (id, emoji) in emoji_list)
+        emojis = {ID: emoji_id for (ID, emoji_id) in emoji_list}
+        for id in allowed_ids:
+            if (id in emojis):
+                await sent_msg.add_reaction(await guild.fetch_emoji(emojis[id]))
+
+    async def on_message(self, message):
+        if (message.author.id == 821934918551601212):
+            await message.add_reaction(chr(129504))
+        else:
+            await self.count(message)
+
+    async def on_reaction_add(self, reaction, user):
+        brain = 129504
+        if (not reaction.custom_emoji and ord(reaction.emoji[0]) == brain):
+            print('saw brein')
+            conn = sqlite3.connect('brains.db')
+            cursor = conn.cursor()
+            id = reaction.message.author.id
+            column = 'self_breins' if id == user.id else 'other_breins'
+
+            cursor.execute('SELECT {} FROM breins WHERE user={}'.format(column, id))
+            res = cursor.fetchall()
+            if (len(res) == 0):
+                return
+            cur_breins = int(res[0][0])
+            print('current breins: {}'.format(cur_breins))
+            cursor.execute('UPDATE breins SET {}={} WHERE user={}'.format(column, cur_breins+1, id))
+            conn.commit()
+            conn.close()
+
+
+print('creating intents')
+# my_intents = discord.Intents(guilds=True, members=True,emojis=True,messages=True, guild_messages=True, reactions=True, guild_reactions=True)
+my_intents = discord.Intents(guilds=True, members=True,emojis=True,messages=True, guild_messages=True, reactions=True, guild_reactions=True)
+print('created intents')
+client = MyClient(my_intents
+                  )
+
+token = os.getenv('TOKEN')
+
+
+# @client.event
+# async def on_message(message):
+#     print('message sent')
+#     if (message == "ping"):
+#         message.channel.send("pong")
+
+
+# @client.event
+# async def on_messageReactionAdd(msg_reaction, user):
+#     print("reaction added by user {}".format(user.username))
+
+# with open('.env') as f:
+# token = f.readline().split('=')[1]
+# token = 'ODIxMjE3ODU5MzY2ODEzNzE2.YFAguw.Hqy4-105avdcfBJRb1xqIxNS-ZA'
+
+print(token)
+client.run(token)

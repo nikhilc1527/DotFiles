@@ -1,0 +1,44 @@
+import discord
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class MyClient(discord.Client):
+    def __init__(self, my_intents=None):
+        if (my_intents is None):
+            super(MyClient, self).__init__()
+        else:
+            super(MyClient, self).__init__(intents=my_intents)
+        self.banned_emojis = [129432, 128039, 128040, 129449]
+
+    async def on_message(self, message):
+        for c in message.content:
+            if (ord(c) in self.banned_emojis):
+                await message.delete()
+                break
+        if ('nikhil' in message.content.lower()):
+            await message.delete()
+
+    async def on_reaction_add(self, reaction, user):
+        # print('{} added a reaction {}'.format(user.name, (ord(reaction.emoji)
+        #                                                   if not
+        #                                                   reaction.custom_emoji
+        #                                                   else
+        #                                                   reaction.emoji.name))
+        #       )
+        if (user.id == 821105400186273814):
+            await reaction.remove(user)
+        if (not reaction.custom_emoji and ord(reaction.emoji) in self.banned_emojis):
+            await reaction.remove(user)
+
+
+my_intents = discord.Intents()
+client = MyClient()
+
+token = os.getenv('TOKEN')
+
+print(token)
+client.run(token)

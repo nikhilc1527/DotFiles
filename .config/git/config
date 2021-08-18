@@ -1,0 +1,13 @@
+[user]
+	email = nikhilc1527@gmail.com
+	name = Nikhil Chatterjee
+[commit]
+        gpgsign = true
+[tag]
+        gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+        

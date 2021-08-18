@@ -1,0 +1,1 @@
+out: bookmain.cpp book.cpp n t g++ -g bookmain.cpp book.cpp -oout

@@ -1,0 +1,6 @@
+import subprocess
+import glob
+from PIL import Image
+
+imgs = glob.glob("images/*")
+labels = glob.glob("labels/*")

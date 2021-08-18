@@ -1,0 +1,101 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+std::unordered_set<int> find(std::vector<std::vector<int>> &paths,
+                             std::vector<std::unordered_set<int>> &dp, int i, std::unordered_set<int> &seen_paths) {
+  // if (dp[i].size()) return dp[i];
+
+  if (seen_paths.count(i)) return std::unordered_set<int>();
+  
+  std::unordered_set<int> seen_pos;
+  seen_paths.insert(i);
+  for (int j = 0; j < paths[i].size(); ++j) {
+    seen_pos.insert(paths[i][j]);
+  }
+
+  auto res = find(paths, dp, paths[i][paths[i].size() - 1], seen_paths);
+
+  for (auto j : res) seen_pos.insert(j);
+  return seen_pos;
+}
+
+int main(int argc, char *argv[]) {
+  int n, k;
+  if (argc > 1) {
+    n = std::stoi(argv[1]);
+    k = std::stoi(argv[2]);
+  }
+  else std::cin >> n >> k;
+
+  std::vector<std::vector<int>> paths(n);
+  for (int i = 0; i < n; ++i) {
+    paths[i].push_back(i);
+  }
+
+  std::vector<int> positions;
+  for (int i = 0; i < n; ++i) {
+    positions.push_back(i);
+  }
+
+  std::vector<std::pair<int, int>> steps;
+  if (argc > 1) {
+    for (int i = 0; i < 2*k; i += 2) {
+      std::pair<int, int> step {std::stoi(argv[i + 3]), std::stoi(argv[i + 4])};
+      steps.push_back(step);
+    }
+  }
+  else for (int i = 0; i < k; ++i) {
+    std::pair<int, int> step;
+    std::cin >> step.first >> step.second;
+    steps.push_back(step);
+  }
+
+  for (int i = 0; i < k; ++i) {
+    std::pair<int, int> step = steps[i];
+    if (step.first == step.second)
+      continue;
+    step.first--;
+    step.second--;
+    paths[positions[step.first]].push_back(step.second);
+    paths[positions[step.second]].push_back(step.first);
+    std::swap(positions[step.first], positions[step.second]);
+  }
+
+  std::vector<std::unordered_set<int>> dp(n);
+  
+  for (int i = 0; i < n; ++i) {
+    std::unordered_set<int> seen_pos, seen_paths;
+    int path = i;
+    while (!seen_paths.count(path)) {
+      if (dp[path].size()) {
+        for (auto j : dp[path]) {
+          seen_pos.insert(j);
+        }
+        break;
+      }
+      for (int j = 0; j < paths[path].size(); ++j) {
+        seen_pos.insert(paths[path][j]);
+      }
+      seen_paths.insert(path);
+      path = paths[path][paths[path].size() - 1];
+    }
+    dp[i] = seen_pos; 
+
+    // std::unordered_set<int> a;
+    // auto seen_pos = find(paths, dp, i, a);
+    
+    std::cout << seen_pos.size() << std::endl;
+  }
+
+  return 0;
+}

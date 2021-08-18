@@ -1,0 +1,17 @@
+\documentclass{article}
+
+\usepackage{authblk}
+\usepackage{indentfirst}
+
+\title{Assignment \#3}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time Spent: 60 min}
+% \affil[1]{Course ID: 123}
+
+\begin{document}
+
+\maketitle{}
+
+\section{}
+
+\end{document}

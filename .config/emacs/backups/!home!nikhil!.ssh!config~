@@ -1,0 +1,9 @@
+Host lala
+     port 22
+     User nishantc
+     HostName 192.168.86.28
+
+Host laptop
+     port 22
+     User nikhilc
+     HostName 192.168.86.24

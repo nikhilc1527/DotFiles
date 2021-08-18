@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage{authblk}
+\usepackage{indentfirst}
+
+\title{Assignment \#1}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time Spent: 60 min}
+% \affil[1]{Course ID: 123}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Relationship between theory and experiment}
+In physics, a theory is an idea of what will happen given a certain set of variables, and the environment that is assumed.
+This is useful to expect what wil happen in a theoretical scenario, and used to predict the outcome based on all of the important factors, especially when the scenario is not easily reachable in real life, as is commonly the case in the field of quantum mechanics.
+However, theoretical physics cannot take into account the practical side, and all of the infinite factors that may affect any given situation.
+Such factors may include randomness, a change in weather, change in location, human error, etc.
+Experiments are used to prove theories, and make sure that the theory is applicable in the real world.
+Sometimes, a theory is technically correct, but there are certain environmental factors that make the theory impossible in real life.
+In this situation, the theory would not be practical, and unusable by people putting the theories into practice.
+On the other hand, experiments can also allow new theories to rise, such as it was in the case of the double-slit experiment, where scientists found out about the quantum mechanics of the photon based on the experiment.
+
+
+\section{American Physical Society articles}
+
+\subsection{Physical Review A}
+Physical review A covers topics that mostly relate to quantum mechanics.
+There are topics relating to how quantum mechanics is related to waves, energy, and optics, but the topics also extend to the applications of quantum mechanics, such as how it is used in computing and experimentation. 
+
+\subsection{Physical Review C}
+Physical review C mostly covers topics relating to the nucleus, and how to behaves and relates to other parts of the atom and other particles.
+There are also articles relating to the part that the nucleus plays in more large scale physics.
+Some examples of such are nuclear reactions and nuclear astrophysics, which relates to the study of space.
+
+\section{Prominent Historical Physicist: Richard Feynman}
+When Richard Feynman was a child, his father inspired him to do the majority of his physics.
+His dad kept pushing him to focus on what he didn't know, rather than what he did, because that is the only way that discovery is possible.
+Through his father's teachings, Feynman was always curious, a very important trait that allowed him to discover many things later in his life.
+His mother also played an important role in his upbringing: she instilled in him a powerful sense of humor, which allowed him to stay humorous and light-hearted throughout his life.
+
+When Richard Feynman grew up, he attended MIT, where he switched his major from mathematics to electrical engineering, and finally to physics.
+In his college life, he joined the Phi Lambda Phi fraternity, and wrote two papers for the American Physical Review: ``The Scattering of Cosmic Rays by the Stars of the Galaxy'', and ``Forces in Molecules'', which was his master's thesis.
+This thesis later went on to be known as the Hellman-Feynman theorem, and regards the field of quantum mechanics, and has multiple proofs and applications.
+Later, during World War I, Feynman was recruited by Robert R. Wilson, along with Albert Einstein, to develop the atom bomb, which would later become a part of the bigger Manhattan Project.
+
+Feynman later won the Nobel Prize for quantum electrodynamics, a theoretical work that explained the relationship between light and quantum mechanics.
+He also carried out the double slit experiment, which is an experiment that proves that light can act both as a particle and a wave.
+Throughout his life, Feynman was both an experimental physicist as well as a theoretical physicist, and used both his theories and experiments to contribute greatly to the field of quantum mechanics and quantum electrodynamics.
+
+
+\end{document}

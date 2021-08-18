@@ -1,0 +1,35 @@
+require('dotenv').config();
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+const TOKEN = process.env.TOKEN;
+
+bot.login(TOKEN);
+
+bot.on('ready', () => {
+  console.info(`Logged in as ${bot.user.tag}!`);
+});
+
+// bot.on('message', msg => {
+  // if (msg.content === 'ping') {
+  //   msg.reply('pong');
+  //   msg.channel.send('pong');
+
+  // } else if (msg.content.startsWith('!kick')) {
+  //   if (msg.mentions.users.size) {
+  //     const taggedUser = msg.mentions.users.first();
+  //     msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
+  //   } else {
+  //     msg.reply('Please tag a valid user!');
+  //   }
+  // }
+// });
+
+bot.on('messageReactionAdd', (msg_reaction, user) => {
+    console.log('username: ' + user.username + ', reaction: ' + msg_reaction.emoji);
+    if (user.username == 'ReactionBot') {
+        msg = msg_reaction.message;
+        msg_reaction.remove(user);
+        // msg.reactions.resolve(msg_reaction).users.remove(user);
+        console.log('removed the reaction');
+    }
+});

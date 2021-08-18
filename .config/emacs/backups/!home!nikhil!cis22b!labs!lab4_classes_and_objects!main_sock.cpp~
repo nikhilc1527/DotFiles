@@ -1,0 +1,47 @@
+/*
+CIS 22B
+Lab 4
+Venkata Sai Saketh Korrapolu
+*/
+
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include "book.h"
+
+
+int main()
+{
+    std::cout << "Hello World" << std::endl;
+    std::ifstream infile;
+    infile.open("bookdata.txt");
+    Book books[10];
+    for (int i = 0; i < 10; i++) {
+        std::cout << "Hello World" << std::endl;
+        std::string book_data[8];
+        for (int j = 0; j < 8; j++) {
+            book_data[j] = std::string();
+        }
+        for (int j = 0; i < 8; j++) {
+            std::getline(infile, book_data[j]);
+        }
+        books[i] = Book(book_data[0], book_data[1], book_data[2], book_data[3], book_data[4], book_data[5],
+            book_data[6], book_data[7]);
+        infile.get();
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << books[i].getISBN() << std::endl;
+        std::cout << books[i].getTitle() << std::endl;
+        std::cout << books[i].getAuthor() << std::endl;
+        std::cout << books[i].getPublisher() << std::endl;
+        std::cout << books[i].getDateAdded() << std::endl;
+        std::cout << books[i].getQuantity() << std::endl;
+        std::cout << books[i].getWholesaleCost() << std::endl;
+        std::cout << books[i].getRetailPrice() << "\n" << std::endl;
+    }
+   
+    infile.close();
+    system("pause");
+    return 0;
+} 

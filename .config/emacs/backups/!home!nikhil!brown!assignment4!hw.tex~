@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{authblk}
+\usepackage{indentfirst}
+
+\title{Assignment \#4}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time Spent: 60 min}
+% \affil[1]{Course ID: 123}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Describe one of the contending atomic models before the discovery of the proton and neutron and compare it to the accepted atomic model (1 paragraph)}
+
+Much before the discovery of the proton and neutron, but after the discovery of the electron, J.J. Thomson hypothesized that the atom is made up of a sort of plum pudding composition, with electrons as negatively charged plum chunks inside of a positively charged plum pudding. This is why the overall charge is neutral, but becomes positive after the electrons are separated from the atom. This was not too far off from the currently accepted model, because it identifies the electrons as sepaparable from the rest of the atom and that the rest of the atom is positively charged, but this model fails to explain what exactly that ``plum pudding'' is composed of. After the discoveries of the proton and neutron, we now know that the ``plum pudding'' is actually a nucleus of relatively large protons and neutrons, and the protons are what give the atom the positive charge to offset the negative charge of the electrons.
+
+\section{Describe the experimental setup for E. Rutherford's gold foil experiment, and explain the physics behind the observed results (1 to 2 paragraphs)}
+
+In order to discover the proton, Rutherford took a gold plate, and shot a beam of alpha particles towards it. Because gold as an element is very spread out, there is a lot of gaps in between each nucleus, where there is just empty space or electrons. Since alpha particles are positively charged (consisting of two protons each), the alpha particles would only divert their direction after hitting the gold plate if they came into close proximity with another positively charged particle, in which case the two positive charges would repel and send the alpha particle flying in the oppostite direction. Rutherford observed that there were very few alpha particles going in the oppostite direction, and most of them were just passing straight through the gold sheet. Because of this, he concluded that the nucleus of the atom, the ``plum pudding'' that was previously described to be the center of the atom, was actually a compact concentration of positively charged particles that were repelling the alpha particles. These positively charged particles in the middle were named protons, and allowed Rutherford to come up with the model of a small nucleus with a large 
+
+\section{Describe the experimental setup for J. Chadwick's paraffin wax experiment, and explain the physics behind the observed results (1 to 2 paragraphs)}
+
+
+
+
+\end{document}

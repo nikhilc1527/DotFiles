@@ -1,0 +1,117 @@
+/*
+* Nikhil Chatterjee
+* Manish Goel
+* CIS 22C
+* Lab 4 - Lists, Stacks, and Queues
+* Purpose: implement a singly linked list from scratch, using a linknode object as the nodes in the linked list, as well as a stack and queue which both are derived from the linked list
+* PSEUDOCODE:
+*     Constructs a linked list
+*     Constructs 7 random USD objects in an array
+*     shuffles the array for each of the following operations, and prints the entire data structure during and after each of the following operations
+*     adds the usds to the linked list
+*     searches for each of the usds in the linked list
+*     removes each of the usds one by one from the linked list
+*     construct a stack
+*     push all usds to the stack, while peeking each time
+*     pop all usds to the stack
+*     constructs a queue
+*     does the same operations as the stack on the queue
+ */
+
+import java.util.Random;
+
+public class Lab4Main {
+  /*
+  * Shuffles the array in a random order
+  * Pre: arr exists
+  * Post: arr is shuffled in a random order
+  * Parameters: arr - array to shuffle
+  * Returns: none
+   */
+  public static void shuffleArray(int[] arr) {
+    Random rnd = new Random();
+    for (int i = 0; i < arr.length; i++) {
+      int index = rnd.nextInt(i + 1);
+      int a = arr[index];
+      arr[index] = arr[i];
+      arr[i] = a;
+    }
+  }
+
+  /*
+  * Prints the functionalities of the stack, queue, and singly linked lists.
+   */
+  public static void main(String[] args) {
+    USD[] dollars = new USD[7];
+    System.out.println("These are the 7 USD objects that we will be working witH:");
+    for (int i = 0; i < 7; i++) {
+      dollars[i] = new USD();
+      dollars[i].setWhole(((int) (Math.random() * 100)));
+      dollars[i].setFractional((int)(Math.random() * 100));
+      System.out.print("index " + i + ": ");
+      dollars[i].printDetails();
+    }
+
+    SinglyLinkedList linkedList = new SinglyLinkedList();
+    int[] indices = new int[7];
+    for (int i = 0; i < 7; i++) {
+      indices[i] = i;
+    }
+    shuffleArray(indices);
+    for (int i = 0; i < indices.length; i++) {
+      linkedList.add(dollars[indices[i]]);
+      System.out.println("After adding dollar at index " + indices[i] + ": ");
+      linkedList.printAllElements();
+    }
+
+    shuffleArray(indices);
+    for (int i = 0; i < indices.length; i++) {
+      int index = linkedList.find(dollars[indices[i]]);
+      System.out.println("At index " + index + " found the dollar: ");
+      dollars[indices[i]].printDetails();
+    }
+
+    shuffleArray(indices);
+    for (int i = 0; i < indices.length; i++) {
+      int index = ((int) (Math.random() * linkedList.getCount()));
+      linkedList.remove(index);
+      System.out.println("After removing the dollar at index " + index + " in the linked list: ");
+      linkedList.printAllElements();
+    }
+
+    Stack stack = new Stack();
+    shuffleArray(indices);
+    for (int i = 0; i < indices.length; i++) {
+      stack.push(dollars[indices[i]]);
+      System.out.println("After pushing dollar at index " + indices[i] + ": ");
+      stack.printAllElements();
+      USD peeked = stack.peek();
+      System.out.println("Dollar peeked in the stack: ");
+      peeked.printDetails();
+    }
+
+    for (int i = 0; i < indices.length; i++) {
+      USD popped = stack.pop();
+      System.out.println("Popped element from the stack: ");
+      popped.printDetails();
+    }
+
+    Queue queue = new Queue();
+    shuffleArray(indices);
+    for (int i = 0; i < indices.length; i++) {
+      queue.enqueue(dollars[indices[i]]);
+      System.out.println("After enqueueing dollar at index " + indices[i] + ": ");
+      queue.printAllElements();
+      System.out.println("Front element: ");
+      queue.peekFront().printDetails();
+      System.out.println("Rear element: ");
+      queue.peekRear().printDetails();
+    }
+
+    for (int i = 0; i < indices.length; i++) {
+      USD dequeueued = queue.dequeue();
+      System.out.println("Dequeued element from the queue: ");
+      dequeueued.printDetails();
+    }
+  }
+}

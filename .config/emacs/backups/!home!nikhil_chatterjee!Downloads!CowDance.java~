@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class CowDance {
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    String[] nextLine = scanner.nextLine().split(" ");
+    int n = Integer.parseInt(nextLine[0]);
+    int k = Integer.parseInt(nextLine[1]);
+    int[][] swaps = new int[k][2];
+
+    for (int i = 0; i < k; i++) {
+      nextLine = scanner.nextLine().split(" ");
+      swaps[i][0] = Integer.parseInt(nextLine[0]) - 1;
+      swaps[i][1] = Integer.parseInt(nextLine[1]) - 1;
+    }
+
+    HashSet<Integer>[] places = new HashSet[n];
+
+    for(int i = 0; i < places.length; i ++) {
+      places[i] = new HashSet<>();
+    }
+
+    int[] cows = new int[n];
+
+    for (int i = 0; i < cows.length; i++) {
+      cows[i] = i;
+    }
+
+    for(int i = 0; i < places.length; i ++) {
+      places[i].add(i);
+    }
+
+    for(int[] ignored : swaps) {
+      for (int[] ignored0 : swaps) {
+        for (int[] swap : swaps) {
+          places[cows[swap[0]]].add(swap[1]);
+          places[cows[swap[1]]].add(swap[0]);
+
+          int temp = cows[swap[0]];
+          cows[swap[0]] = cows[swap[1]];
+          cows[swap[1]] = temp;
+        }
+      }
+    }
+
+    Arrays.stream(places).forEach((set) -> System.out.println(set.size()));
+  }
+
+}

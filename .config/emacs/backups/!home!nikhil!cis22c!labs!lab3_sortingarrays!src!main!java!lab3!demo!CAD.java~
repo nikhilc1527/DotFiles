@@ -1,0 +1,38 @@
+/*
+CAD.java
+Nikhil Chatterjee
+Lab 1
+CIS 22C Class - Manish Goel
+Description: A class extending the dollar class, which represents a canadian dollar
+*/
+
+public class CAD extends Dollar {
+  String nationality;
+
+  public CAD(int whole, int fractional) {
+    super(whole, fractional);
+    nationality = "Canada";
+  }
+
+  public CAD(Dollar other) {
+    super(other);
+    nationality = "Canada";
+  }
+
+  public CAD() {
+    this(0, 0);
+  }
+
+  /*
+   * Prints details about the object to the terminal
+   * pre: none
+   * post: details printed to terminal
+   * returns: nothing
+   */
+  @Override
+  public void printDetails() {
+    System.out.println(nationality + " " + super.getString());
+  }
+
+
+}

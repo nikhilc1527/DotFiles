@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+long int result = LONG_MAX;
+long int total = 0;
+
+void completeSearch(const vector<int>& weights, int i, int N, long int currentSum) {
+    if (i == N) {
+        result = min(result, abs((total - currentSum) - currentSum));
+	if (result < 0) {
+	  cout << currentSum << ' ' << result << '\n';
+	}
+    } else {
+        // option 1: not adding current index
+        completeSearch(weights, i + 1, N, currentSum);
+
+	// option 2: adding current index
+        currentSum += weights[i];
+        completeSearch(weights, i + 1, N, currentSum);
+	// undo option 2
+        currentSum -= weights[i];
+    }
+}
+
+int main() {
+    int N; cin >> N;
+    vector<int> weights(N);
+
+    for (int i = 0; i < N; i++) {
+        cin >> weights[i];
+        total += weights[i];  // calculate the total weight of all apples
+    }
+
+    completeSearch(weights, 0, N, 0);
+    cout << result << '\n';
+}

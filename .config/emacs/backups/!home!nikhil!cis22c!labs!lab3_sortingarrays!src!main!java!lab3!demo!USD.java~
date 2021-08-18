@@ -1,0 +1,38 @@
+/*
+USD.java
+Nikhil Chatterjee
+Lab 1
+CIS 22C Class - Manish Goel
+Description: A class extending the dollar class, which represents a USA dollar
+*/
+
+public class USD extends Dollar {
+  String nationality;
+
+  public USD(int whole, int fractional) {
+    super(whole, fractional);
+    nationality = "USA";
+  }
+
+  public USD(Dollar other) {
+    super(other);
+    nationality = "USA";
+  }
+
+  public USD() {
+    this(0, 0);
+  }
+
+  /*
+   * Prints details about the object to the terminal
+   * pre: none
+   * post: details printed to terminal
+   * returns: nothing
+   */
+  @Override
+  public void printDetails() {
+    System.out.println(nationality + " " + super.getString());
+  }
+
+
+}

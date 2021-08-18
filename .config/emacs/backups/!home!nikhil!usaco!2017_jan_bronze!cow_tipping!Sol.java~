@@ -1,0 +1,7 @@
+package cowtipping;
+
+class Sol {
+    public static void main(String[] args) {
+        
+    }
+}

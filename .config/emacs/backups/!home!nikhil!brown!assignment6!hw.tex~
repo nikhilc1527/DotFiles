@@ -1,0 +1,73 @@
+\documentclass{article}
+
+\usepackage{authblk}
+\usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+
+\title{Assignment \#5}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time Spent: 100 min}
+
+\begin{document}
+
+\maketitle{}
+
+\section{}
+
+The main difference between classical and quantum mechanics is that classical mechanics deals with
+relatively large objects, that humans deal with in everyday life, and where the uncertainty of these
+objects is very small compared to the mass and energy, while quantum mechanics deals with extremely
+small particles, on the subatomic scale, where the uncertainty is very large compared to the
+particles. On the large scale, there is very little uncertainty regarding where the object is,
+because the object is so massive and contains so many atoms, and therefore the classical equations,
+like Newton's laws of motion, apply and are precise enough that we cannot perceive the uncertainty.
+However, on the quantum scale, everything is in a state of uncertainty, because the very act of
+perceiving can change the state of the particle.
+
+\section{}
+
+In the process of beta decay, neutrons or protons are in higher energy levels than the other, while
+there is also an spot energy vacant in a lower energy level, prompting one to turn into the
+other. Since the charge is not conserved during this process, an extra electron must be ejected,
+with a very high kinetic energy, to conserve the total energy of the system. The kinetic energy of
+this ejected electron could be theoretically calculated, because the mass and energies of protons
+and neutrons are fixed, and in order for the mass/energy to be conserved, the ejected electron must
+also have a fixed kinetic energy level. However, this was experimentally disproved, because the
+ejected electrons were seen to have kinetic energy levels following a probability distribution,
+rather than only one fixed point, and with the kinetic energies of the electrons being anywhere
+tween 0 and the maximum possible (expected value). Since the very fundamental laws of conservation
+of momentum and energy were being violated by this process, some other explanation was needed to
+make this process conform to the laws of conservation of energy and momentum. The neutrino was the
+magic particle that would solve this, because if there was another particle that is part of this
+reaction, it would be the one to take all of the excess energy, momentum, and spin of the system,
+therefore restoring the conservation of energy, momentum, and spin to the reaction.
+
+\section{}
+
+The motivation for the experiment was that the theory of a neutrino was sitting unproven for 30
+years, and was haunting the minds of the physicists who could not prove the existence of the
+neutrino. Finally, in 1956, Cowan and Reines came up with the experiment that would prove the
+neutrino's existence.
+
+In order to come up with the experiment, they had to realize the basis for where the idea of the
+neutrino was born: the beta decay process. In this process, an extra neutron, which has more energy
+than the protons in the highest energy level, and there is a vacant spot in the protons highest
+energy level, will be very unstable, and want to move down. Therefore, the neutron must convert into
+a proton, and in the process an electron will be ejected to satisfy the conservation of charge, as
+well as a neutrino to satisfy the conversation of energy, momentum, and spin. Since the neutrinos
+are very small, and have an extremely weak interaction with other matter, it was very hard to prove
+their existence. In order to prove it, Cowan and Reines took the opposite reaction: they bombarded
+protons into neutrinos, which yielded a neutron as well as an anti-electron, or positron. If they
+could just detect this reaction, then the existence of the neutrino would be proven, since there is
+no other way that a proton by itself can yield neutrons and positrons. In order to set up the
+experiment, Cowan and Reines found a nuclear reactor, where the flux of neutrinos is very high, and
+where they could easily get results from bombarding the protons against neutrinos. They also had two
+tanks: one with a large amount of cadmium chloride ($Cd Cl_2$) in order to supply protons, and
+another with large amounts of LSD, to capture the neutrons. There were two reactions that were
+observed: one was that the neutron was captured in the cadmium LSD, in a neutron capture reaction,
+which resulted in two gamma rays that could be detected, and the other was that the positron that is
+ejected will come together with a electron, and they will annihilate each other, releasing three
+gamma rays that can also be detected. The end result of the experiment was that both of these
+reactions were detected, therefore proving that neutrinos do exist.
+
+\end{document}

@@ -1,0 +1,3 @@
+# got from https://github.com/LukeSmithxyz/voidrice/blob/661c9f53dba1a2c2241fd3c4c3554ec1ae380b51/.local/bin/dmenupass
+
+dmenu -fn Monospace-18 -P -p "$1" <&- && echo

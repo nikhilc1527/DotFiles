@@ -1,0 +1,27 @@
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+int main(int argc, char **argv) {
+  int t;
+  std::cin >> t;
+  int ta = t;
+  while (t-- > 0) {
+    
+
+    std::cout << "Case #" << ta-t << ": " << "\n";
+
+  }
+
+  return 0;
+}
+

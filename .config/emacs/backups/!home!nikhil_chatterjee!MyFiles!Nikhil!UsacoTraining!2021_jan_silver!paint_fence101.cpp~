@@ -1,0 +1,78 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <unordered_map>
+
+int main(int argc, char *argv[]) {
+  int n, q;
+  std::cin >> n >> q;
+
+  std::string fence;
+  std::cin >> fence;
+
+  std::vector<std::pair<int, int>> queries;
+  int max_size = -1;
+  for (int i = 0; i < q; ++i) {
+    int a, b;
+    std::cin >> a >> b;
+    queries.push_back({a-1, b-1});
+    max_size = std::max(max_size, a-1);
+    max_size = std::max(max_size, n-b-1);
+  }
+
+  std::vector<std::vector<int>> ans(n, std::vector<int>(n, 0));
+  // std::vector<std::vector<int>> mins(n, std::vector<int>(n, 0));
+  // std::vector<std::vector<std::unordered_map<int, int>>> poses(n, std::vector<std::unordered_map<int, int>>(n));
+  // std::vector<std::vector<std::vector<int>>> poses(n, std::vector<std::vector<int>>(n, std::vector<int>(26, -1)));
+
+  // for (int k = 0; k < max_size + 1; ++k) {
+    // for (int i = 0; i < n - k; ++i) {
+  for (int i = 0; i < n; ++i) {
+    std::vector<int> rights(26, -1);
+    int min = fence[i];
+    for (int j = i; j < n; ++j) {
+      // int j = i + k;
+      int res;
+      int last = fence[j], sec_last = fence[j - 1];
+      
+      if (i == j) res = 1;
+      // else if (last > sec_last || last < mins[i][j]) res = ans[i][j-1] + 1;
+      // else if (last == sec_last || last == mins[i][j]) res = ans[i][j-1];
+      else if (last > sec_last || last < min) res = ans[i][j-1] + 1;
+      else if (last == sec_last || last == min) res = ans[i][j-1];
+      else {
+        // auto &rights = poses[i][j-1];
+        // if (!rights.count(last-'A')) res = ans[i][j-1] + 1;
+        if (rights[last-'A'] < 0) res = ans[i][j-1] + 1;
+        else {
+          bool found = false;
+          for (int l = 0; l < last-'A'; ++l) {
+            if (rights[last - 'A'] < rights[l]) {
+            // if (rights.count(l))
+            // if (rights.at(last - 'A') < rights.at(l)) {
+              res = ans[i][j - 1] + 1;
+              found = true;
+              break;
+            }
+          }
+          if (!found) res = ans[i][j-1];
+        }
+      }
+
+      ans[i][j] = res;
+
+      // if (i != j) 
+      //   poses[i][j] = poses[i][j-1];
+      // poses[i][j][last-'A'] = j;
+      rights[last-'A'] = j;
+      min = std::min(min, last);
+    }
+  }
+
+  for (int i = 0; i < q; ++i) {
+    std::cout << ans[0][queries[i].first-1] + ans[queries[i].second+1][n-1] << std::endl;
+  }
+
+  return 0;
+}

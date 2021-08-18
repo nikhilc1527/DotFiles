@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{authblk}
+
+\title{Assignment \#1}
+
+\author{Nikhil Chatterjee \and Course ID: 123 \and Time Spent: 120 min}
+% \affil[1]{Course ID: 123}
+
+\begin{document}
+
+\maketitle{}
+
+\section{Describe the Relationship between theory and experiment in physics}
+In physics, a theory is an idea of what will happen given a certain set of 
+
+
+\end{document}

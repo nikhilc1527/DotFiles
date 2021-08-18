@@ -1,0 +1,81 @@
+/*
+Nikhil Chatterjee
+CIS 22B
+Midterm
+ */
+
+#include <iostream>
+
+char* Encrypt(char* input, int secret) {
+  int len = 0;
+  for (int i = 0; *(input + i) != '\0'; ++i)
+    ++len;
+  char *new_str = new char[len];
+  for (int i = 0; i < len; ++i) {
+    *(new_str+i) = *(input+i);
+  }
+
+  for (int i = 0; i < len; ++i) {
+    *(new_str + i) += secret;
+  }
+  for (int i = 0; i < len/2; ++i) {
+    std::swap(*(new_str+i), *(new_str+len-i-1));
+  }
+  return new_str;
+}
+
+char *Decrypt(char *encrypted, int secret) {
+  int len = 0;
+  for (int i = 0; *(encrypted + i) != '\0'; ++i)
+    ++len;
+  char *new_str = new char[len];
+  for (int i = 0; i < len; ++i) {
+    *(new_str+i) = *(encrypted+i);
+  }
+  for (int i = 0; i < len/2; ++i) {
+    std::swap(*(new_str+i), *(new_str+len-i-1));
+  }
+  for (int i = 0; i < len; ++i) {
+    *(new_str + i) -= secret;
+  }
+  return new_str;
+}
+
+int main(int argc, char *argv[]) {
+  std::cout << "Please enter a positive whole number for the secret key:" << "\n";
+  int code;
+  std::cin >> code;
+  std::cout << "Please enter a multi-line input. Press the <Tab> key followed by the <Enter> key to end providing input:" << "\n";
+  std::cin.get();
+  char *str = new char[(int)(1e6)];
+  char *line = new char[1000]{'0'};
+  int i = 0, j = 0;
+  while (*line != '\t' && *(line + 1) != '\n') {
+    j = 0;
+    char c;
+    while ((c = std::cin.get()) != '\n') {
+      *(str+i++) = c;
+      *(line+j++) = c;
+    }
+    *(str+i++) = '\n';
+  }
+  *(str+i-2) = '\0';
+  delete [] line;
+
+  char *encrypted = Encrypt(str, code);
+  char *decrypted = Decrypt(encrypted, code);
+
+  std::cout << "Your original text is:\n" << str << '\n';
+  std::cout << "Your encrypted text is:\n" << encrypted << '\n';
+  std::cout << "Your decrypted text is:\n" << decrypted << '\n';
+
+  delete [] str;
+  delete [] encrypted;
+  delete [] decrypted;
+
+  std::cout << "Please type the <Enter> key to exit the program" << std::endl;
+
+  std::cin.get();
+  
+  return 0;
+}

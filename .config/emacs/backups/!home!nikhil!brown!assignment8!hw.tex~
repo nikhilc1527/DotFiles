@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{authblk} \usepackage{indentfirst}
+\usepackage[margin=1in]{geometry}
+
+\usepackage{graphicx}
+\newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}}
+
+\title{Assignment \#6}
+
+\author{Nikhil Chatterjee \and Course ID: CEPI0929 \and Time
+  Spent: 45 min}
+
+\begin{document}
+
+\maketitle{}
+
+\section{}
+
+The weak force is one of the 4 fundamental forces in the
+universe, and is the force responsible for decay,
+specifically beta decay, which is the process in which a
+neutron decays into a proton, electron, and
+anti-neutrino. The weak force is an attractive force, but
+only acts at very short distances, even 10\% of the diameter
+of a proton. The force carriers for this force are the W and
+Z bosons. The W boson can be charged, and in turn changes
+the charge of other particles it comes into contact
+with. The weak force can change the flavor of a quark by
+emitting charged W bosons. The function of a Z boson is
+harder to detect, but experiments relating to the Z boson
+did result in the theory of unification of the weak and
+electromagnetic forces, into the electroweak force.
+
+\section{}
+
+The strong force is one of the four fundamental forces that
+holds the nucleus of an atom together. Without the strong
+force, the electromagnetic forces of the nucleus would
+immediately cause any atom to cease to exist, but the strong
+force is what allows the neutrons and protons to be held
+together. Specifically, the strong force holds together the
+quarks inside of the neutrons and protons: the two down and
+one up quarks of a neutron, and two up and one down quarks
+of a proton.
+
+The strong force is unique from the other forces in that it
+is not indirectly proportional to the distance between two
+particles that it is acting on: the magnitude of the force
+gets to 0 with very small distances, although it is similar
+to gravity because it is always attractive. This allows the
+strong force and the electromagnetic forces to come into a
+balancing point to hold together the protons and neutrons:
+the strong force attracting, and the electromagnetic force
+repelling. The strong force is also unique in that there are
+3 different types of interactions that it can have with
+particles, with 3 different types of ``charges'' for the
+strong force. A particle is only balanced under the strong
+force if there are an equal number of each strong force
+charged quarks in that particle, which is why protons and
+neutrons must have 3 quarks each.
+
+\section{}
+
+The quark theory was so difficult to accept for the
+physicists of the time because they were proposed to have a
+fractional charge: either $\minus\frac{1}{3}$ the charge of
+an electron or $\frac{2}{3}$ of the charge of an
+electron. This had never been thought of before, and seemed
+very weird to be a plausible idea. Furthermore, there was
+very little experimental evidence to their existence, so the
+physicists had no real reason to accept them until the deep
+inelastic scattering experiment in the SLAC.
+
+\section{}
+
+In this experiment, many very highly charged electrons were
+bombarded against protons, to see what would happen. These
+electrons were charged on the scale of up to 20GeV, or 20
+billion electron volts. At first, the electrons were
+bouncing off elastically, meaning that there was no breaking
+of the protons. This implied that there was no core to
+protons, and that they were indeed fundamental particles,
+which went against the theory of quarks, and made the quark
+theory even harder to believe and accept.
+
+However, in the next experiment performed by the
+collaboration between MIT and SLAC, the electrons were
+rebounding with much less energy than they were going in
+with, meaning that the energy must have been used somewhere
+in the collision with the protons. This meant that the
+protons did indeed break up, and that there was a core to
+the protons that was not observed before. The electrons were
+also bouncing off at an angle, so this could not be
+attributed to decay. This experiment was very similar to the
+experiment in which Rutherford discovered the atomic
+nucleus, where he bombarded alpha particles against atoms,
+and since they were bouncing off at an angle, they must have
+been hitting a hard core inside of the atoms.
+
+\end{document}

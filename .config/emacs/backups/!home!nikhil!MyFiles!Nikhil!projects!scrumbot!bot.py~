@@ -1,0 +1,44 @@
+import discord
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class MyClient(discord.Client):
+    async def on_message(self, message):
+        print('message seen')
+        if (message.content == 'ping'):
+            await message.channel.send(content='pong')
+
+    async def on_reaction_add(self, reaction, user):
+        print(user.name + ' added a reaction ' + (reaction.emoji if not
+                                                  reaction.custom_emoji
+                                                  else reaction.emoji.name))
+        if (user.name == 'Arnav C.'):
+            await reaction.remove(user)
+            print('reaction removed')
+
+
+client = MyClient()
+
+token = os.getenv('TOKEN')
+
+
+# @client.event
+# async def on_message(message):
+#     print('message sent')
+#     if (message == "ping"):
+#         message.channel.send("pong")
+
+
+# @client.event
+# async def on_messageReactionAdd(msg_reaction, user):
+#     print("reaction added by user {}".format(user.username))
+
+# with open('.env') as f:
+# token = f.readline().split('=')[1]
+# token = 'ODIxMjE3ODU5MzY2ODEzNzE2.YFAguw.Hqy4-105avdcfBJRb1xqIxNS-ZA'
+print(token)
+client.run(token)

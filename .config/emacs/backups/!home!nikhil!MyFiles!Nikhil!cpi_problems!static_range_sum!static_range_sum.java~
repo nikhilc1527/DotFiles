@@ -1,0 +1,25 @@
+import java.util.*;
+import java.io.*;
+
+public class static_range_sum {
+	public static void main(String[] args) {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    		int n, q;
+		StringTokenizer line = new StringTokenizer(reader.readLine());
+		n = Integer.parseInt(line.nextToken());
+		q = Integer.parseInt(line.nextToken());
+		List<Integer> a = new ArrayList<>();
+		a.add(0);
+		line = new StringTokenizer(reader.readLine());
+		for (int i = 1; i <= n; ++i) {
+			a.add(Integer.parseInt(line.nextToken()) + a.get(i-1));
+		}
+		while (q-- > 0) {
+                    line = new StringTokenizer(reader.readLine());
+		    int l, r;
+                    l = Integer.parseInt(line.nextToken());
+                    r = Integer.parseInt(line.nextToken());
+                    System.out.println(a.get(r) - a.get(l));
+		}
+	}
+}

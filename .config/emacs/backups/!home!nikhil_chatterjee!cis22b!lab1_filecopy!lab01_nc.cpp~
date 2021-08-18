@@ -1,0 +1,26 @@
+/*
+CIS 22B
+Lab 1: File Copy
+Nikhil Chatterjee
+Ask user for file name to read from and file name to write to, and copies the contents of the file from the reading location to the writing location
+
+PSEUDOCODE:
+print prompt for user to input reading file name
+read in in file name
+prompt user for out file name
+read in out file name
+create input stream and output stream objects for in and out files
+for each line in in file:
+read read into temporary string
+print line into output file
+ */
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main(int argc, char *argv[]) {
+  
+  
+  return 0;
+}

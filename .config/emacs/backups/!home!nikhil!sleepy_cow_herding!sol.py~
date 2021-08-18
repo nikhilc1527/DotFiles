@@ -1,0 +1,16 @@
+with open('herding.in', 'r') as input_file:
+    positions = list(int(val) for val in input_file.read().split(' '))
+
+positions.sort()
+  
+a = positions[0]
+b = positions[1]
+c = positions[2];
+dist1 = b - a
+dist2 = c - b;
+
+with open('herding.out', 'w') as output_file:
+    output_file.write(str(0 if c == a+2 else (1 if dist1 == 2 or dist2 == 2 else 2)))
+    output_file.write('\n')
+    output_file.write(str(max(dist1, dist2) - 1))
+    output_file.write('\n')

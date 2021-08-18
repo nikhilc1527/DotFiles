@@ -1,0 +1,106 @@
+#include <iostream>
+#include <climits>
+#include <queue>
+#include <vector>
+#include <fstream>
+
+int main(int argc, char **argv) {
+  // #ifdef DEBUG
+  // std::ifstream input("input.txt");
+  // std::ofstream output("output.txt");
+  // #else
+  auto &input = std::cin;
+  auto &output = std::cout;
+  // #endif
+  
+  int N, K;
+  input >> N >> K;
+  std::vector<int> years;
+  int max = -1;
+
+  std::vector<bool> hay;
+
+  for (int i = 0; i < N; ++i) {
+    int x;
+    input >> x;
+    max = std::max(max, x);
+    // years.push_back(x);
+    while (hay.size() < max/12+1) hay.emplace_back();
+    hay[x/12]=true;
+  }
+
+  std::vector<std::pair<int, int>> ranges;
+  ranges.emplace_back(0,-1);
+  for (int i = 1; i < hay.size(); ++i) {
+    if (hay[i]) ranges.emplace_back(i,i);
+  }
+  
+  for (int i = 0; i < ranges.size()-1; ++i) {
+    if (ranges[i].second==ranges[i+1].first-1) {
+      ++ranges[i].second;
+      ranges.erase(ranges.begin()+i+1);
+      --i;
+    }
+  }
+
+  std::vector<int> offsets(ranges.size(), 1);
+  std::vector<int> diffs;
+  for (int i = 0; i < ranges.size()-1; ++i) {
+    diffs.push_back(ranges[i+1].first-ranges[i].second);
+  }
+  diffs.emplace_back(INT_MAX);
+
+  auto comp =
+    [&ranges, &offsets, &diffs](int i, int j) {
+        // if (ranges[i].first<0||ranges[i].second<0||i+offsets[i]>=ranges.size()) return true;
+        // if (ranges[j].first<0||ranges[j].second<0||j+offsets[j]>=ranges.size()) return false;
+
+        // int a = ranges[i+offsets[i]].first-ranges[i].second, b = ranges[j+offsets[j]].first-ranges[j].second;
+        // if (a == b) return i>j;
+        // return a>b;
+      if (diffs[i] == diffs[j]) return i<j;
+        return diffs[i]>diffs[j];
+      };
+  std::priority_queue<int, std::vector<int>, decltype(comp)> pq(comp);
+  for (int i = 0; i < ranges.size()-1; ++i) {
+    pq.push(i);
+  }
+
+  auto size = ranges.size();
+  while (size>K) {
+    // int mini = 0;
+    // for (int i = 0; i < ranges.size()-1; ++i) {
+    //   if (ranges[i].first<0||ranges[i].second<0||i+offsets[i]>=ranges.size()) continue;
+    //   if (ranges[i+offsets[i]].first-ranges[i].second<ranges[mini+offsets[mini]].first-ranges[mini].second) mini=i;
+    // }
+    int mini = 0;
+    for (int i = 0; i < ranges.size()-1; ++i) {
+      if (diffs[i]<diffs[mini]) mini = i;
+    }
+
+    // int mini = pq.top();
+    // pq.pop();
+
+    ranges[mini].second = ranges[mini+offsets[mini]].second;
+    ranges[mini + offsets[mini]] = {-1, -1};
+    diffs[mini] = diffs[mini+offsets[mini]];
+    diffs[mini + offsets[mini]] = INT_MAX;
+    while (mini+offsets[mini]<ranges.size() && ranges[mini+offsets[mini]]==std::pair<int,int>{-1,-1})
+      offsets[mini]++;
+    // if (mini+offsets[mini]==ranges.size()) diffs[mini] = INT_MAX;
+    // else diffs[mini] = ranges[mini+offsets[mini]].first-ranges[mini].second;
+    --size;
+    // pq.push(mini);
+  }
+
+  int res = 0;
+  for (int i = 0; i < ranges.size(); ++i) {
+    if (ranges[i]==std::pair<int, int>{-1,-1}) continue;
+    // std::cout << ranges[i].first*12 << ' ' << (ranges[i].second+1)*12 << "\n";
+    res += (ranges[i].second-ranges[i].first+1)*12;
+  }
+
+  output << res << '\n';
+
+  return 0;
+}
