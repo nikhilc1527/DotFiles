@@ -52,3 +52,4 @@ export ANDROID_SDK_ROOT=/home/nikhil/MyFiles/AndroidSDK2
 export ANDROID_SDK_PATH=/home/nikhil/MyFiles/AndroidSDK2
 export ANDROID_HOME=/home/nikhil/MyFiles/AndroidSDK2
 
+# testing
