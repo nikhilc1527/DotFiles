@@ -6,6 +6,8 @@
 
 neofetch
 
+source $HOME/.profile
+
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
@@ -88,7 +90,7 @@ network_scan() {
 
 alias ryujinx="env AMD_DEBUG=w32ge,w32ps,w32cs,nohyperz,nofmask glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 MESA_NO_ERROR=1 GDK_BACKEND=x11 /home/nikhil/.local/share/Ryujinx/Ryujinx"
 
-alias config='/usr/bin/git --git-dir=$HOME/MyFiles/Nikhil/dotfiles_bare --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/MyFiles/Nikhil/DotFiles --work-tree=$HOME'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

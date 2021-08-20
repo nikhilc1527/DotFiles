@@ -5,5 +5,5 @@
 # "$@"
 # sudo -k
 
-gpg -q -d /home/nikhil/.local/share/password.gpg | sudo -S -p "" "$@"
+gpg -q -d $HOME/.local/share/password.gpg | sudo -S -p "" "$@"
 sudo -k
