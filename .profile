@@ -1,5 +1,4 @@
-
-export PATH=/home/nikhilc/Downloads/node-v15.5.0-linux-x64/bin/:/home/nikhilc/Downloads/google-cloud-sdk/bin:/home/nikhilc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nikhilc/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:/home/nikhilc/MyFiles/Nikhil/git_cloned_repos/cordless:/home/nikhilc/.local/bin:/home/nikhilc/.scripts:/root/.local/bin/:/usr/lib/gnupg/:/home/nikhilc/.local/share/flutter/bin
+export PATH=/home/nikhilc/Downloads/node-v15.5.0-linux-x64/bin:/home/nikhilc/Downloads/google-cloud-sdk/bin:/home/nikhilc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nikhilc/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:/home/nikhilc/MyFiles/Nikhil/git_cloned_repos/cordless:/home/nikhilc/.local/bin:/home/nikhilc/.scripts:/root/.local/bin:/usr/lib/gnupg:/home/nikhilc/.local/share/flutter/bin:/usr/bin/vendor_perl
 
 export JAVA_HOME=/usr
 

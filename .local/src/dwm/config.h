@@ -188,7 +188,7 @@ static Key keys[] = {
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			-1, XK_l,		setmfact,      	{.f = +0.05} },
         // i3lock -t -i ~/MyFiles/Nikhil/scaled_wallpaper.png
-        { MODKEY|ShiftMask,		-1, XK_x,	        spawn,      	SHCMD("/home/nikhil/.scripts/my_lock") },
+        { MODKEY|ShiftMask,		-1, XK_x,	        spawn,      	SHCMD("$HOME/.scripts/my_lock") },
 	{ MODKEY,			-1, XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		-1, XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			-1, XK_apostrophe,	togglescratch,	{.ui = 1} },

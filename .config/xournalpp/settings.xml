@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value=""/>
+  <property name="lastSavePath" value="/home/nikhilc/school/sat"/>
   <property name="lastOpenPath" value=""/>
   <property name="lastImagePath" value=""/>
   <property name="zoomStep" value="10.00000000"/>
@@ -64,7 +64,7 @@
   <property name="snapGridSize" value="14.17000000"/>
   <property name="touchDrawing" value="false"/>
   <property name="pressureGuessing" value="false"/>
-  <property name="selectionBorderColor" value="4294901760"/>
+  <property name="selectionBorderColor" value="4282202182"/>
   <property name="backgroundColor" value="4278190080"/>
   <property name="selectionMarkerColor" value="4285702095"/>
   <property name="touchZoomStartThreshold" value="0.00000000"/>
@@ -173,8 +173,8 @@
     </data>
   </data>
   <data name="lastUsedPageBgColor">
-    <attribute name="color00" type="hex" value="ff000000"/>
-    <attribute name="color01" type="hex" value="ffffffff"/>
+    <attribute name="color00" type="hex" value="fffafaf9"/>
+    <attribute name="color01" type="hex" value="ff000000"/>
     <attribute name="color02" type="hex" value="ffffffff"/>
     <attribute name="color03" type="hex" value="ffffffff"/>
     <attribute name="color04" type="hex" value="ffffffff"/>
