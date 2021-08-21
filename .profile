@@ -1,4 +1,4 @@
-export PATH=/home/nikhilc/Downloads/node-v15.5.0-linux-x64/bin:/home/nikhilc/Downloads/google-cloud-sdk/bin:/home/nikhilc/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nikhilc/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:/home/nikhilc/MyFiles/Nikhil/git_cloned_repos/cordless:/home/nikhilc/.local/bin:/home/nikhilc/.scripts:/root/.local/bin:/usr/lib/gnupg:/home/nikhilc/.local/share/flutter/bin:/usr/bin/vendor_perl
+export PATH=$HOMEDownloads/node-v15.5.0-linux-x64/bin:$HOMEDownloads/google-cloud-sdk/bin:$HOME.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOMEDownloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:$HOMEMyFiles/Nikhil/git_cloned_repos/cordless:$HOME.local/bin:$HOME/.scripts:/root/.local/bin:/usr/lib/gnupg:$HOME.local/share/flutter/bin:/usr/bin/vendor_perl
 
 export JAVA_HOME=/usr
 
@@ -17,7 +17,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 export TERMINAL="konsole"
-export BROWSER="firefox"
+export BROWSER="qutebrowser"
 export PAGER="less"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -47,6 +47,6 @@ export GTK_THEME=Adwaita:dark
 
 # android studio stuffs
 export _JAVA_AWT_WM_NONREPARENTING=1
-export ANDROID_SDK_ROOT=/home/nikhil/MyFiles/AndroidSDK2
-export ANDROID_SDK_PATH=/home/nikhil/MyFiles/AndroidSDK2
-export ANDROID_HOME=/home/nikhil/MyFiles/AndroidSDK2
+export ANDROID_SDK_ROOT=$HOMEMyFiles/AndroidSDK2
+export ANDROID_SDK_PATH=$HOMEMyFiles/AndroidSDK2
+export ANDROID_HOME=$HOMEMyFiles/AndroidSDK2
