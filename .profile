@@ -28,7 +28,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # spring cleaning
 export CARGO_HOME="~/.config/cargo"
-export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
+export WORKON_HOME="$XDG_CONFIG_HOME/virtualenvs"
 export SSB_HOME="$XDG_DATA_HOME"/zoom
 export GOPATH="$XDG_DATA_HOME"/go
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle

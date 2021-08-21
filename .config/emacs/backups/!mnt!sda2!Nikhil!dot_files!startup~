@@ -24,9 +24,11 @@ start_ngrok() {
     done
     sleep 1
     url=$(curl -s localhost:4040/api/tunnels | jq ".tunnels | .[0] | .public_url")
-    echo $url > ~/.local/share/ngrok_url/url.txt
+    first=$(echo $url | grep -o "[0-9]*.tcp.ngrok.io")
+    port=$(echo $url | 
+    echo $url > ~/MyFiles/Nikhil/ngrok_url/url.txt
     notify-send $url
-    cd ~/.local/share/ngrok_url/
+    cd ~/MyFiles/Nikhil/ngrok_url/
     git add url.txt
     git commit -m "$(date)"
     git push
@@ -34,33 +36,28 @@ start_ngrok() {
     notify-send "finished starting ngrok"
 }
 
+update_pkglist() {
+    rm ~/.cache/pkglist
+    touch ~/.cache/pkglist 
+    pacman -Sl core         >> ~/.cache/pkglist
+    pacman -Sl community    >> ~/.cache/pkglist
+    pacman -Sl extra        >> ~/.cache/pkglist
+    pacman -Sl multilib     >> ~/.cache/pkglist
+    yay    -Sl aur          >> ~/.cache/pkglist
+}
+
+update_pkglist &
 update_packages &
 start_ngrok > /tmp/ngrok_log.txt &
 
-rm ~/.cache/pkglist
-touch ~/.cache/pkglist 
-pacman -Sl core         >> ~/.cache/pkglist
-pacman -Sl community    >> ~/.cache/pkglist
-pacman -Sl extra        >> ~/.cache/pkglist
-pacman -Sl multilib     >> ~/.cache/pkglist
-yay    -Sl aur          >> ~/.cache/pkglist
-
 feh --bg-scale ~/MyFiles/Junk/Meee.png
 emacs --daemon &
-# betterlockscreen -u ~/MyFiles/Junk/Meee.png
-# bluetoothctl power on
 setxkbmap -option compose:ralt
 anamnesis --start
 gromit-mpx &
 sxhkd &
-
-update_mail() {
-    mailsync > /tmp/mailsync_startup.txt &
-    # neomutt &
-    
-    notify-send "indexing mail"
-}
-update_mail
+# plz systemctl restart bluetooth
+# bluetoothctl power on
 
 setxkbmap -option caps:swapescape
 

@@ -10,7 +10,7 @@ static const Block blocks[] = {
   	{"", "sb-nettraf",                              1,	12},
   	{"🔒", "gpg-connect-agent 'keyinfo --list' /bye | /usr/bin/grep -- \"- 1\" | wc -l",	5,	11},
   	{"📅", "task rc.verbose=nothing ls | wc -l",	0,	10},
-  	{"🕛", "/home/nikhil/.scripts/time_status",	1,	9},
+  	{"🕛", "$HOME/.scripts/time_status",	1,	9},
 
 	/* {"", "cat /tmp/recordingicon 2>/dev/null",	0,	9}, */
 	/* {"",	"sb-tasks",	10,	26}, */

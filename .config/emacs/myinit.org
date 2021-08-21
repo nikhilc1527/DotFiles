@@ -42,13 +42,7 @@ Used for auto-completion in finding files, and a bunch of other cool stuff
         helm-autoresize-max-height 0
         helm-autoresize-min-height 20)
   (helm-autoresize-mode 1)
-  (helm-mode 1)
-  (use-package helm-file-preview
-    :ensure t
-    :config
-    (setq helm-file-preview-only-when-line-numbers t)
-    (setq helm-file-preview-preview-only t)
-    (helm-file-preview-mode 1)))
+  (helm-mode 1))
 #+END_SRC
 ** helm-c-yasnippet
 #+BEGIN_SRC emacs-lisp

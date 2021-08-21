@@ -3,9 +3,9 @@
 import subprocess
 import os
 
-
 def main():
-    sub = subprocess.run(["yay -Sl | fzf -m --preview \"yay -Si {2}\""], text=True, shell=True, stdout=subprocess.PIPE)
+    # sub = subprocess.run(["paru -Sl | fzf -m --preview 'echo {} | awk \"{print $2}\" | xargs -t pacaur -Si'"], text=True, shell=True, stdout=subprocess.PIPE)
+    sub = subprocess.run(["paru -Sl | fzf -m --preview \"pacaur -Si {2}\""], text=True, shell=True, stdout=subprocess.PIPE)
     if (sub.returncode != 0 or not sub.stdout):
         exit(0)
 
