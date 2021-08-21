@@ -88,7 +88,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           -1 , KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             -1 , KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, -1 , KEY,      toggletag,      {.ui = 1 << TAG} }, \
-        { MODKEY|Mod1Mask,              -1 , KEY,      focusnthmon,    {.i = TAG} }, \ 
+        { MODKEY|Mod1Mask,              -1 , KEY,      focusnthmon,    {.i = TAG} }, \
         { MODKEY|ShiftMask|Mod1Mask,    -1 , KEY,      tagnthmon,      {.i = TAG} }, 
 #define STACKKEYS(MOD,ACTION) \
         { MOD,	-1, XK_j,	ACTION##stack,	{.i = INC(+1) } }, \
@@ -164,14 +164,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		-1, XK_m,   	spawn,		SHCMD("volume_changer input $(( $(pamixer --default-source --get-volume) - 1 ))") },
 	{ MODKEY|ShiftMask,	        -1, XK_equal,   	spawn,		SHCMD("volume_changer input 10") },
 
-        { MODKEY,		        -1, XK_t,   	spawn,		SHCMD("dt") },
+        /* { MODKEY,		        -1, XK_t,   	spawn,		SHCMD("dt") }, */
+        
 	{ MODKEY,			-1, XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		-1, XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			-1, XK_q,		killclient,	{0} },
 	{ MODKEY,			-1, XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		-1, XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			-1, XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
-	{ MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e lf") },
+	{ MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e ranger
+") },
 	{ MODKEY|ShiftMask,		-1, XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
 	/* { MODKEY|ShiftMask,		-1, XK_backslash,		spawn,		SHCMD("") }, */
 
