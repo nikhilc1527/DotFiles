@@ -1,1 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+
+set -x
+
+[ ! -z $1 ] \
+        && pkgs=$@ \
+        || pkgs=$(cat ~/.cache/pkglist | awk '{print $2}' | dmenu -l 20 )
+echo $pkgs
+
+for pkg in $pkgs
+do
+    yay -S --noconfirm --sudo $HOME/.scripts/plz $pkg
+    [ "$!" == "" ] && notify-send "successfully installed $pkg" || notify-send -u critical "failed to install $pkg"
+done

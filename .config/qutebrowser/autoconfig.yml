@@ -9,6 +9,6 @@ settings:
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}
-      dr: https://drive.google.com/drive/u/{}/my-drive
-      sp: https://spanishdict.com/translate/{}
       yts: https://www.youtube.com/results?search_query={}
+
+

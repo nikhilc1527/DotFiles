@@ -10,9 +10,11 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+# custom search engines
+config.set("", "https://www.youtube.com/results?search_query={}")
+
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
-
 
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
