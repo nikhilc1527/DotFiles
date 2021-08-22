@@ -10,7 +10,7 @@ source $HOME/.profile
 
 [[ $- != *i* ]] && return
 
-alias ls='lsd -la --color=auto'
+alias ls='lsd -lA --color=auto'
 
 alias pip='pip3'
 alias python='python3'
@@ -73,7 +73,7 @@ scale() {
 }
 
 mv_download() {
-    name=$(ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
+    name=$(/usr/bin/ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
     # echo "mv ~/Downloads/$name $1"
     echo ~/Downloads/$name $1 | xargs mv
 }
