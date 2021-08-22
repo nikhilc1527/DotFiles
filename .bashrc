@@ -10,7 +10,7 @@ source $HOME/.profile
 
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='lsd -la --color=auto'
 
 alias pip='pip3'
 alias python='python3'
