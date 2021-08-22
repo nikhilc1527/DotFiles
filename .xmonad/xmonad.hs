@@ -83,6 +83,17 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch terminal
     , ((modm,               xK_Return), spawn myTerminal)
 
+    -- volume control
+    , ((modm,               xK_p),      spawn "volume_changer output $(( $(pamixer --get-volume) + 5 ))")
+    , ((modm,               xK_m),      spawn "volume_changer output $(( $(pamixer --get-volume) - 5 ))")
+    , ((modm,               xK_equal),  spawn "volume_changer output 50")
+    , ((modm .|. shiftMask, xK_p),      spawn "volume_changer input $(( $(pamixer --default-source --get-volume) + 1 ))")
+    , ((modm .|. shiftMask, xK_m),      spawn "volume_changer input $(( $(pamixer --default-source --get-volume) - 1 ))")
+    , ((modm .|. shiftMask, xK_equal),  spawn "volume_changer input 10")
+
+    -- sysact
+    , ((modm,               xK_BackSpace),  spawn "sysact")
+
     -- close focused window
     , ((modm,               xK_q     ), kill)
 
@@ -102,7 +113,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_k     ), windows W.focusUp  )
 
     -- Move focus to the master window
-    , ((modm,               xK_m     ), windows W.focusMaster  )
+    , ((modm .|. shiftMask, xK_Return     ), windows W.focusMaster  )
 
     -- Swap the focused window and the master window
     , ((modm,               xK_space), windows W.swapMaster)
@@ -277,16 +288,8 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmproc <- spawnPipe "xmobar /home/nikhilc/.config/xmobar/xmobarrc0"
-  xmonad $ docks defaults
-
--- A structure containing your configuration settings, overriding
--- fields in the default config. Any you don't override, will
--- use the defaults defined in xmonad/XMonad/Config.hs
---
--- No need to modify this.
---
-defaults = def {
+  xmonad $ docks $ defaultConfig
+    {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
