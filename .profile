@@ -16,7 +16,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-export TERMINAL="konsole"
+export TERMINAL="st"
 export BROWSER="qutebrowser"
 export PAGER="less"
 

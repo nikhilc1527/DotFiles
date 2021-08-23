@@ -172,8 +172,7 @@ static Key keys[] = {
 	{ MODKEY,			-1, XK_w,		spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		-1, XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,			-1, XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
-	{ MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e ranger
-") },
+	{ MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e ranger") },
 	{ MODKEY|ShiftMask,		-1, XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
 	/* { MODKEY|ShiftMask,		-1, XK_backslash,		spawn,		SHCMD("") }, */
 

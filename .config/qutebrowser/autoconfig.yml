@@ -6,9 +6,7 @@
 
 config_version: 2
 settings:
-  url.searchengines:
+  bindings.commands:
     global:
-      DEFAULT: https://duckduckgo.com/?q={}
-      yts: https://www.youtube.com/results?search_query={}
-
-
+      normal:
+        X: hint links spawn mpv {hint-url}
