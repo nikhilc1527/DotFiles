@@ -11,7 +11,7 @@
 #   qute://help/settings.html
 
 # custom search engines
-config.set("", "https://www.youtube.com/results?search_query={}")
+config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}"})
 
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
