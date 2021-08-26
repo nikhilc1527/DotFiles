@@ -18,3 +18,4 @@
 ;; (load-file (concat user-emacs-directory "torstein_config.el"))
 
 (provide '.emacs)
+(put 'upcase-region 'disabled nil)
