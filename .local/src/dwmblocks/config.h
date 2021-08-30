@@ -4,7 +4,7 @@ static const Block blocks[] = {
 	/* {"⌨", "sb-kbselect", 0, 30}, */
   
   	{"ram: ", "free -m | grep Mem | awk '{print ($3/$2)*100}'",                     1,	16},
-  	{"cpu: ", "cat <(grep 'cpu ' /proc/stat) <(sleep 0.1 && grep 'cpu ' /proc/stat) | awk -v RS=\"\" '{print ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)}'",                     1,	15},
+	{"",	"sb-cpu",		1,	15},
   	{"📚", "findmnt | /usr/bin/grep -e \"mnt\\|home\" | grep -v \"defvol\" | awk '{print $1}' | cut -b 7- | xargs df | awk 'FNR > 1' | awk '{print $1,$5}' | tr '\n' ' '",                     15,	14},
   	{"🌶", "sensors | /usr/bin/grep Tdie | awk '{print $2}' | cut -c 2-",                     1,	13},
   	{"", "sb-nettraf",                              1,	12},
@@ -25,7 +25,6 @@ static const Block blocks[] = {
 	/* {"",	"sb-price btc Bitcoin 💰",				9000,	21}, */
 	/* {"",	"sb-torrent",	20,	7}, */
 	/* {"",	"sb-memory",	10,	14}, */
-	/* {"",	"sb-cpu",		10,	18}, */
 	/* {"",	"sb-moonphase",	18000,	17}, */
 	/* {"",	"sb-forecast",	18000,	5}, */
 	/* {"",	"sb-mailbox",	180,	12}, */
