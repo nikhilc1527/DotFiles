@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 dunst -follow none &
 
 update_packages() {
@@ -8,15 +10,18 @@ update_packages() {
 	yay -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
         pacman -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
         # cat $r
-	inst $r
+	while read pkg
+        do
+            inst $pkg
+        done
 
+        rm $r
+        
 	# out=$?
 	# [ "$out" = "0" ] && notify-send "successfully updated all packages"
 	# [ "$out" = "0" ] || notify-send "unsuccessfully updated all packages"
         notify-send -u low "finished updating all packages"
 }
-
-
 
 update_pkglist() {
     rm ~/.cache/pkglist
@@ -30,7 +35,7 @@ update_pkglist() {
 
 update_pkglist &
 update_packages &
-start_ngrok > /tmp/ngrok_log.txt &
+/home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &
 
 feh --bg-scale ~/MyFiles/Junk/Meee.png
 emacs --daemon &

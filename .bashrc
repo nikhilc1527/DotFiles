@@ -56,6 +56,8 @@ alias x='extract -r'
 
 alias gk='echo RELOADAGENT | gpg-connect-agent'
 
+alias ddg='dragon-drag-and-drop'
+
 # alias sudo='plz'
 
 ek() {

@@ -10,5 +10,5 @@ echo $pkgs
 for pkg in $pkgs
 do
     yay -S --noconfirm --sudo $HOME/.scripts/plz $pkg
-    [ "$?" == "0" ] && notify-send "successfully installed $pkg" || notify-send -u critical "failed to install $pkg"
+    [ "$?" = "0" ] && notify-send "successfully installed $pkg" || notify-send -u critical "failed to install $pkg"
 done
