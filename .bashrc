@@ -10,7 +10,7 @@ source $HOME/.profile
 
 [[ $- != *i* ]] && return
 
-alias ls='lsd -lA --color=auto'
+alias ls='lsd -lArt --color=auto --group-dirs=first'
 
 alias pip='pip3'
 alias python='python3'
@@ -100,3 +100,5 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f "$XDG_DATA_HOME/fzf.sh" ] && bash "$XDG_DATA_HOME"/fzf.sh
 # test
+
+. ~/.local/src/Extract/extract 
