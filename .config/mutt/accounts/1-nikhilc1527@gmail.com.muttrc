@@ -19,7 +19,7 @@ bind index gg first-entry
 unmailboxes *
 unalternates *
 unset signature
-macro index o "<shell-escape>mbsync nikhilc1527@gmail.com<enter>" "run mbsync to sync nikhilc1527@gmail.com"
+macro index o "<shell-escape>mw -y nikhilc1527@gmail.com<enter>" "run mbsync to sync nikhilc1527@gmail.com"
 
 mailboxes "=College Ads" "=INBOX" "=Junk" "=Notes" "=Trash" "=Useless" "=[Gmail]/Drafts" "=[Gmail]/Sent Mail" "=[Gmail]/Spam"
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"

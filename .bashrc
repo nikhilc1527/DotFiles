@@ -35,6 +35,10 @@ lfcd() {
     cd "$dir"
 }
 
+open_port() {
+    iptables -A INPUT -p tcp --dport $1 -j ACCEPT
+}
+
 alias ec='devour emacsclient -a \"\" -c'
 # alias ect='emacsclient -a \"\" -t'
 
