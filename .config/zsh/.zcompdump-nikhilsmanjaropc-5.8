@@ -1,4 +1,4 @@
-#files: 951	version: 5.8
+#files: 941	version: 5.8
 
 _comps=(
 '-' '_precommand'
@@ -25,6 +25,7 @@ _comps=(
 'add-zsh-hook' '_add-zsh-hook'
 'admin' '_sccs'
 'afew' '_afew'
+'alacritty' '_alacritty'
 'ali' '_mh'
 'alias' '_alias'
 'amaya' '_webbrowser'
@@ -235,6 +236,7 @@ _comps=(
 'curl' '_curl'
 'cut' '_cut'
 'cvs' '_cvs'
+'d' '_dirs'
 'dad' '_dad'
 'darcs' '_darcs'
 'dash' '_sh'
@@ -349,8 +351,6 @@ _comps=(
 'fc' '_fc'
 'fc-list' '_xft_fonts'
 'fc-match' '_xft_fonts'
-'fd' '_fd'
-'fdfind' '_fd'
 'feh' '_feh'
 'fetchmail' '_fetchmail'
 'ffind' '_ffind'
@@ -467,11 +467,16 @@ _comps=(
 'ginstall' '_install'
 'gist' '_gist'
 'git' '_git'
+'git-cvsserver' '_git'
 'git-flow' '_git-flow'
 'git-journal' '_git-journal'
 'gitk' '_git'
 'git-pulls' '_git-pulls'
+'git-receive-pack' '_git'
 'git-revise' '_git-revise'
+'git-shell' '_git'
+'git-upload-archive' '_git'
+'git-upload-pack' '_git'
 'git-wtf' '_git-wtf'
 'gjoin' '_join'
 'glance' '_openstack'
@@ -601,7 +606,6 @@ _comps=(
 'gview' '_vim'
 'gvim' '_vim'
 'gvimdiff' '_vim'
-'gw' '_gradle'
 'gwc' '_wc'
 'gwho' '_who'
 'gxargs' '_xargs'
@@ -627,7 +631,8 @@ _comps=(
 'hotjava' '_webbrowser'
 'htop' '_htop'
 'http' '_httpie'
-'hub' '_hub'
+'_hugo' '_hugo'
+'hugo' '_hugo'
 'ibus' '_ibus'
 'iceweasel' '_mozilla'
 'icombine' '_ispell'
@@ -938,6 +943,7 @@ _comps=(
 'ogginfo' '_vorbis'
 'oksh' '_sh'
 'okular' '_okular'
+'omz' '_omz'
 'openssl' '_openssl'
 'openstack' '_openstack'
 'opera' '_webbrowser'
@@ -1015,13 +1021,6 @@ _comps=(
 'pinfo' '_texinfo'
 'ping' '_ping'
 'ping6' '_ping'
-'pip' '_pip'
-'pip2' '_pip'
-'pip-2.7' '_pip'
-'pip3' '_pip'
-'pip-3.2' '_pip'
-'pip-3.3' '_pip'
-'pip-3.4' '_pip'
 'pixz' '_pixz'
 'pkcon' '_pkcon'
 'pkgadd' '_pkgadd'
@@ -1103,7 +1102,6 @@ _comps=(
 'pwgen' '_pwgen'
 'pygmentize' '_pygmentize'
 'pyhtmlizer' '_twisted'
-'pylint' '_pylint'
 'qdbus' '_qdbus'
 'qiv' '_qiv'
 'qpdf' '_qpdf'
@@ -1147,12 +1145,10 @@ _comps=(
 'remsh' '_rlogin'
 'renice' '_renice'
 'repl' '_mh'
-'repo' '_repo'
 'resolvectl' '_resolvectl'
 'restart' '_initctl'
 'retawq' '_webbrowser'
 'rfkill' '_rfkill'
-'rg' '_ripgrep'
 'rgview' '_vim'
 'rgvim' '_vim'
 'ri' '_ri'
@@ -1185,8 +1181,6 @@ _comps=(
 'run-help' '_run-help'
 'rup' '_hosts'
 'rusage' '_precommand'
-'rustc' '_rust'
-'rustup' '_rustup'
 'rview' '_vim'
 'rvim' '_vim'
 'rwho' '_hosts'
@@ -1367,6 +1361,7 @@ _comps=(
 'tg' '_topgit'
 'thor' '_thor'
 'tidy' '_tidy'
+'tig' '_git'
 '-tilde-' '_tilde'
 'time' '_precommand'
 'timedatectl' '_timedatectl'
@@ -1543,7 +1538,6 @@ _comps=(
 'watch' '_watch'
 'watcher' '_openstack'
 'wc' '_wc'
-'wd' '_wd.sh'
 'wemux' '_wemux'
 'wget' '_wget'
 'wg-quick' '_wg-quick'
@@ -1624,6 +1618,7 @@ _comps=(
 'yarn' '_yarn'
 'yash' '_sh'
 'yay' '_yay'
+'youtube-dl' '_youtube-dl'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1801,48 +1796,46 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _wd.sh _rustup _rust _ripgrep _repo \
-            _pylint _pip _pass _gradle _hub \
-            _git _fd _cargo _afew _android \
-            _archlinux-java _artisan _atach _bitcoin-cli _bluetoothctl \
-            _bootctl _bower _bundle _busctl _caffeinate \
-            _cap _cargo _cask _ccache _cf \
-            _cheat _choc _chromium _cmake _cmus \
-            _coffee _colorscript _composer _conan _concourse \
-            _console _coredumpctl _cppcheck _curl _dad \
-            _debuild _dget _dhcpcd _diana _docpad \
-            _downgrade _drush _ecdsautil _email-notmuch _emulator \
-            _envdir _exportfs _fab _fail2ban-client _ffind \
-            _fleetctl _flutter _force _fwupdmgr _gas \
-            _ghc _gist _git-flow _git-journal _git-pulls \
-            _git-revise _git-wtf _glances _golang _google \
-            _gpgconf _gtk-launch _hledger _homestead _hostnamectl \
-            _httpie _ibus _include-what-you-use _inxi _jmeter \
-            _jmeter-plugins _jonas _journalctl _jrnl _kak \
-            _kernel-install _kitchen _knife _language_codes _libinput \
-            _lilypond _localectl _loginctl _lsd _lunchy \
-            _machinectl _mc _meson _middleman _mina \
-            _mix _mkinitcpio _mpv _mssh _mussh \
-            _mvn _nano _nanoc _netctl _networkctl \
-            _nftables _ninja _node _notmuch _nvm \
-            _openssl _optirun _opustools _pacman _paru \
-            _pass _patool _perf _periscope _pgsql_utils \
-            _phing _pixz _pkcon _pkgfile _play \
-            _pm2 _polybar _polybar_msg _port _protoc \
-            _pulseaudio _pygmentize _qpdf _rails _ralio \
-            _redis-cli _resolvectl _rfkill _rkt _rslsync \
-            _rspec _rsvm _rubocop _sbt _scala \
-            _scrub _sdd _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes \
-            _sd_unit_files _setcap _setup.py _sfdx _shellcheck \
-            _showoff _snap _srm _stack _subl \
-            _subliminal _supervisorctl _svm _systemctl _systemd \
-            _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path \
-            _systemd-run _systemd-tmpfiles _tarsnap _task _teamocil \
-            _thor _timedatectl _tmuxinator _tmuxp _tox \
-            _trash-empty _trash-list _trash-put _trash-restore _udevadm \
-            _udisksctl _ufw _vagrant _virtualbox _vnstat \
-            _wemux _wg-quick _xinput _xsel _yaourt \
-            _yarn _yay _zathura _zcash-cli _cdr \
+autoload -Uz _afew _alacritty _android _archlinux-java _artisan \
+            _atach _bitcoin-cli _bluetoothctl _bootctl _bower \
+            _bundle _busctl _caffeinate _cap _cargo \
+            _cask _ccache _cf _cheat _choc \
+            _chromium _cmake _cmus _coffee _colorscript \
+            _composer _conan _concourse _console _coredumpctl \
+            _cppcheck _curl _dad _debuild _dget \
+            _dhcpcd _diana _docpad _downgrade _drush \
+            _ecdsautil _email-notmuch _emulator _envdir _exportfs \
+            _fab _fail2ban-client _ffind _fleetctl _flutter \
+            _force _fwupdmgr _gas _ghc _gist \
+            _git-flow _git-journal _git-pulls _git-revise _git-wtf \
+            _glances _golang _google _gpgconf _gtk-launch \
+            _hledger _homestead _hostnamectl _httpie _hugo \
+            _ibus _include-what-you-use _inxi _jmeter _jmeter-plugins \
+            _jonas _journalctl _jrnl _kak _kernel-install \
+            _kitchen _knife _language_codes _libinput _lilypond \
+            _localectl _loginctl _lsd _lunchy _machinectl \
+            _mc _meson _middleman _mina _mix \
+            _mkinitcpio _mpv _mssh _mussh _mvn \
+            _nano _nanoc _netctl _networkctl _nftables \
+            _ninja _node _notmuch _nvm _openssl \
+            _optirun _opustools _pacman _paru _pass \
+            _patool _perf _periscope _pgsql_utils _phing \
+            _pixz _pkcon _pkgfile _play _pm2 \
+            _polybar _polybar_msg _port _protoc _pulseaudio \
+            _pygmentize _qpdf _rails _ralio _redis-cli \
+            _resolvectl _rfkill _rkt _rslsync _rspec \
+            _rsvm _rubocop _sbt _scala _scrub \
+            _sdd _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes _sd_unit_files \
+            _setcap _setup.py _sfdx _shellcheck _showoff \
+            _snap _srm _stack _subl _subliminal \
+            _supervisorctl _svm _systemctl _systemd _systemd-analyze \
+            _systemd-delta _systemd-inhibit _systemd-nspawn _systemd-path _systemd-run \
+            _systemd-tmpfiles _tarsnap _task _teamocil _thor \
+            _timedatectl _tmuxinator _tmuxp _tox _trash-empty \
+            _trash-list _trash-put _trash-restore _udevadm _udisksctl \
+            _ufw _vagrant _virtualbox _vnstat _wemux \
+            _wg-quick _xinput _xsel _yaourt _yarn \
+            _yay _youtube-dl _zathura _zcash-cli _cdr \
             _all_labels _all_matches _alternative _approximate _arg_compile \
             _arguments _bash_completions _cache_invalid _call_function _combination \
             _complete _complete_debug _complete_help _complete_help_generic _complete_tag \
@@ -1997,4 +1990,4 @@ typeset -gUa _comp_assocs
 _comp_assocs=( '' )
 
 #omz revision: 
-#omz fpath: /home/nikhilc/.config/oh-my-zsh/plugins/zsh_reload /home/nikhilc/.config/oh-my-zsh/plugins/zsh-interactive-cd /home/nikhilc/.config/oh-my-zsh/plugins/wd /home/nikhilc/.config/oh-my-zsh/plugins/themes /home/nikhilc/.config/oh-my-zsh/plugins/systemd /home/nikhilc/.config/oh-my-zsh/plugins/systemadmin /home/nikhilc/.config/oh-my-zsh/plugins/sudo /home/nikhilc/.config/oh-my-zsh/plugins/sprunge /home/nikhilc/.config/oh-my-zsh/plugins/safe-paste /home/nikhilc/.config/oh-my-zsh/plugins/rustup /home/nikhilc/.config/oh-my-zsh/plugins/rust /home/nikhilc/.config/oh-my-zsh/plugins/rsync /home/nikhilc/.config/oh-my-zsh/plugins/ripgrep /home/nikhilc/.config/oh-my-zsh/plugins/repo /home/nikhilc/.config/oh-my-zsh/plugins/rand-quote /home/nikhilc/.config/oh-my-zsh/plugins/python /home/nikhilc/.config/oh-my-zsh/plugins/pylint /home/nikhilc/.config/oh-my-zsh/plugins/pyenv /home/nikhilc/.config/oh-my-zsh/plugins/profiles /home/nikhilc/.config/oh-my-zsh/plugins/pipenv /home/nikhilc/.config/oh-my-zsh/plugins/pip /home/nikhilc/.config/oh-my-zsh/plugins/pass /home/nikhilc/.config/oh-my-zsh/plugins/npm /home/nikhilc/.config/oh-my-zsh/plugins/nmap /home/nikhilc/.config/oh-my-zsh/plugins/man /home/nikhilc/.config/oh-my-zsh/plugins/lol /home/nikhilc/.config/oh-my-zsh/plugins/jump /home/nikhilc/.config/oh-my-zsh/plugins/history-substring-search /home/nikhilc/.config/oh-my-zsh/plugins/history /home/nikhilc/.config/oh-my-zsh/plugins/gradle /home/nikhilc/.config/oh-my-zsh/plugins/golang /home/nikhilc/.config/oh-my-zsh/plugins/gnu-utils /home/nikhilc/.config/oh-my-zsh/plugins/git-prompt /home/nikhilc/.config/oh-my-zsh/plugins/git-lfs /home/nikhilc/.config/oh-my-zsh/plugins/gitignore /home/nikhilc/.config/oh-my-zsh/plugins/github /home/nikhilc/.config/oh-my-zsh/plugins/gitfast /home/nikhilc/.config/oh-my-zsh/plugins/git-extras /home/nikhilc/.config/oh-my-zsh/plugins/git-auto-fetch /home/nikhilc/.config/oh-my-zsh/plugins/git /home/nikhilc/.config/oh-my-zsh/plugins/genpass /home/nikhilc/.config/oh-my-zsh/plugins/fzf /home/nikhilc/.config/oh-my-zsh/plugins/firewalld /home/nikhilc/.config/oh-my-zsh/plugins/fd /home/nikhilc/.config/oh-my-zsh/plugins/fastfile /home/nikhilc/.config/oh-my-zsh/plugins/encode64 /home/nikhilc/.config/oh-my-zsh/plugins/emotty /home/nikhilc/.config/oh-my-zsh/plugins/emoji-clock /home/nikhilc/.config/oh-my-zsh/plugins/emoji /home/nikhilc/.config/oh-my-zsh/plugins/dotenv /home/nikhilc/.config/oh-my-zsh/plugins/cp /home/nikhilc/.config/oh-my-zsh/plugins/copyfile /home/nikhilc/.config/oh-my-zsh/plugins/copybuffer /home/nikhilc/.config/oh-my-zsh/plugins/compleat /home/nikhilc/.config/oh-my-zsh/plugins/common-aliases /home/nikhilc/.config/oh-my-zsh/plugins/command-not-found /home/nikhilc/.config/oh-my-zsh/plugins/colored-man-pages /home/nikhilc/.config/oh-my-zsh/plugins/catimg /home/nikhilc/.config/oh-my-zsh/plugins/cargo /home/nikhilc/.config/oh-my-zsh/plugins/branch /home/nikhilc/.config/oh-my-zsh/plugins/bgnotify /home/nikhilc/.config/oh-my-zsh/plugins/archlinux /home/nikhilc/.config/oh-my-zsh/functions /home/nikhilc/.config/oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/Math /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle
+#omz fpath: /home/nikhilc/.config/oh-my-zsh/functions /home/nikhilc/.config/oh-my-zsh/completions /home/nikhilc/.config/oh-my-zsh/functions /home/nikhilc/.config/oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/Math /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle
