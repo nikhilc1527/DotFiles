@@ -302,12 +302,21 @@ it gives you a small prompt with all possible next key strokes
 * custom made functions
 Clear the buffer in eshell mode
 #+BEGIN_SRC emacs-lisp
-;; (defun save-compile-dwm ()
-;;   (when (eq (symbol-value buffer-file-name) "/home/nikhil/.local/src/dwm/config.h")
-;;     (start-process "make && plz make install && kill -HUP $(pgrep -u $USER \"\bdwm$\"")
-;;     )
-;;   )
-;; (add-hook 'after-save-hook 'save-compile-dwm)
+  ;; (defun save-compile-dwm ()
+  ;;   (when (eq (symbol-value buffer-file-name) "/home/nikhil/.local/src/dwm/config.h")
+  ;;     (start-process "make && plz make install && kill -HUP $(pgrep -u $USER \"\bdwm$\"")
+  ;;     )
+  ;;   )
+  ;; (add-hook 'after-save-hook 'save-compile-dwm)
+
+
+
+  (defun transparency (value)
+    "Sets the transparency of the frame window. 0=transparent/100=opaque"
+    (interactive "nTransparency Value 0 - 100 opaque:")
+    (set-frame-parameter (selected-frame) 'alpha value))
+  (set-frame-parameter (selected-frame) 'alpha '(85 50))
+  ;; (add-to-list 'default-frame-alist '(alpha 85 58))
 #+END_SRC
 * theme
 #+BEGIN_SRC emacs-lisp

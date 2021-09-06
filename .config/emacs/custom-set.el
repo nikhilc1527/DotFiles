@@ -120,6 +120,12 @@
  '(semantic-mode t)
  '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
+ '(tooltip-frame-parameters
+   '((name . "tooltip")
+     (internal-border-width . 2)
+     (border-width . 1)
+     (no-special-glyphs . t)
+     (alpha . 10)))
  '(tooltip-mode nil)
  '(web-mode-auto-close-style 2)
  '(web-mode-enable-auto-expanding t)

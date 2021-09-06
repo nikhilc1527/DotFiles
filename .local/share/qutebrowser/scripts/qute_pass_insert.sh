@@ -24,12 +24,12 @@ fi
 
 sleep 1
 
-xdotool type --delay 1000 "$user"
+xdotool type --delay 100 "$user"
 
 xdotool key Tab
 
 pass=$(pass "$base_url/$user")
-xdotool type --delay 1000 "$pass"
+xdotool type --delay 100 "$pass"
 
 # xdotool key Tab
 # xdotool key Return
