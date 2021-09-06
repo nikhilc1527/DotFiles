@@ -126,8 +126,8 @@
       <attribute name="tool" type="string" value="selectRect"/>
     </data>
     <data name="right">
-      <attribute name="eraserMode" type="string" value="none"/>
-      <attribute name="size" type="string" value="none"/>
+      <attribute name="eraserMode" type="string" value="default"/>
+      <attribute name="size" type="string" value="thin"/>
       <attribute name="tool" type="string" value="eraser"/>
     </data>
     <data name="stylus">

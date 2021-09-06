@@ -14,6 +14,7 @@ config.bind("X", "hint links spawn mpv {hint-url}")
 
 config.bind("xx", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host}")
 config.bind("xy", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host} choose")
+config.bind("pt", "open -t {clipboard}")
 
 # custom search engines
 config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}"})

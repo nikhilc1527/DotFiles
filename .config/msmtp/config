@@ -20,3 +20,14 @@ tls on
 tls_trust_file	/etc/ssl/certs/ca-certificates.crt
 logfile /home/nikhilc/.config/msmtp/msmtp.log
 
+account biglymasly@gmail.com
+host smtp.gmail.com
+port 587
+from biglymasly@gmail.com
+user biglymasly@gmail.com
+passwordeval "pass biglymasly@gmail.com"
+auth on
+tls on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/nikhilc/.config/msmtp/msmtp.log
+

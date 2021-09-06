@@ -50,3 +50,29 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
+
+IMAPStore biglymasly@gmail.com-remote
+Host imap.gmail.com
+Port 993
+User biglymasly@gmail.com
+PassCmd "pass biglymasly@gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore biglymasly@gmail.com-local
+Subfolders Verbatim
+Path /home/nikhilc/.local/share/mail/biglymasly@gmail.com/
+Inbox /home/nikhilc/.local/share/mail/biglymasly@gmail.com/INBOX
+
+Channel biglymasly@gmail.com
+Expunge Both
+Far :biglymasly@gmail.com-remote:
+Near :biglymasly@gmail.com-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+

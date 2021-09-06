@@ -22,12 +22,14 @@ else
     user=$(echo "$users" | head -n 1)
 fi
 
-xdotool type "$user"
+sleep 1
+
+xdotool type --delay 1000 "$user"
 
 xdotool key Tab
 
 pass=$(pass "$base_url/$user")
-xdotool type "$pass"
+xdotool type --delay 1000 "$pass"
 
 # xdotool key Tab
 # xdotool key Return
