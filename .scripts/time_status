@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-date | awk '{printf "%s %s %s %s %s", $1, $2, $3, $4, $5 }'
+date +"%a %D %r" # | awk '{printf "%s %s %s %s %s", $1, $2, $3, $4, $5 }'
+# echo "your más"

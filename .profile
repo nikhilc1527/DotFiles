@@ -50,3 +50,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export ANDROID_SDK_ROOT=$HOME/MyFiles/AndroidSDK2
 export ANDROID_SDK_PATH=$HOME/MyFiles/AndroidSDK2
 export ANDROID_HOME=$HOME/MyFiles/AndroidSDK2
+
+export DEFAULT_SESSION="dwm"
