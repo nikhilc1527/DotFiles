@@ -56,7 +56,7 @@ alias df='df -h'
 
 alias update='yay -Syyu --devel --timeupdate'
 
-alias x='extract -r'
+alias x='extract'
 
 alias gk='echo RELOADAGENT | gpg-connect-agent'
 
