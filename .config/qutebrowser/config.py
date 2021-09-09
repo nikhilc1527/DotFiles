@@ -23,6 +23,9 @@ config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
 
+# access clipboard
+config.set("content.javascript.can_access_clipboard", True)
+
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
