@@ -2638,8 +2638,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
-	runAutostart();
-        /* runautostart(); */
+	/* runAutostart(); */
 	run();
 	if(restart) execvp(argv[0], argv);
 	cleanup();

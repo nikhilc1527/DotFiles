@@ -22,8 +22,6 @@ else
     user=$(echo "$users" | head -n 1)
 fi
 
-sleep 1
-
 xdotool type --delay 100 "$user"
 
 xdotool key Tab
