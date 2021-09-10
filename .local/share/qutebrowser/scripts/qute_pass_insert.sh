@@ -12,7 +12,7 @@ base_url=$(echo "$url" | awk -F. '{printf "%s.%s", $(NF-1), $NF}')
 
 notify-send "$base_url"
 
-users=$(pass ls "$base_url" | tail -n +2 | cut -c 11-)
+users=$(/usr/bin/ls "$PASSWORD_STORE_DIR/$base_url" | rev | cut -c 5- | rev)
 n_users=$(echo "$users" | wc -l)
 echo "$n_users"
 if [ "$n_users" -gt 1 ] && [ "$2" = "choose" ]
@@ -22,12 +22,12 @@ else
     user=$(echo "$users" | head -n 1)
 fi
 
-xdotool type --delay 100 "$user"
+xdotool type --delay 10 "$user"
 
 xdotool key Tab
 
 pass=$(pass "$base_url/$user")
-xdotool type --delay 100 "$pass"
+xdotool type --delay 10 "$pass"
 
 # xdotool key Tab
 # xdotool key Return
