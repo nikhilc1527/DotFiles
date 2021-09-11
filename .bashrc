@@ -106,3 +106,9 @@ export NVM_DIR="$HOME/.nvm"
 # test
 
 . ~/.local/src/Extract/extract 
+
+reblue() {
+    bluetoothctl power off
+    bluetoothctl power on
+    bluetoothctl connect 14:3F:A6:3D:DA:2B    
+}
