@@ -10,7 +10,7 @@ source $HOME/.profile
 
 [[ $- != *i* ]] && return
 
-alias ls='lsd -lArt --color=auto --group-dirs=first'
+alias ls='exa --sort=modified -la --icons --group-directories-first'
 
 alias pip='pip3'
 alias python='python3'

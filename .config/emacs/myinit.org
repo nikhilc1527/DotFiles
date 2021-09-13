@@ -325,3 +325,10 @@ Clear the buffer in eshell mode
 (load-theme 'gruvbox-dark-hard)
 #+END_SRC
 
+* mu4e
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.config/emacs/mu4e")
+  (require 'mu4e)
+  (require 'org-mu4e)
+#+END_SRC
