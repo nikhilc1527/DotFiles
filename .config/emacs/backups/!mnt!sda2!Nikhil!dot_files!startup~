@@ -4,6 +4,13 @@ set -x
 
 dunst -follow none &
 
+ping -c 1 google.com
+
+while [ "$?" -gt "0" ]; do
+	sleep 0.1
+	ping -c 1 google.com
+done
+
 update_packages() {
 	# gpg -d ~/.password.gpg | yay --sudoflags -S -Syyuu --noconfirm
 	r=$(mktemp)
@@ -49,6 +56,8 @@ setxkbmap -option caps:swapescape
 
 update_config &
 
-notify-send -u low "finished startup script"
-
 picom &
+
+rclone mount googledrive: ~/drive/ &
+
+notify-send -u low "finished startup script"
