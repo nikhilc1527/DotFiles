@@ -60,4 +60,6 @@ picom &
 
 rclone mount googledrive: ~/drive/ &
 
+publicify &
+
 notify-send -u low "finished startup script"

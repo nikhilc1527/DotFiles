@@ -2,7 +2,7 @@
 
 ssh -R 6969:localhost:22 root@nikhilchatterjee.com -N &
 
-x0vncserver -Geometry 1920x1200+0+0 -PasswordFile ~/.vnc/passwd &
+x0vncserver -Display :0 -Geometry 1920x1200+0+0 -PasswordFile ~/.vnc/passwd &
 
 ssh -R 420:localhost:5900 root@nikhilchatterjee.com -N &
 
