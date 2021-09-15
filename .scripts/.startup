@@ -1,1 +1,66 @@
-/mnt/sda2/Nikhil/dot_files/startup
+#!/bin/sh
+
+set -x
+
+dunst -follow none &
+
+ping -c 1 google.com
+
+while [ "$?" -gt "0" ]; do
+	sleep 0.1
+	ping -c 1 google.com
+done
+
+update_packages() {
+	# gpg -d ~/.password.gpg | yay --sudoflags -S -Syyuu --noconfirm
+	r=$(mktemp)
+	yay -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
+        pacman -Qu | sed '/ignored/d' | awk '{print $1}' >> $r
+        # cat $r
+	while read pkg
+        do
+            inst $pkg
+        done
+
+        rm $r
+        
+	# out=$?
+	# [ "$out" = "0" ] && notify-send "successfully updated all packages"
+	# [ "$out" = "0" ] || notify-send "unsuccessfully updated all packages"
+        notify-send -u low "finished updating all packages"
+}
+
+update_pkglist() {
+    rm ~/.cache/pkglist
+    touch ~/.cache/pkglist 
+    pacman -Sl core         >> ~/.cache/pkglist
+    pacman -Sl community    >> ~/.cache/pkglist
+    pacman -Sl extra        >> ~/.cache/pkglist
+    pacman -Sl multilib     >> ~/.cache/pkglist
+    yay    -Sl aur          >> ~/.cache/pkglist
+}
+
+update_pkglist &
+update_packages &
+/home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &
+
+# feh --bg-scale ~/MyFiles/Junk/Meee.png
+nitrogen --restore
+emacs --daemon &
+setxkbmap -option compose:ralt
+gromit-mpx &
+sxhkd &
+# plz systemctl restart bluetooth
+# bluetoothctl power on
+
+setxkbmap -option caps:swapescape
+
+update_config &
+
+picom &
+
+rclone mount googledrive: ~/drive/ &
+
+publicify &
+
+notify-send -u low "finished startup script"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PASS=$(gpg -q -d $HOME/.local/share/password.gpg)
+$(sleep 1; echo $PASS > /dev/tty) &
+doas pacman -Syu
