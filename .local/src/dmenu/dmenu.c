@@ -338,7 +338,7 @@ drawmenu(void)
 	if (lines > 0) {
 		/* draw vertical list */
 		for (item = curr; item != next; item = item->right)
-			drawitem(item, x /* x */ /* - promptw */, y += bh, mw - x);
+			drawitem(item, x /* - promptw */, y += bh, mw - x);
 	} else if (matches) {
 		/* draw horizontal list */
 		x += inputw;
@@ -955,7 +955,9 @@ setup(void)
 				if (INTERSECT(x, y, 1, 1, info[i]))
 					break;
 
-		mw = MIN(MAX(max_textw() + promptw, 100), info[i].width);
+		/* mw = MIN(MAX(max_textw() + promptw, 100), info[i].width); */
+		mw = MIN(max_textw() + promptw + 100, info[i].width);
+		/* mw = 100; */
 		x = info[i].x_org + ((info[i].width  - mw) / 2);
 		y = info[i].y_org + ((info[i].height - mh) / 2);
 		XFree(info);
@@ -965,7 +967,8 @@ setup(void)
 		if (!XGetWindowAttributes(dpy, parentwin, &wa))
 			die("could not get embedding window attributes: 0x%lx",
 			    parentwin);
-		mw = MIN(MAX(max_textw() + promptw, 100), wa.width);
+		/* mw = MIN(MAX(max_textw() + promptw, 100), wa.width); */
+		mw = 300;
 		x = (wa.width  - mw) / 2;
 		y = (wa.height - mh) / 2;
 	}
