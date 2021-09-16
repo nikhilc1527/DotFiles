@@ -22,6 +22,8 @@ config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web
 
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
+config.set("colors.webpage.darkmode.threshold.text", 256)
+config.set("colors.webpage.darkmode.threshold.background", 0)
 
 # access clipboard
 config.set("content.javascript.can_access_clipboard", True)
