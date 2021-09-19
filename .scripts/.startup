@@ -63,4 +63,6 @@ rclone mount googledrive: ~/drive/ &
 
 publicify &
 
+clipmenud &
+
 notify-send -u low "finished startup script"
