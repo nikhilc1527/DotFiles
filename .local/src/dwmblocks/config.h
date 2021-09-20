@@ -4,7 +4,7 @@ static const Block blocks[] = {
 	/* {"⌨", "sb-kbselect", 0, 30}, */
   
   	{"ram: ", "free -m | grep Mem | awk '{print ($3/$2)*100}'",                     1,	16},
-	{"",	"sb-cpu",		1,	15},
+	{"cpu: ",	"sb-cpu",		1,	15},
   	{"📚", "findmnt | /usr/bin/grep -e \"mnt\\|home\" | grep -v \"defvol\" | awk '{print $1}' | cut -b 7- | xargs df | awk 'FNR > 1' | awk '{print $1,$5}' | tr '\n' ' '",                     15,	14},
   	{"🌶", "sensors | /usr/bin/grep Tdie | awk '{print $2}' | cut -c 2-",                     1,	13},
   	{"", "sb-nettraf",                              1,	12},

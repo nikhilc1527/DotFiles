@@ -840,8 +840,8 @@ readstdin(void)
 		if (i + 1 >= size / sizeof *items)
 			if (!(items = realloc(items, (size += BUFSIZ))))
 				die("cannot realloc %u bytes:", size);
-		if ((p = strchr(buf, '\n')))
-			*p = '\0';
+		/* if ((p = strchr(buf, '\n'))) */
+		/* 	*p = '\0'; */
 		if (!(items[i].text = strdup(buf)))
 			die("cannot strdup %u bytes:", strlen(buf) + 1);
 		if ((p = strchr(buf, '\t')))

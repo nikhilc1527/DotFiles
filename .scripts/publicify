@@ -1,9 +1,12 @@
 #!/bin/sh
 
+# forward ssh connection to website port 6969
 ssh -R 6969:localhost:22 root@nikhilchatterjee.com -N &
 
-x0vncserver -Display :0 -Geometry 1920x1200+0+0 -PasswordFile ~/.vnc/passwd &
+# start vnc server
+x0vncserver -Display :0 -PasswordFile ~/.vnc/passwd &
 
+# forward vnc server to port 420
 ssh -R 420:localhost:5900 root@nikhilchatterjee.com -N &
 
 miniserve ~/MyFiles/Nikhil/meetings/ -p 1234
