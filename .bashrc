@@ -22,7 +22,7 @@ alias g+='g++ -fsanitize=address,undefined -g -oout -std=c++17 '
 alias lf='lfcd'
 
 alias ls='exa --sort=modified -la --icons --group-directories-first'
-alias ls='lf'
+# alias ls='lf'
 
 alias dwmblocks_update='last_pwd=$PWD; cd ~/.local/src/dwmblocks/ && make && plz make install && killall dwmblocks && setsid -f dwmblocks && cd $last_pwd && unset last_pwd'
 
