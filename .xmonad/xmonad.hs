@@ -57,7 +57,7 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m                             , xK_h          ), sendMessage Shrink),
     ((m                             , xK_comma      ), sendMessage (IncMasterN 1)),
     ((m                             , xK_period     ), sendMessage (IncMasterN (-1))),
-    ((m .|. shiftMask               , xK_space          ), withFocused (windows . sink)),
+    ((m .|. shiftMask               , xK_Space      ), withFocused (windows . sink)),
     ((m                             , xK_j          ), windows focusUp),
     ((m .|. shiftMask               , xK_j          ), windows swapUp),
     ((m                             , xK_k          ), windows focusDown),

@@ -7,6 +7,12 @@ super + shift + x
 super + w
       $BROWSER
 
+super + e
+      $TERM -e neomutt
+
+super + y
+      discord
+
 super + Return
       $TERM
 
