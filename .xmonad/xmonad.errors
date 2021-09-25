@@ -1,7 +1,15 @@
 
-xmonad.hs:60:39: error:
-    • Variable not in scope: xK_Space :: KeySym
-    • Perhaps you meant ‘xK_space’ (imported from XMonad)
+xmonad.hs:84:23: warning: [-Wdeprecations]
+    In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
    |
-60 |     ((m .|. shiftMask               , xK_Space      ), withFocused (windows . sink)),
-   |                                       ^^^^^^^^
+84 | pp h s = marshallPP s defaultPP {
+   |                       ^^^^^^^^^
+
+xmonad.hs:123:90: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+    |
+123 |     xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
+    |                                                                                          ^^^^^^^^^^^^^
