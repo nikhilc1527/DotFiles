@@ -49,14 +49,13 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m                             , xK_q          ), kill),
     ((m .|. shiftMask               , xK_r          ), restart "xmonad" True),
     ((m .|. shiftMask               , xK_q          ), io (exitWith ExitSuccess)),
-    ((m                             , xK_grave      ), sendMessage NextLayout),
-    ((m .|. shiftMask               , xK_grave      ), setLayout $ layoutHook conf),
+    ((m                             , xK_f          ), sendMessage NextLayout),
+    ((m .|. shiftMask               , xK_f          ), setLayout $ layoutHook conf),
     ((m                             , xK_o          ), sendMessage Toggle),
     ((m                             , xK_l          ), sendMessage Expand),
     ((m                             , xK_h          ), sendMessage Shrink),
     ((m                             , xK_comma      ), sendMessage (IncMasterN 1)),
     ((m                             , xK_period     ), sendMessage (IncMasterN (-1))),
-    -- ((m                             , xK_f          ), setLayout Full),
     ((m .|. shiftMask               , xK_f          ), setLayout $ myLayout),
     ((m .|. shiftMask               , xK_space      ), withFocused (windows . sink)),
     ((m                             , xK_j          ), windows focusUp),
@@ -87,7 +86,7 @@ pp h s = marshallPP s defaultPP {
     where color c = xmobarColor c ""
 
 borderSize = 10
-myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 borderSize 0 borderSize) True $ tiled ||| Mirror tiled ||| Full
+myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 borderSize 0 borderSize) True $ tiled ||| Full
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
