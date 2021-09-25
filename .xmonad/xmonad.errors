@@ -1,13 +1,15 @@
 
-xmonad.hs:60:56: error:
-    • Couldn't match expected type ‘(Window -> X ()) -> X ()’
-                  with actual type ‘X ()’
-    • The first argument of ($) takes one argument,
-      but its type ‘X ()’ has none
-      In the expression: sendMessage withFocused $ windows . sink
-      In the expression:
-        ((m .|. shiftMask, xK_space), 
-         sendMessage withFocused $ windows . sink)
+xmonad.hs:86:23: warning: [-Wdeprecations]
+    In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
    |
-60 |     ((m .|. shiftMask               , xK_space      ), sendMessage withFocused $ windows . W.sink),
-   |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+86 | pp h s = marshallPP s defaultPP {
+   |                       ^^^^^^^^^
+
+xmonad.hs:125:90: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+    |
+125 |     xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
+    |                                                                                          ^^^^^^^^^^^^^
