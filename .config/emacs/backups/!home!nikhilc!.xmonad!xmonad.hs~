@@ -39,70 +39,36 @@ withScreen screen f = screenWorkspace screen >>= flip whenJust (windows . f)
 launcher     = "dmenu_run"
 viewShift  i = view i . shift i
 floatAll     = composeAll . map (\s -> className =? s --> doFloat)
-sinkFocus    = peek >>= maybe id sink
-onChannels f = f ("Front":"Headphone":defaultChannels) 4 >>= volumeDzen . show . round
-volumeDzen   = dzenConfig $ onCurr (center 170 66) >=> font "-*-helvetica-*-r-*-*-64-*-*-*-*-*-*-*,-*-terminus-*-*-*-*-64-*-*-*-*-*-*-*"
 
 bright = "#80c0ff"
 dark   = "#13294e"
 
-fullscreenMPlayer = className =? "MPlayer" --> do
-    dpy   <- liftX $ asks display
-    win   <- ask
-    hints <- liftIO $ getWMNormalHints dpy win
-    case fmap (approx . fst) (sh_aspect hints) of
-        Just ( 4 :% 3)  -> viewFullOn win 0 "1"
-        Just (16 :% 9)  -> viewFullOn win 1 "5"
-        _               -> doFloat
-    where
-    fi               = fromIntegral
-    approx (n, d)    = approxRational (fi n / fi d) (1/100)
-    viewFullOn w s n = do
-        let ws = marshall s n
-        liftX  $ withScreen s view
-        return . Endo $ view ws . shiftWin ws w
-
 keyBindings conf = let m = modMask conf in fromList $ [
-    ((m                , xK_Return  ), spawnHere "alacritty"),
-    ((m                , xK_d          ), spawnHere launcher),
-    -- ((m .|. shiftMask  , xK_p          ), spawnHere termLauncher),
-    ((m                , xK_q          ), kill),
-    ((m .|. shiftMask  , xK_r          ), restart "xmonad" True),
-    ((m .|. shiftMask  , xK_q          ), io (exitWith ExitSuccess)),
-    ((m                , xK_grave      ), sendMessage NextLayout),
-    ((m .|. shiftMask  , xK_grave      ), setLayout $ layoutHook conf),
-    ((m                , xK_o          ), sendMessage Toggle),
-    ((m                , xK_x          ), withFocused (windows . sink)),
-    ((m                , xK_j          ), windows focusUp),
-    ((m .|. shiftMask  , xK_j          ), windows swapUp),
-    ((m                , xK_k          ), windows focusDown),
-    ((m .|. shiftMask  , xK_k          ), windows swapDown),
-    ((m                , xK_space      ), windows swapMaster),
-    ((m .|. shiftMask  , xK_space      ), windows focusMaster),
-    ((m                , xK_Control_L  ), withScreen 0 view),
-    ((m .|. shiftMask  , xK_Control_L  ), withScreen 0 viewShift),
-    ((m                , xK_Alt_L      ), withScreen 1 view),
-    ((m .|. shiftMask  , xK_Alt_L      ), withScreen 1 viewShift),
-    ((m                , xK_u          ), centerMouse),
-    ((m .|. controlMask, xK_u          ), centerMouse),
-    ((m .|. mod1Mask   , xK_u          ), centerMouse),
-    ((m .|. shiftMask  , xK_u          ), statusBarMouse),
-    ((m                , xK_s          ), spawnHere "chromium-browser"),
-    ((m                , xK_n          ), spawnHere "gvim todo"),
-    ((m                , xK_t          ), spawnHere "mpc toggle"),
-    ((m                , xK_h          ), spawnHere "alacritty -e alsamixer"),
-    ((m                , xK_l          ), spawnHere "alacritty -e sup"),
-    ((m                , xK_r          ), spawnHere "alacritty -e ncmpcpp"),
-    ((m                , xK_c          ), spawnHere "alacritty -e ghci"),
-    ((m                , xK_g          ), spawnHere "slock" >> spawnHere "kdesktop_lock --forcelock"),
-    ((m                , xK_f          ), spawnHere "gvim ~/.xmonad/xmonad.hs"),
-    ((0                , xK_F8         ), onChannels lowerVolumeChannels),
-    ((0                , xK_F9         ), onChannels raiseVolumeChannels)
+    ((m                             , xK_Return     ), spawnHere "alacritty"),
+    ((m                             , xK_d          ), spawnHere launcher),
+    ((m                             , xK_q          ), kill),
+    ((m .|. shiftMask               , xK_r          ), restart "xmonad" True),
+    ((m .|. shiftMask               , xK_q          ), io (exitWith ExitSuccess)),
+    ((m                             , xK_grave      ), sendMessage NextLayout),
+    ((m .|. shiftMask               , xK_grave      ), setLayout $ layoutHook conf),
+    ((m                             , xK_o          ), sendMessage Toggle),
+    ((m                             , xK_x          ), withFocused (windows . sink)),
+    ((m                             , xK_j          ), windows focusUp),
+    ((m .|. shiftMask               , xK_j          ), windows swapUp),
+    ((m                             , xK_k          ), windows focusDown),
+    ((m .|. shiftMask               , xK_k          ), windows swapDown),
+    ((m                             , xK_space      ), windows swapMaster),
+    ((m .|. shiftMask               , xK_space      ), windows focusMaster),
+    ((m               .|. mod1Mask  , xK_1          ), withScreen 0 view),
+    ((m .|. shiftMask .|. mod1Mask  , xK_1          ), withScreen 0 viewShift),
+    ((m .|.               mod1Mask  , xK_2          ), withScreen 1 view),
+    ((m .|. shiftMask .|. mod1Mask  , xK_2          ), withScreen 1 viewShift),
+    ((m                             , xK_w          ), spawnHere "qutebrowser"),
+    ((m                             , xK_e          ), spawnHere "alacritty -e neomutt")
     ] ++ [
-    ((m .|. e .|. i    , key           ), windows (onCurrentScreen f workspace))
+    ((m .|. e, key   ), windows (onCurrentScreen f workspace))
     | (key, workspace) <- zip [xK_1..xK_9] (workspaces' conf)
     , (e, f)           <- [(0, view), (shiftMask, viewShift)]
-    , i                <- [0, controlMask, mod1Mask, controlMask .|. mod1Mask]
     ]
 
 -- TODO: add control/alt mask to all keybindings
@@ -122,7 +88,8 @@ pp h s = marshallPP s defaultPP {
     }
     where color c = xmobarColor c ""
 
-myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ tiled ||| Mirror tiled ||| Full
+borderSize = 10
+myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 borderSize 0 borderSize) True $ tiled ||| Mirror tiled ||| Full
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -138,7 +105,7 @@ myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ tiled ||| Mirror tiled ||
 
 main = do
     nScreens    <- countScreens
-    -- hs          <- mapM (spawnPipe . xmobarCommand) [0 .. nScreens-1]
+    -- spawnPipe ".startup"
     xmonad $ defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
@@ -149,11 +116,7 @@ main = do
         keys                    = keyBindings,
         layoutHook              = myLayout,
         manageHook              = floatAll ["Gimp", "Wine"]
-                                  <+> (title =? "CGoban: Main Window" --> doF sinkFocus)
                                   <+> (isFullscreen --> doFullFloat)
-                                  <+> fullscreenMPlayer
-                                  -- <+> manageDocks
+                                  <+> manageDocks
                                   <+> manageSpawn
-        -- logHook                 = mapM_ dynamicLogWithPP $ zipWith pp hs [0..nScreens]
-        -- startupHook             = setWMName "LG3D" -- gotta keep this until all the machines I use have the version of openjdk that respects _JAVA_AWT_WM_NONREPARENTING`
         }

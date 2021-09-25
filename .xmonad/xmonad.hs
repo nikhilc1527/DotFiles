@@ -27,10 +27,11 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout
 import XMonad.Layout.Gaps
--- import XMonad.Layout.Tall
+
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
+import XMonad.Util.WorkspaceCompare ( getSortByXineramaRule )
 
 centerMouse = warpToWindow (1/2) (1/2)
 statusBarMouse = warpToScreen 0 (5/1600) (5/1200)
@@ -44,37 +45,31 @@ bright = "#80c0ff"
 dark   = "#13294e"
 
 keyBindings conf = let m = modMask conf in fromList $ [
-    ((m                , xK_Return     ), spawnHere "alacritty"),
-    ((m                , xK_d          ), spawnHere launcher),
-    -- ((m .|. shiftMask  , xK_p          ), spawnHere termLauncher),
-    ((m                , xK_q          ), kill),
-    ((m .|. shiftMask  , xK_r          ), restart "xmonad" True),
-    ((m .|. shiftMask  , xK_q          ), io (exitWith ExitSuccess)),
-    ((m                , xK_grave      ), sendMessage NextLayout),
-    ((m .|. shiftMask  , xK_grave      ), setLayout $ layoutHook conf),
-    ((m                , xK_o          ), sendMessage Toggle),
-    ((m                , xK_x          ), withFocused (windows . sink)),
-    ((m                , xK_j          ), windows focusUp),
-    ((m .|. shiftMask  , xK_j          ), windows swapUp),
-    ((m                , xK_k          ), windows focusDown),
-    ((m .|. shiftMask  , xK_k          ), windows swapDown),
-    ((m                , xK_space      ), windows swapMaster),
-    ((m .|. shiftMask  , xK_space      ), windows focusMaster),
-    ((m                , xK_1          ), withScreen 0 view),
-    ((m .|. shiftMask  , xK_1          ), withScreen 0 viewShift),
+    ((m                             , xK_Return     ), spawnHere "alacritty"),
+    ((m                             , xK_d          ), spawnHere launcher),
+    ((m                             , xK_q          ), kill),
+    ((m .|. shiftMask               , xK_r          ), restart "xmonad" True),
+    ((m .|. shiftMask               , xK_q          ), io (exitWith ExitSuccess)),
+    ((m                             , xK_grave      ), sendMessage NextLayout),
+    ((m .|. shiftMask               , xK_grave      ), setLayout $ layoutHook conf),
+    ((m                             , xK_o          ), sendMessage Toggle),
+    ((m                             , xK_x          ), withFocused (windows . sink)),
+    ((m                             , xK_j          ), windows focusUp),
+    ((m .|. shiftMask               , xK_j          ), windows swapUp),
+    ((m                             , xK_k          ), windows focusDown),
+    ((m .|. shiftMask               , xK_k          ), windows swapDown),
+    ((m                             , xK_space      ), windows swapMaster),
+    ((m .|. shiftMask               , xK_space      ), windows focusMaster),
+    ((m               .|. mod1Mask  , xK_1          ), withScreen 0 view),
+    ((m .|. shiftMask .|. mod1Mask  , xK_1          ), withScreen 0 viewShift),
     ((m .|.               mod1Mask  , xK_2          ), withScreen 1 view),
     ((m .|. shiftMask .|. mod1Mask  , xK_2          ), withScreen 1 viewShift),
-    ((m                , xK_u          ), centerMouse),
-    ((m .|. controlMask, xK_u          ), centerMouse),
-    ((m .|. mod1Mask   , xK_u          ), centerMouse),
-    ((m .|. shiftMask  , xK_u          ), statusBarMouse),
-    ((m                , xK_w          ), spawnHere "qutebrowser"),
-    ((m                , xK_e          ), spawnHere "alacritty -e neomutt")
+    ((m                             , xK_w          ), spawnHere "qutebrowser"),
+    ((m                             , xK_e          ), spawnHere "alacritty -e neomutt")
     ] ++ [
-    ((m .|. e .|. i    , key           ), windows (onCurrentScreen f workspace))
+    ((m .|. e, key   ), windows (onCurrentScreen f workspace))
     | (key, workspace) <- zip [xK_1..xK_9] (workspaces' conf)
-    -- , (e, f)           <- [(0, view), (shiftMask, viewShift)]
-    -- , i                <- [0, controlMask, mod1Mask, controlMask .|. mod1Mask]
+    , (e, f)           <- [(0, view), (shiftMask, viewShift)]
     ]
 
 -- TODO: add control/alt mask to all keybindings
@@ -109,10 +104,20 @@ myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 bo
     -- Percent of screen to increment by when resizing panes
     delta   = 3/100
 
+myPP = def
+   { ppLayout = const ""  -- Don't show the layout name
+   , ppSort = getSortByXineramaRule  -- Sort left/right screens on the left, non-empty workspaces after those
+   , ppTitle = const ""  -- Don't show the focused window's title
+   , ppTitleSanitize = const ""  -- Also about window's title
+   , ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
+   }
+
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
+
 main = do
     nScreens    <- countScreens
     -- spawnPipe ".startup"
-    xmonad $ defaultConfig {
+    xmonad =<< statusBar "xmonad" myPP toggleStrutsKey defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
         terminal                = "alacritty",
