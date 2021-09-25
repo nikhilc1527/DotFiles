@@ -1,11 +1,11 @@
 
-xmonad.hs:60:66: error:
+xmonad.hs:60:68: error:
     • Couldn't match expected type ‘Layout Window’
                   with actual type ‘XMonad.Layout.LayoutModifier.ModifiedLayout
                                       Spacing (Choose Tall (Choose (Mirror Tall) Full)) a0’
-    • In the first argument of ‘setLayout’, namely ‘myLayout’
-      In the expression: setLayout myLayout
-      In the expression: ((m .|. shiftMask, xK_f), setLayout myLayout)
+    • In the second argument of ‘($)’, namely ‘myLayout’
+      In the expression: setLayout $ myLayout
+      In the expression: ((m .|. shiftMask, xK_f), setLayout $ myLayout)
    |
-60 |     ((m .|. shiftMask               , xK_f          ), setLayout myLayout),
-   |                                                                  ^^^^^^^^
+60 |     ((m .|. shiftMask               , xK_f          ), setLayout $ myLayout),
+   |                                                                    ^^^^^^^^
