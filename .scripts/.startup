@@ -49,7 +49,7 @@ nitrogen --restore
 emacs --daemon &
 setxkbmap -option compose:ralt
 gromit-mpx &
-sxhkd &
+killall sxhkd; sxhkd &
 # plz systemctl restart bluetooth
 # bluetoothctl power on
 
