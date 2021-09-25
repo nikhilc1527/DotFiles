@@ -1,15 +1,7 @@
 
-xmonad.hs:77:23: warning: [-Wdeprecations]
-    In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
-    Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
+xmonad.hs:60:66: error:
+    • Variable not in scope: tiled :: Layout Window
+    • Perhaps you meant ‘tile’ (imported from XMonad.Layout)
    |
-77 | pp h s = marshallPP s defaultPP {
-   |                       ^^^^^^^^^
-
-xmonad.hs:116:61: warning: [-Wdeprecations]
-    In the use of ‘defaultConfig’
-    (imported from XMonad, but defined in XMonad.Config):
-    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
-    |
-116 |     xmonad =<< statusBar "xmobar_dual" myPP toggleStrutsKey defaultConfig {
-    |                                                             ^^^^^^^^^^^^^
+60 |     ((m .|. shiftMask               , xK_f          ), setLayout tiled),
+   |                                                                  ^^^^^
