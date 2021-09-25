@@ -56,6 +56,7 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m                             , xK_h          ), sendMessage Shrink),
     ((m                             , xK_comma      ), sendMessage (IncMasterN 1)),
     ((m                             , xK_period     ), sendMessage (IncMasterN (-1))),
+    ((m                             , xK_f          ), sendMessage ToggleStruts),
     ((m .|. shiftMask               , xK_space      ), withFocused (windows . sink)),
     ((m                             , xK_j          ), windows focusUp),
     ((m .|. shiftMask               , xK_j          ), windows swapUp),
@@ -112,7 +113,7 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 main = do
     nScreens    <- countScreens
     spawnPipe ".startup"
-    xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
+    xmonad =<< statusBar "xmobar_dual" myPP toggleStrutsKey defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
         terminal                = "alacritty",
