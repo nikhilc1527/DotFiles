@@ -1,15 +1,15 @@
 
-xmonad.hs:86:23: warning: [-Wdeprecations]
+xmonad.hs:85:23: warning: [-Wdeprecations]
     In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
    |
-86 | pp h s = marshallPP s defaultPP {
+85 | pp h s = marshallPP s defaultPP {
    |                       ^^^^^^^^^
 
-xmonad.hs:125:90: warning: [-Wdeprecations]
+xmonad.hs:124:90: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-125 |     xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
+124 |     xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
     |                                                                                          ^^^^^^^^^^^^^

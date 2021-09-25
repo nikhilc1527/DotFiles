@@ -33,8 +33,6 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.WorkspaceCompare ( getSortByXineramaRule )
 
-import qualified XMonad.StackSet as W
-
 centerMouse = warpToWindow (1/2) (1/2)
 statusBarMouse = warpToScreen 0 (5/1600) (5/1200)
 withScreen screen f = screenWorkspace screen >>= flip whenJust (windows . f)
@@ -57,9 +55,10 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m                             , xK_o          ), sendMessage Toggle),
     ((m                             , xK_h          ), sendMessage Expand),
     ((m                             , xK_l          ), sendMessage Shrink),
-    ((m .|. shiftMask               , xK_space      ), withFocused $ windows . W.sink),
+    -- ((m .|. shiftMask               , xK_space          ), sendMessage withFocused $ windows . W.sink),
     ((m                             , xK_comma      ), sendMessage (IncMasterN 1)),
     ((m                             , xK_period     ), sendMessage (IncMasterN (-1))),
+    ((m                             , xK_x          ), withFocused (windows . sink)),
     ((m                             , xK_j          ), windows focusUp),
     ((m .|. shiftMask               , xK_j          ), windows swapUp),
     ((m                             , xK_k          ), windows focusDown),
