@@ -63,7 +63,7 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m               .|. mod1Mask  , xK_1          ), withScreen 0 view),
     ((m .|. shiftMask .|. mod1Mask  , xK_1          ), withScreen 0 viewShift),
     ((m .|.               mod1Mask  , xK_2          ), withScreen 1 view),
-    ((m .|. shiftMask .|. mod1Mask  , xK_2          ), withScreen 1 viewShift),
+    ((m .|. shiftMask .|. mod1Mask  , xK_2          ), withScreen 1 viewShift)
     -- ((m                             , xK_w          ), spawnHere "qutebrowser"),
     -- ((m                             , xK_e          ), spawnHere "alacritty -e neomutt")
     ] ++ [
