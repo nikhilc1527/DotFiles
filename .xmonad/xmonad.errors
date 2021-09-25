@@ -3,5 +3,5 @@ xmonad.hs:58:92: error:
     Not in scope: ‘W.sink’
     No module named ‘W’ is imported.
    |
-58 |     ((m .|. shiftMask               , xK_l          ), sendMessage withFocused $ windows . W.sink),
+58 |     ((m .|. shiftMask               , xK_space      ), sendMessage withFocused $ windows . W.sink),
    |                                                                                            ^^^^^^
