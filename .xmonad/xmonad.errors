@@ -1,11 +1,15 @@
 
-xmonad.hs:59:68: error:
-    • Couldn't match expected type ‘Layout Window’
-                  with actual type ‘XMonad.Layout.LayoutModifier.ModifiedLayout
-                                      Spacing (Choose Tall Full) a0’
-    • In the second argument of ‘($)’, namely ‘myLayout’
-      In the expression: setLayout $ myLayout
-      In the expression: ((m .|. shiftMask, xK_f), setLayout $ myLayout)
+xmonad.hs:77:23: warning: [-Wdeprecations]
+    In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
    |
-59 |     ((m .|. shiftMask               , xK_f          ), setLayout $ myLayout),
-   |                                                                    ^^^^^^^^
+77 | pp h s = marshallPP s defaultPP {
+   |                       ^^^^^^^^^
+
+xmonad.hs:116:61: warning: [-Wdeprecations]
+    In the use of ‘defaultConfig’
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+    |
+116 |     xmonad =<< statusBar "xmobar_dual" myPP toggleStrutsKey defaultConfig {
+    |                                                             ^^^^^^^^^^^^^
