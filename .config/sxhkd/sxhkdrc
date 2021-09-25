@@ -10,5 +10,15 @@ super + w
 super + Return
       $TERM
 
-# super + BackSpace
-#       sysact
+super + d
+      dmenu_run
+
+super + BackSpace
+      sysact
+
+super + {m,p,equal}
+      volume_changer output {$(( $(pamixer --get-volume) - 5 )),$(( $(pamixer --get-volume) + 5 )),50}
+
+super + shift + {m,p,equal}
+      volume_changer input {$(( $(pamixer --get-volume) - 5 )),$(( $(pamixer --get-volume) + 5 )),10}
+
