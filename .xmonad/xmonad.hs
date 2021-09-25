@@ -73,8 +73,8 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ] ++ [
     ((m .|. e .|. i    , key           ), windows (onCurrentScreen f workspace))
     | (key, workspace) <- zip [xK_1..xK_9] (workspaces' conf)
-    , (e, f)           <- [(0, view), (shiftMask, viewShift)]
-    , i                <- [0, controlMask, mod1Mask, controlMask .|. mod1Mask]
+    -- , (e, f)           <- [(0, view), (shiftMask, viewShift)]
+    -- , i                <- [0, controlMask, mod1Mask, controlMask .|. mod1Mask]
     ]
 
 -- TODO: add control/alt mask to all keybindings
@@ -111,7 +111,7 @@ myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 bo
 
 main = do
     nScreens    <- countScreens
-    spawnPipe ".startup"
+    -- spawnPipe ".startup"
     xmonad $ defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
