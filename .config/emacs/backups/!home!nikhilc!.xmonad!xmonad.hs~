@@ -27,10 +27,11 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout
 import XMonad.Layout.Gaps
--- import XMonad.Layout.Tall
+
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
+import XMonad.Util.WorkspaceCompare ( getSortByXineramaRule )
 
 centerMouse = warpToWindow (1/2) (1/2)
 statusBarMouse = warpToScreen 0 (5/1600) (5/1200)
@@ -103,10 +104,20 @@ myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 bo
     -- Percent of screen to increment by when resizing panes
     delta   = 3/100
 
+myPP = def
+   { ppLayout = const ""  -- Don't show the layout name
+   , ppSort = getSortByXineramaRule  -- Sort left/right screens on the left, non-empty workspaces after those
+   , ppTitle = const ""  -- Don't show the focused window's title
+   , ppTitleSanitize = const ""  -- Also about window's title
+   , ppVisible = wrap "(" ")"  -- Non-focused (but still visible) screen
+   }
+
+toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
+
 main = do
     nScreens    <- countScreens
     -- spawnPipe ".startup"
-    xmonad $ defaultConfig {
+    xmonad =<< statusBar "xmonad" myPP toggleStrutsKey defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
         terminal                = "alacritty",
