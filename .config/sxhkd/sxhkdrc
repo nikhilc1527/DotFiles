@@ -8,7 +8,7 @@ super + w
       $BROWSER
 
 super + e
-      $TERM -e neomutt
+      $TERMINAL -e neomutt
 
 super + y
       discord
@@ -17,7 +17,7 @@ super + r
       lf
 
 super + Return
-      $TERM
+      $TERMINAL
 
 super + d
       dmenu_run
