@@ -45,8 +45,7 @@ bright = "#80c0ff"
 dark   = "#13294e"
 
 keyBindings conf = let m = modMask conf in fromList $ [
-    -- ((m                             , xK_Return     ), spawnHere "alacritty"),
-    -- ((m                             , xK_d          ), spawnHere launcher),
+    ((m                             , xK_s          ), spawnHere "sxhkd"),
     ((m                             , xK_q          ), kill),
     ((m .|. shiftMask               , xK_r          ), restart "xmonad" True),
     ((m .|. shiftMask               , xK_q          ), io (exitWith ExitSuccess)),
@@ -63,7 +62,6 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m                             , xK_k          ), windows focusDown),
     ((m .|. shiftMask               , xK_k          ), windows swapDown),
     ((m                             , xK_space      ), windows swapMaster),
-    -- ((m .|. shiftMask               , xK_space      ), windows focusMaster),
     ((m               .|. mod1Mask  , xK_1          ), withScreen 0 view),
     ((m .|. shiftMask .|. mod1Mask  , xK_1          ), withScreen 0 viewShift),
     ((m .|.               mod1Mask  , xK_2          ), withScreen 1 view),
@@ -74,12 +72,6 @@ keyBindings conf = let m = modMask conf in fromList $ [
     | (key, workspace) <- zip [xK_1..xK_9] (workspaces' conf)
     , (e, f)           <- [(0, view), (shiftMask, viewShift)]
     ]
-
--- TODO: add control/alt mask to all keybindings
-
-xmobarCommand (S s) = unwords ["xmobar", "-x", show s, "-t", template s] where
-    template 0 = "%StdinReader%"
-    template _ = "%date%%StdinReader%"
 
 pp h s = marshallPP s defaultPP {
     ppCurrent           = color "white",

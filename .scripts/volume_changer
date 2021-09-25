@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -x
+echo "$@"
+
+# set -x
 
 # Arbitrary but unique message id
 msgId="991049"

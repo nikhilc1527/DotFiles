@@ -13,18 +13,29 @@ super + e
 super + y
       discord
 
+super + r
+      lf
+
 super + Return
       $TERM
 
 super + d
       dmenu_run
 
+super + shift + d
+      passmenu
+
 super + BackSpace
       sysact
 
-super + {m,p,equal}
+super + {minus,plus,equal}
       volume_changer output {$(( $(pamixer --get-volume) - 5 )),$(( $(pamixer --get-volume) + 5 )),50}
 
-super + shift + {m,p,equal}
-      volume_changer input {$(( $(pamixer --get-volume) - 5 )),$(( $(pamixer --get-volume) + 5 )),10}
+super + control + {minus,plus,equal}
+      volume_changer input {$(( $(pamixer --default-source --get-volume) - 1 )),$(( $(pamixer --default-source --get-volume) + 1 )),10}
 
+super + Print
+      maim -s --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png
+
+super + shift + Print
+      maim --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png

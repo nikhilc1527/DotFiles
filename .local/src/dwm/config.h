@@ -155,33 +155,33 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		-1, XK_BackSpace,	spawn,		SHCMD("sysact") },
 
         // for output volumes
-	{ MODKEY,			-1, XK_m,   	spawn,		SHCMD("volume_changer output $(( $(pamixer --get-volume) - 5 ))") },
-	{ MODKEY,		        -1, XK_p,   	spawn,		SHCMD("volume_changer output $(( $(pamixer --get-volume) + 5 ))") },
-	{ MODKEY,			-1, XK_equal,   	spawn,		SHCMD("volume_changer output 50") },
+	/* { MODKEY,			-1, XK_m,   	spawn,		SHCMD("volume_changer output $(( $(pamixer --get-volume) - 5 ))") }, */
+	/* { MODKEY,		        -1, XK_p,   	spawn,		SHCMD("volume_changer output $(( $(pamixer --get-volume) + 5 ))") }, */
+	/* { MODKEY,			-1, XK_equal,   	spawn,		SHCMD("volume_changer output 50") }, */
 
-        // for input volumes
-	{ MODKEY|ShiftMask,	        -1, XK_p,   	spawn,		SHCMD("volume_changer input $(( $(pamixer --default-source --get-volume) + 1 ))") },
-	{ MODKEY|ShiftMask,		-1, XK_m,   	spawn,		SHCMD("volume_changer input $(( $(pamixer --default-source --get-volume) - 1 ))") },
-	{ MODKEY|ShiftMask,	        -1, XK_equal,   	spawn,		SHCMD("volume_changer input 10") },
+        /* // for input volumes */
+	/* { MODKEY|ShiftMask,	        -1, XK_p,   	spawn,		SHCMD("volume_changer input $(( $(pamixer --default-source --get-volume) + 1 ))") }, */
+	/* { MODKEY|ShiftMask,		-1, XK_m,   	spawn,		SHCMD("volume_changer input $(( $(pamixer --default-source --get-volume) - 1 ))") }, */
+	/* { MODKEY|ShiftMask,	        -1, XK_equal,   	spawn,		SHCMD("volume_changer input 10") } */,
 
         /* { MODKEY,		        -1, XK_t,   	spawn,		SHCMD("dt") }, */
         
 	{ MODKEY,			-1, XK_Tab,		view,		{0} },
 	/* { MODKEY|ShiftMask,		-1, XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			-1, XK_q,		killclient,	{0} },
-	{ MODKEY,			-1, XK_w,		spawn,		SHCMD("$BROWSER") },
-	{ MODKEY|ShiftMask,		-1, XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") },
-	{ MODKEY,			-1, XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
-	{ MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e ranger") },
-	{ MODKEY|ShiftMask,		-1, XK_r,		spawn,		SHCMD(TERMINAL " -e htop") },
+	/* { MODKEY,			-1, XK_w,		spawn,		SHCMD("$BROWSER") }, */
+	/* { MODKEY|ShiftMask,		-1, XK_w,		spawn,		SHCMD(TERMINAL " -e sudo nmtui") }, */
+	/* { MODKEY,			-1, XK_e,		spawn,		SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") }, */
+	/* { MODKEY,			-1, XK_r,		spawn,		SHCMD(TERMINAL " -e ranger") }, */
+	/* { MODKEY|ShiftMask,		-1, XK_r,		spawn,		SHCMD(TERMINAL " -e htop") }, */
 	/* { MODKEY|ShiftMask,		-1, XK_backslash,		spawn,		SHCMD("") }, */
 
 	{ MODKEY,			-1, XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		-1, XK_a,		defaultgaps,	{0} },
 	{ MODKEY,			-1, XK_s,		togglesticky,	{0} },
 	/* { MODKEY|ShiftMask,		-1, XK_s,		spawn,		SHCMD("") }, */
-	{ MODKEY,			-1, XK_d,		spawn,          SHCMD("dmenu_run") },
-	{ MODKEY|ShiftMask,		-1, XK_d,		spawn,		SHCMD("passmenu") },
+	/* { MODKEY,			-1, XK_d,		spawn,          SHCMD("dmenu_run") }, */
+	/* { MODKEY|ShiftMask,		-1, XK_d,		spawn,		SHCMD("passmenu") }, */
 	{ MODKEY,			-1, XK_f,		togglefullscr,	{0} },
 	{ MODKEY,			-1, XK_g,		shiftview,	{ .i = -1 } },
 	{ MODKEY|ShiftMask,		-1, XK_g,		shifttag,	{ .i = -1 } },
@@ -189,7 +189,7 @@ static Key keys[] = {
 	/* J and K are automatically bound above in STACKEYS */
 	{ MODKEY,			-1, XK_l,		setmfact,      	{.f = +0.05} },
         // i3lock -t -i ~/MyFiles/Nikhil/scaled_wallpaper.png
-        { MODKEY|ShiftMask,		-1, XK_x,	        spawn,      	SHCMD("$HOME/.scripts/my_lock") },
+        /* { MODKEY|ShiftMask,		-1, XK_x,	        spawn,      	SHCMD("$HOME/.scripts/my_lock") }, */
 	{ MODKEY,			-1, XK_semicolon,	shiftview,	{ .i = 1 } },
 	{ MODKEY|ShiftMask,		-1, XK_semicolon,	shifttag,	{ .i = 1 } },
 	{ MODKEY,			-1, XK_apostrophe,	togglescratch,	{.ui = 1} },
@@ -197,8 +197,9 @@ static Key keys[] = {
 	{ MODKEY,			-1, XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		-1, XK_Return,	togglescratch,	{.ui = 0} },
 
-	{ MODKEY,			-1, XK_Print,	spawn,		SHCMD("maim -s --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png") },
-	{ MODKEY|ShiftMask,		-1, XK_Print,       spawn,          SHCMD("maim --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png") },
+	/* { MODKEY,			-1, XK_Print,	spawn,		SHCMD("maim -s --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png") }, */
+	/* { MODKEY|ShiftMask,		-1, XK_Print,       spawn,          SHCMD("maim --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png") }, */
+	{ MODKEY|ShiftMask,		-1, XK_s        ,       spawn,          SHCMD("sxhkd") },
 
 	{ MODKEY,			-1, XK_z,		incrgaps,	{.i = +3 } },
 	/* { MODKEY|ShiftMask,		-1, XK_z,		spawn,		SHCMD("") }, */
@@ -206,8 +207,7 @@ static Key keys[] = {
 
 	{ MODKEY,			-1, XK_b,		togglebar,	{0} },        
 
-	{ MODKEY,			-1, XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,			-1, XK_F11,		spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
+	/* { MODKEY,			-1, XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") }, */
 	{ MODKEY,			-1, XK_space,	zoom,		{0} },
 	{ MODKEY|ShiftMask,		-1, XK_space,	togglefloating,	{0} },
 	{ MODKEY,			-1, XK_Scroll_Lock,	spawn,		SHCMD("killall screenkey || screenkey &") },
