@@ -94,7 +94,8 @@ pp h s = marshallPP s defaultPP {
     }
     where color c = xmobarColor c ""
 
-myLayout = spacingRaw False (Border 10 0 10 0) True (Border 0 10 0 10) True $ tiled ||| Mirror tiled ||| Full
+borderSize = 10
+myLayout = spacingRaw False (Border borderSize 0 borderSize 0) True (Border 0 borderSize 0 borderSize) True $ tiled ||| Mirror tiled ||| Full
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
