@@ -6,10 +6,10 @@ xmonad.hs:81:23: warning: [-Wdeprecations]
 81 | pp h s = marshallPP s defaultPP {
    |                       ^^^^^^^^^
 
-xmonad.hs:120:90: warning: [-Wdeprecations]
+xmonad.hs:121:9: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-120 |     xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
-    |                                                                                          ^^^^^^^^^^^^^
+121 |       $ defaultConfig {
+    |         ^^^^^^^^^^^^^
