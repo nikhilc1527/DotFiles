@@ -26,6 +26,7 @@ import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout
+import XMonad.Layout.Gaps
 -- import XMonad.Layout.Tall
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig
@@ -121,11 +122,23 @@ pp h s = marshallPP s defaultPP {
     }
     where color c = xmobarColor c ""
 
+myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ tiled ||| Mirror tiled ||| Full
+  where
+    -- default tiling algorithm partitions the screen into two panes
+    tiled   = Tall nmaster delta ratio
 
+    -- The default number of windows in the master pane
+    nmaster = 1
+
+    -- Default proportion of screen occupied by master pane
+    ratio   = 1/2
+
+    -- Percent of screen to increment by when resizing panes
+    delta   = 3/100
 
 main = do
     nScreens    <- countScreens
-    hs          <- mapM (spawnPipe . xmobarCommand) [0 .. nScreens-1]
+    -- hs          <- mapM (spawnPipe . xmobarCommand) [0 .. nScreens-1]
     xmonad $ defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
@@ -134,13 +147,13 @@ main = do
         focusedBorderColor      = bright,
         modMask                 = mod4Mask,
         keys                    = keyBindings,
-        layoutHook = spacingRaw False (Border 10 0 10 0) True (Border 0 10 0 10) True $ Tall (1 (3/100) (1/2)) ||| Full,
+        layoutHook              = myLayout,
         manageHook              = floatAll ["Gimp", "Wine"]
                                   <+> (title =? "CGoban: Main Window" --> doF sinkFocus)
                                   <+> (isFullscreen --> doFullFloat)
                                   <+> fullscreenMPlayer
                                   -- <+> manageDocks
-                                  <+> manageSpawn,
-        logHook                 = mapM_ dynamicLogWithPP $ zipWith pp hs [0..nScreens]
+                                  <+> manageSpawn
+        -- logHook                 = mapM_ dynamicLogWithPP $ zipWith pp hs [0..nScreens]
         -- startupHook             = setWMName "LG3D" -- gotta keep this until all the machines I use have the version of openjdk that respects _JAVA_AWT_WM_NONREPARENTING`
         }
