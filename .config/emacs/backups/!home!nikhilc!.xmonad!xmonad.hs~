@@ -116,8 +116,8 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 
 main = do
     nScreens    <- countScreens
-    -- spawnPipe ".startup"
-    xmonad =<< statusBar "xmonad" myPP toggleStrutsKey defaultConfig {
+    spawnPipe ".startup"
+    xmonad =<< statusBar "xmobar" myPP toggleStrutsKey defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
         terminal                = "alacritty",
