@@ -1,7 +1,13 @@
 
-xmonad.hs:58:92: error:
-    Not in scope: ‘W.sink’
-    No module named ‘W’ is imported.
+xmonad.hs:60:56: error:
+    • Couldn't match expected type ‘(Window -> X ()) -> X ()’
+                  with actual type ‘X ()’
+    • The first argument of ($) takes one argument,
+      but its type ‘X ()’ has none
+      In the expression: sendMessage withFocused $ windows . sink
+      In the expression:
+        ((m .|. shiftMask, xK_space), 
+         sendMessage withFocused $ windows . sink)
    |
-58 |     ((m .|. shiftMask               , xK_space      ), sendMessage withFocused $ windows . W.sink),
-   |                                                                                            ^^^^^^
+60 |     ((m .|. shiftMask               , xK_space      ), sendMessage withFocused $ windows . W.sink),
+   |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -33,6 +33,8 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Util.WorkspaceCompare ( getSortByXineramaRule )
 
+import qualified XMonad.StackSet as W
+
 centerMouse = warpToWindow (1/2) (1/2)
 statusBarMouse = warpToScreen 0 (5/1600) (5/1200)
 withScreen screen f = screenWorkspace screen >>= flip whenJust (windows . f)
