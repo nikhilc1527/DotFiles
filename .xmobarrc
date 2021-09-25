@@ -1,54 +1,38 @@
-Config
-   { font = "mono:12:antialias=true"
-   , additionalFonts = []        -- default: []
-   , borderColor = "white"
-   , border = NoBorder
-   , bgColor = "black"
-   , fgColor = "white"
-   , alpha = 255                 -- default: 255
-   , position = TopSize C 100 26
-   , textOffset = -1             -- default: -1
-   , iconOffset = -1             -- default: -1
-   , lowerOnStart = True
-   , pickBroadest = False        -- default: False
-   , persistent = True
-   , hideOnStart = False
-   , iconRoot = "/home/dino/.xmonad/resources"  -- default: "."
-   , allDesktops = True          -- default: True
-   , overrideRedirect = False    -- default: True
-   , commands =
-      [ Run CoreTemp
-         [ "-t", "<icon=thermometer-icon_24.xpm/><core0>°C"
-         , "-H", "60", "-h", "red"
-         , "-L", "40", "-l", "lightblue"
-         , "-n", "white"
-         ] 50
-      , Run Date
-         "<icon=calendar-clock-icon_24.xpm/> <fc=#ee9a00>%Y-%b-%0d %a %H:%M:%S</fc>"
-         "date" 10
-      , Run DiskU
-         [ ("/", "<icon=harddisk-icon_24.xpm/> <usedp>% used, <free> free") ]
-         [] 20
-      , Run DynNetwork
-         [ "-t", "<icon=network-icon_24.xpm/> <dev> <icon=actions-arrow-down-icon_24.xpm/><rx>KB <icon=actions-arrow-up-icon_24.xpm/><tx>KB . "
-         ] 10
-      , Run Memory
-         [ "-t", "<icon=memory-icon_24.xpm/> <usedratio>% used, <available>M free"] 10
-      , Run MultiCpu
-         [ "-t", "<icon=gnome_cpu_24.xpm/> <total0> <total1> <total2> <total3>"
-         , "-p", "3"
-         , "-H", "50", "-h", "red"
-         , "-L", "3"
-         , "-n", "green"
-         ] 10
-      , Run Weather "KRDU"
-         [ "-t", "KRDU: <tempF>°F"
-         , "-L", "34", "-H", "93"
-         , "--normal", "green", "--high", "red", "--low", "lightblue"
-         ] 36000
-      ]
-   , sepChar = "%"
-   , alignSep = "}{"
-
-   , template = "%StdinReader% . %multicpu% . %coretemp% . %memory% . %disku% }{ %dynnetwork%%battery% . <icon=sun-rain-icon_24.xpm/> %KRDU% . %date%"
-   }
+Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C",
+                                          "-L","18","-H","25",
+                                          "--normal","green",
+                                          "--high","red",
+                                          "--low","lightblue"] 36000
+                    , Run Network "eth0" ["-L","0","-H","32",
+                                          "--normal","green","--high","red"] 10
+                    , Run Network "eth1" ["-L","0","-H","32",
+                                          "--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %eth0% - %eth1% }\
+                    \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
+       }
