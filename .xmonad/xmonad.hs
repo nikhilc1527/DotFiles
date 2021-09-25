@@ -45,8 +45,8 @@ bright = "#80c0ff"
 dark   = "#13294e"
 
 keyBindings conf = let m = modMask conf in fromList $ [
-    ((m                             , xK_Return     ), spawnHere "alacritty"),
-    ((m                             , xK_d          ), spawnHere launcher),
+    -- ((m                             , xK_Return     ), spawnHere "alacritty"),
+    -- ((m                             , xK_d          ), spawnHere launcher),
     ((m                             , xK_q          ), kill),
     ((m .|. shiftMask               , xK_r          ), restart "xmonad" True),
     ((m .|. shiftMask               , xK_q          ), io (exitWith ExitSuccess)),
@@ -64,8 +64,8 @@ keyBindings conf = let m = modMask conf in fromList $ [
     ((m .|. shiftMask .|. mod1Mask  , xK_1          ), withScreen 0 viewShift),
     ((m .|.               mod1Mask  , xK_2          ), withScreen 1 view),
     ((m .|. shiftMask .|. mod1Mask  , xK_2          ), withScreen 1 viewShift),
-    ((m                             , xK_w          ), spawnHere "qutebrowser"),
-    ((m                             , xK_e          ), spawnHere "alacritty -e neomutt")
+    -- ((m                             , xK_w          ), spawnHere "qutebrowser"),
+    -- ((m                             , xK_e          ), spawnHere "alacritty -e neomutt")
     ] ++ [
     ((m .|. e, key   ), windows (onCurrentScreen f workspace))
     | (key, workspace) <- zip [xK_1..xK_9] (workspaces' conf)
@@ -117,10 +117,7 @@ toggleStrutsKey XConfig { XMonad.modMask = modMask } = (modMask, xK_b)
 main = do
     nScreens    <- countScreens
     spawnPipe ".startup"
-    spawnPipe "xmobar --screen=0"
-    spawnPipe "xmobar --screen=1"
-    xmonad -- =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey 
-      $ defaultConfig {
+    xmonad =<< statusBar "xmobar --screen=0 &; xmobar --screen=1 &" myPP toggleStrutsKey defaultConfig {
         borderWidth             = 2,
         workspaces              = withScreens nScreens (map show [1..9]),
         terminal                = "alacritty",

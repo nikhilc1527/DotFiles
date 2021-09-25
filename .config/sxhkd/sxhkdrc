@@ -1,5 +1,14 @@
 super + t ; {a,l,d}
       dt {add,list,done}
 
+super + shift + x
+      my_lock
+
+super + w
+      $BROWSER
+
+super + Return
+      $TERM
+
 # super + BackSpace
 #       sysact
