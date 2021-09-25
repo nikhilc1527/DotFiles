@@ -28,10 +28,16 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
 
+-- ewmh
+import XMonad.Hooks.EwmhDesktops
+
+-- for xmobar
+import XMonad.Hooks.DynamicLog
+
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "st"
+myTerminal      = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -260,7 +266,7 @@ myManageHook =
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -282,13 +288,19 @@ myStartupHook = do
   -- spawn "/home/nikhilc/.scripts/.startup"
   return ()
 
+myXmobarPP :: PP
+myXmobarPP = def
+
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  xmonad $ docks $ defaultConfig
+  xmonad
+    . docks
+    . ewmh
+    . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc0" (pure myXmobarPP)) toggleStrutsKey
     {
       -- simple stuff
         terminal           = myTerminal,
@@ -311,3 +323,6 @@ main = do
         logHook            = myLogHook,
         startupHook        = myStartupHook
     }
+  where
+    toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
+    toggleStrutsKey XConfig{ modMask = m } = (m, xK_b)
