@@ -24,6 +24,10 @@ import XMonad.Layout.Grid
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Spacing
+import XMonad.Layout
+import XMonad.Layout.Gaps
+-- import XMonad.Layout.Tall
 import XMonad.Util.Dzen
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
@@ -32,10 +36,7 @@ centerMouse = warpToWindow (1/2) (1/2)
 statusBarMouse = warpToScreen 0 (5/1600) (5/1200)
 withScreen screen f = screenWorkspace screen >>= flip whenJust (windows . f)
 
-makeLauncher yargs run exec close = concat
-    ["exe=`yeganesh ", yargs, "` && ", run, " ", exec, "$exe", close]
-launcher     = makeLauncher "" "eval" "\"exec " "\""
-termLauncher = makeLauncher "-p withterm" "exec urxvt -e" "" ""
+launcher     = "dmenu_run"
 viewShift  i = view i . shift i
 floatAll     = composeAll . map (\s -> className =? s --> doFloat)
 sinkFocus    = peek >>= maybe id sink
@@ -61,32 +62,10 @@ fullscreenMPlayer = className =? "MPlayer" --> do
         liftX  $ withScreen s view
         return . Endo $ view ws . shiftWin ws w
 
-main = do
-    nScreens    <- countScreens
-    hs          <- mapM (spawnPipe . xmobarCommand) [0 .. nScreens-1]
-    xmonad $ defaultConfig {
-        borderWidth             = 2,
-        workspaces              = withScreens nScreens (map show [1..5]),
-        terminal                = "alacritty",
-        normalBorderColor       = dark,
-        focusedBorderColor      = bright,
-        modMask                 = mod4Mask,
-        keys                    = keyBindings,
-        layoutHook              = magnifierOff $ avoidStruts (GridRatio 0.9) ||| noBorders Full,
-        manageHook              = floatAll ["Gimp", "Wine"]
-                                  <+> (title =? "CGoban: Main Window" --> doF sinkFocus)
-                                  <+> (isFullscreen --> doFullFloat)
-                                  <+> fullscreenMPlayer
-                                  <+> manageDocks
-                                  <+> manageSpawn,
-        logHook                 = mapM_ dynamicLogWithPP $ zipWith pp hs [0..nScreens],
-        startupHook             = setWMName "LG3D" -- gotta keep this until all the machines I use have the version of openjdk that respects _JAVA_AWT_WM_NONREPARENTING`
-        }
-
 keyBindings conf = let m = modMask conf in fromList $ [
     ((m                , xK_Return  ), spawnHere "alacritty"),
     ((m                , xK_d          ), spawnHere launcher),
-    ((m .|. shiftMask  , xK_p          ), spawnHere termLauncher),
+    -- ((m .|. shiftMask  , xK_p          ), spawnHere termLauncher),
     ((m                , xK_q          ), kill),
     ((m .|. shiftMask  , xK_r          ), restart "xmonad" True),
     ((m .|. shiftMask  , xK_q          ), io (exitWith ExitSuccess)),
@@ -142,3 +121,39 @@ pp h s = marshallPP s defaultPP {
     ppOutput            = hPutStrLn h
     }
     where color c = xmobarColor c ""
+
+myLayout = gaps [(U, 10), (R, 10), (L, 10), (D, 10)] $ tiled ||| Mirror tiled ||| Full
+  where
+    -- default tiling algorithm partitions the screen into two panes
+    tiled   = Tall nmaster delta ratio
+
+    -- The default number of windows in the master pane
+    nmaster = 1
+
+    -- Default proportion of screen occupied by master pane
+    ratio   = 1/2
+
+    -- Percent of screen to increment by when resizing panes
+    delta   = 3/100
+
+main = do
+    nScreens    <- countScreens
+    -- hs          <- mapM (spawnPipe . xmobarCommand) [0 .. nScreens-1]
+    xmonad $ defaultConfig {
+        borderWidth             = 2,
+        workspaces              = withScreens nScreens (map show [1..9]),
+        terminal                = "alacritty",
+        normalBorderColor       = dark,
+        focusedBorderColor      = bright,
+        modMask                 = mod4Mask,
+        keys                    = keyBindings,
+        layoutHook              = myLayout,
+        manageHook              = floatAll ["Gimp", "Wine"]
+                                  <+> (title =? "CGoban: Main Window" --> doF sinkFocus)
+                                  <+> (isFullscreen --> doFullFloat)
+                                  <+> fullscreenMPlayer
+                                  -- <+> manageDocks
+                                  <+> manageSpawn
+        -- logHook                 = mapM_ dynamicLogWithPP $ zipWith pp hs [0..nScreens]
+        -- startupHook             = setWMName "LG3D" -- gotta keep this until all the machines I use have the version of openjdk that respects _JAVA_AWT_WM_NONREPARENTING`
+        }
