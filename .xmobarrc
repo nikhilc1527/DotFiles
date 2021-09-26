@@ -32,6 +32,6 @@ Config { font = "mono:12"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | %memory% * %swap% | %eth0% - %eth1% }\
+       , template = "%cpu% | %memory% * %swap% | %eth0% }\
                     \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
        }
