@@ -46,6 +46,8 @@ update_packages &
 
 # feh --bg-scale ~/MyFiles/Junk/Meee.png
 nitrogen --restore
+# set pywal with nitrogen saved wallpaper
+cat .config/nitrogen/bg-saved.cfg | grep file | awk -F= '{print $2}' | xargs wal -i
 emacs --daemon &
 setxkbmap -option compose:ralt
 gromit-mpx &
