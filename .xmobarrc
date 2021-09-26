@@ -31,6 +31,6 @@ Config { font = "mono:12"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = %StdinReader || "%cpu% | %memory% * %swap% | %dynnetwork% }\
+       , template = "%StdinReader || %cpu% | %memory% * %swap% | %dynnetwork% }\
                     \{ <fc=#ee9a00>%date%</fc>| %EGPF% | %uname%"
        }
