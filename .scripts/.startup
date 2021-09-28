@@ -48,6 +48,8 @@ update_packages &
 nitrogen --restore
 # set pywal with nitrogen saved wallpaper
 cat .config/nitrogen/bg-saved.cfg | grep file | awk -F= '{print $2}' | xargs wal -i
+redshift -P -O 5000
+
 emacs --daemon &
 setxkbmap -option compose:ralt
 gromit-mpx &
