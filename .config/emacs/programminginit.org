@@ -442,3 +442,19 @@ Lsp user interface
         :major-modes '(d-mode)
         :server-id 'dls))
 #+END_SRC
+
+* haskell
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'haskell-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends)
+                   (append '((company-capf company-dabbrev-code))
+                           company-backends))))
+     (require 'haskell-interactive-mode)
+     (require 'haskell-process)
+     (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+     (custom-set-variables
+       '(haskell-process-suggest-remove-import-lines t)
+       '(haskell-process-auto-import-loaded-modules t)
+       '(haskell-process-log t))
+#+END_SRC

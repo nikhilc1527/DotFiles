@@ -131,27 +131,29 @@ Load the programming init file
 #+END_SRC
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
-    (setq inhibit-startup-message t)
-    (defalias 'yes-or-no-p 'y-or-n-p)
-    (tool-bar-mode -1)
-    (global-set-key (kbd "<f5>") 'revert-buffer)
-    (setq visible-bell 1)
-    (toggle-scroll-bar -1)
-    (show-paren-mode 1)
-    (setq electric-pair-preserve-balance nil)
-    (global-hl-line-mode 1)
-    (save-place-mode t)
-    (setq-default indent-tabs-mode nil)
-    (put 'erase-buffer 'disabled nil)
-    (put 'narrow-to-region 'disabled nil)
-    (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
+     (setq inhibit-startup-message t)
+     (defalias 'yes-or-no-p 'y-or-n-p)
+     (tool-bar-mode -1)
+     (global-set-key (kbd "<f5>") 'revert-buffer)
+     (setq visible-bell 1)
+     (toggle-scroll-bar -1)
+     (show-paren-mode 1)
+     (setq electric-pair-preserve-balance nil)
+     (global-hl-line-mode 1)
+     (save-place-mode t)
+     (setq-default indent-tabs-mode nil)
+     (put 'erase-buffer 'disabled nil)
+     (put 'narrow-to-region 'disabled nil)
+     (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
 
-  (prefer-coding-system       'utf-8)
-  (set-default-coding-systems 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8)    
-  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-  (set-language-environment "UTF-8")
+   (prefer-coding-system       'utf-8)
+   (set-default-coding-systems 'utf-8)
+   (set-terminal-coding-system 'utf-8)
+   (set-keyboard-coding-system 'utf-8)    
+   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+   (set-language-environment "UTF-8")
+
+  (set-frame-parameter (selected-frame) 'alpha '(85 50))
 
 #+END_SRC
 Cursor type
@@ -315,7 +317,25 @@ Clear the buffer in eshell mode
     "Sets the transparency of the frame window. 0=transparent/100=opaque"
     (interactive "nTransparency Value 0 - 100 opaque:")
     (set-frame-parameter (selected-frame) 'alpha value))
-  (set-frame-parameter (selected-frame) 'alpha '(85 50))
+ (set-frame-parameter (selected-frame)'alpha '(90 . 90))
+ (add-to-list 'default-frame-alist'(alpha . (90 . 90)))
+
+  (defun my-increase-opacity()
+    (interactive)
+    (let ((increase (+ 10 (car (frame-parameter nil 'alpha)))))
+      (if (> increase 99)(setq increase 99))
+      (set-frame-parameter (selected-frame) 'alpha (values increase 75)))
+    )
+
+  (defun my-decrease-opacity()
+    (interactive)
+    (let ((decrease (- (car (frame-parameter nil 'alpha)) 10)))
+      (if (< decrease 20)(setq decrease 20))
+      (set-frame-parameter (selected-frame) 'alpha (values decrease 75)))
+    )
+
+  (global-set-key (kbd "M-") 'my-increase-opacity)
+  (global-set-key (kbd "M-") 'my-decrease-opacity)
   ;; (add-to-list 'default-frame-alist '(alpha 85 58))
 #+END_SRC
 * theme

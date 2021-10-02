@@ -39,6 +39,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME"/gnupg
 export MBSYNCRC="$XDG_CONFIG_HOME"/mbsyncrc
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch-config
 export TASKRC="$XDG_CONFIG_HOME"/taskrc
+export ABDUCO_SOCKET_DIR="$XDG_STATE_HOME"/abduco
 
 export ZDOTDIR=$HOME/.config/zsh
 
