@@ -16,6 +16,7 @@ config.bind("xx", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh 
 config.bind("xy", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host} choose")
 config.bind("pt", "open -t {clipboard}")
 config.bind("po", "print -f /tmp/page.pdf ;; spawn ~/.local/share/qutebrowser/scripts/open_zathura_page.sh")
+config.bind("sc", "open -t sch ;; spawn \"sleep 0.5 ; xdotool type fd\"")
 
 
 # custom search engines
