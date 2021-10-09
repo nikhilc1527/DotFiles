@@ -342,7 +342,7 @@ Clear the buffer in eshell mode
 #+BEGIN_SRC emacs-lisp
 (setf custom-safe-themes t)
 (use-package gruvbox-theme :ensure t)
-(load-theme 'gruvbox-dark-hard)
+(load-theme 'doom-one)
 #+END_SRC
 
 * mu4e

@@ -15,6 +15,8 @@ alias python='python3'
 
 alias d='devour'
 
+alias ddg='dragon-drag-and-drop'
+
 alias hw='[ -f hw.tex ] && mkdir temp && pdflatex -output-directory=temp hw.tex && devour zathura temp/hw.pdf && rm -rf temp'
 
 alias g+='g++ -fsanitize=address,undefined -g -oout -std=c++17 '
@@ -106,7 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "$XDG_DATA_HOME/fzf.sh" ] && bash "$XDG_DATA_HOME"/fzf.sh
 # test
 
-. ~/.local/src/Extract/extract 
+# . ~/.local/src/Extract/extract 
 
 reblue() {
     bluetoothctl power off
