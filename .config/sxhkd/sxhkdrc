@@ -34,8 +34,5 @@ super + {minus,plus,equal}
 super + control + {minus,plus,equal}
       volume_changer input {$(( $(pamixer --default-source --get-volume) - 1 )),$(( $(pamixer --default-source --get-volume) + 1 )),10}
 
-super + Print
-      maim -s --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png
-
-super + shift + Print
-      maim --format=png ~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png
+super + {shift} + Print
+      OUT=~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png; maim {,-s} --format=png $OUT && copyq write image/png - < $OUT && copyq select 0
