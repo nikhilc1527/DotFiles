@@ -69,4 +69,6 @@ publicify &
 
 clipmenud &
 
+copyq --start-server &
+
 notify-send -u low "finished startup script"
