@@ -40,6 +40,8 @@ update_pkglist() {
     yay    -Sl aur          >> ~/.cache/pkglist
 }
 
+fd -L --max-depth 4 -p /home/nikhilc > ~/.cache/fd_dirs
+
 update_pkglist &
 update_packages &
 /home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &

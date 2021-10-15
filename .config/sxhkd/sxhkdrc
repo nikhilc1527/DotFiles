@@ -19,6 +19,9 @@ super + r
 super + Return
       $TERMINAL
 
+super + shift + Return
+      cat ~/.cache/fd_dirs | dmenu | xargs $TERMINAL --working-directory
+
 super + d
       dmenu_run
 
