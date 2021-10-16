@@ -238,13 +238,14 @@ When cursor jumps, new cursor position is highlighted so that you dont loose the
 
 ** multiple cursors
 #+BEGIN_SRC emacs-lisp
-(use-package multiple-cursors
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c C-c") 'mc/edit-lines)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+  (use-package multiple-cursors
+    :ensure t
+    :config
+    (global-set-key (kbd "C-c C-c") 'mc/edit-lines)
+    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+    (global-set-key (kbd "<C-M-mouse-1>") 'mc/add-cursor-on-click))
 #+END_SRC
 
 ** which key
@@ -304,44 +305,45 @@ it gives you a small prompt with all possible next key strokes
 * custom made functions
 Clear the buffer in eshell mode
 #+BEGIN_SRC emacs-lisp
-  ;; (defun save-compile-dwm ()
-  ;;   (when (eq (symbol-value buffer-file-name) "/home/nikhil/.local/src/dwm/config.h")
-  ;;     (start-process "make && plz make install && kill -HUP $(pgrep -u $USER \"\bdwm$\"")
-  ;;     )
-  ;;   )
-  ;; (add-hook 'after-save-hook 'save-compile-dwm)
+   ;; (defun save-compile-dwm ()
+   ;;   (when (eq (symbol-value buffer-file-name) "/home/nikhil/.local/src/dwm/config.h")
+   ;;     (start-process "make && plz make install && kill -HUP $(pgrep -u $USER \"\bdwm$\"")
+   ;;     )
+   ;;   )
+   ;; (add-hook 'after-save-hook 'save-compile-dwm)
 
 
 
-  (defun transparency (value)
-    "Sets the transparency of the frame window. 0=transparent/100=opaque"
-    (interactive "nTransparency Value 0 - 100 opaque:")
-    (set-frame-parameter (selected-frame) 'alpha value))
- (set-frame-parameter (selected-frame)'alpha '(90 . 90))
- (add-to-list 'default-frame-alist'(alpha . (90 . 90)))
+   (defun transparency (value)
+     "Sets the transparency of the frame window. 0=transparent/100=opaque"
+     (interactive "nTransparency Value 0 - 100 opaque:")
+     (set-frame-parameter (selected-frame) 'alpha value))
+  (set-frame-parameter (selected-frame)'alpha '(90 . 90))
+  (add-to-list 'default-frame-alist'(alpha . (90 . 90)))
 
-  (defun my-increase-opacity()
-    (interactive)
-    (let ((increase (+ 10 (car (frame-parameter nil 'alpha)))))
-      (if (> increase 99)(setq increase 99))
-      (set-frame-parameter (selected-frame) 'alpha (values increase 75)))
-    )
+   (defun my-increase-opacity()
+     (interactive)
+     (let ((increase (+ 10 (car (frame-parameter nil 'alpha)))))
+       (if (> increase 99)(setq increase 99))
+       (set-frame-parameter (selected-frame) 'alpha (values increase 75)))
+     )
 
-  (defun my-decrease-opacity()
-    (interactive)
-    (let ((decrease (- (car (frame-parameter nil 'alpha)) 10)))
-      (if (< decrease 20)(setq decrease 20))
-      (set-frame-parameter (selected-frame) 'alpha (values decrease 75)))
-    )
+   (defun my-decrease-opacity()
+     (interactive)
+     (let ((decrease (- (car (frame-parameter nil 'alpha)) 10)))
+       (if (< decrease 20)(setq decrease 20))
+       (set-frame-parameter (selected-frame) 'alpha (values decrease 75)))
+     )
 
-  (global-set-key (kbd "M-") 'my-increase-opacity)
-  (global-set-key (kbd "M-") 'my-decrease-opacity)
-  ;; (add-to-list 'default-frame-alist '(alpha 85 58))
+   ;; (global-set-key (kbd "M-") 'my-increase-opacity)
+   ;; (global-set-key (kbd "M-") 'my-decrease-opacity)
+   ;; (add-to-list 'default-frame-alist '(alpha 85 58))
 #+END_SRC
 * theme
 #+BEGIN_SRC emacs-lisp
 (setf custom-safe-themes t)
 (use-package gruvbox-theme :ensure t)
+(use-package doom-themes :ensure t)
 (load-theme 'doom-one)
 #+END_SRC
 
