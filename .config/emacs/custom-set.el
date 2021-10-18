@@ -25,6 +25,7 @@
  '(default-input-method "TeX")
  '(display-line-numbers 'relative)
  '(display-line-numbers-type 'relative)
+ '(doom-one-brighter-comments t)
  '(dynamic-completion-mode t)
  '(elpy-rpc-python-command "python3")
  '(enable-recursive-minibuffers t)
@@ -146,7 +147,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil))))
+ '(custom-comment ((t nil)))
  '(flycheck-warning ((t (:underline (:color "yellow" :style wave)))))
+ '(haskell-literate-comment-face ((t nil)))
  '(hl-line ((t (:extend t :background "#343850" :underline nil))))
  '(lsp-ui-doc-background ((t (:background nil))))
  '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic))))))
