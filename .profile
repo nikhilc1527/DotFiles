@@ -52,4 +52,9 @@ export ANDROID_SDK_ROOT=$HOME/MyFiles/AndroidSDK2
 export ANDROID_SDK_PATH=$HOME/MyFiles/AndroidSDK2
 export ANDROID_HOME=$HOME/MyFiles/AndroidSDK2
 
+# ibus stuff
+GTK_IM_MODULE=ibus 
+QT_IM_MODULE=ibus
+XMODIFIERS="@im=ibus"
+
 export DEFAULT_SESSION="dwm"

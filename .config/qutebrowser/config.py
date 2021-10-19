@@ -14,9 +14,9 @@ config.bind("X", "hint links spawn mpv {hint-url}")
 
 config.bind("xx", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host}")
 config.bind("xy", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host} choose")
+config.bind("xz", "spawn ~/.local/share/qutebrowser/scripts/qute_pass_insert.sh {url:host} choose no_user")
 config.bind("pt", "open -t {clipboard}")
 config.bind("po", "print -f /tmp/page.pdf ;; spawn ~/.local/share/qutebrowser/scripts/open_zathura_page.sh")
-config.bind("sc", "open -t sch ;; spawn \"sleep 0.5 ; xdotool type fd\"")
 
 
 # custom search engines
