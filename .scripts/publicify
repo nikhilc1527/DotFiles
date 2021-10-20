@@ -5,7 +5,7 @@ ssh -R 6969:localhost:22 root@nikhilchatterjee.com -N &
 
 # start vnc server
 killall x0vncserver
-x0vncserver -Display :0 -PasswordFile ~/.config/vnc/passwd &
+x0vncserver -Display :0 -PasswordFile ~/.config/vnc/passwd -Geometry 1920x1200+0+0 &
 
 # forward vnc server to port 420
 ssh -R 420:localhost:5900 root@nikhilchatterjee.com -N &
