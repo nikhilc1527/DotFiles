@@ -1,6 +1,9 @@
 super + t ; {a,l,d}
       dt {add,list,done}
 
+super + v
+      ddg_last_download
+
 super + shift + x
       my_lock
 

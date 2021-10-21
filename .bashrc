@@ -83,14 +83,12 @@ scale() {
 
 mv_download() {
     name=$(/usr/bin/ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
-    # echo "mv ~/Downloads/$name $1"
     echo ~/Downloads/$name $1 | xargs mv
 }
 
 mv_picture() {
-    name=$(ls -t ~/Pictures/ | head -n1 | sed 's/ /\\ /g')
-    # echo "mv ~/Downloads/$name $1"
-    echo ~/Pictures/$name $1 | xargs mv
+    name=$(/usr/bin/ls -t ~/Pictures/ | head -n1 | sed 's/ /\\ /g')
+    echo ~/Downloads/$name $1 | xargs mv
 }
 
 network_scan() {
