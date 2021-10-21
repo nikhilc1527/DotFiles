@@ -6,14 +6,14 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/nikhilc/Downloads"/>
-  <property name="lastOpenPath" value="/home/nikhilc/Downloads"/>
+  <property name="lastSavePath" value="/tmp/fiverr"/>
+  <property name="lastOpenPath" value="/tmp/qutebrowser-downloads-fpz5kwk1"/>
   <property name="lastImagePath" value="/home/nikhilc/MyFiles/Junk"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1654"/>
-  <property name="mainWndHeight" value="1007"/>
+  <property name="mainWndWidth" value="844"/>
+  <property name="mainWndHeight" value="1157"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
@@ -232,7 +232,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="ffffff"/>
+      <attribute name="color" type="hex" value="000000"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>

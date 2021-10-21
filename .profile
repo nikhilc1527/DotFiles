@@ -52,6 +52,8 @@ export ANDROID_SDK_ROOT=$HOME/MyFiles/AndroidSDK2
 export ANDROID_SDK_PATH=$HOME/MyFiles/AndroidSDK2
 export ANDROID_HOME=$HOME/MyFiles/AndroidSDK2
 
+export DISPLAY=:0
+
 # ibus stuff
 GTK_IM_MODULE=ibus 
 QT_IM_MODULE=ibus
