@@ -1,7 +1,7 @@
 super + t ; {a,l,d}
       dt {add,list,done}
 
-super + v
+super + u
       ddg_last_download
 
 super + shift + x

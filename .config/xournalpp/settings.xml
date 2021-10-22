@@ -7,12 +7,12 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/tmp/fiverr"/>
-  <property name="lastOpenPath" value="/tmp/qutebrowser-downloads-fpz5kwk1"/>
-  <property name="lastImagePath" value="/home/nikhilc/MyFiles/Junk"/>
+  <property name="lastOpenPath" value="/tmp/forms"/>
+  <property name="lastImagePath" value="/tmp/pics"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1894"/>
+  <property name="mainWndWidth" value="939"/>
   <property name="mainWndHeight" value="1157"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
@@ -197,7 +197,7 @@
     <attribute name="count" type="int" value="9"/>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="pen"/>
+    <attribute name="current" type="string" value="image"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
