@@ -20,7 +20,7 @@ super + r
       lf
 
 super + Return
-      st
+      $TERMInal
 
 super + shift + Return
       cat ~/.cache/fd_dirs | dmenu | xargs $TERMINAL --working-directory
