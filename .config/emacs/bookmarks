@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("planner.org"
+(("org-capture-last-stored"
+ (filename . "~/MyFiles/Nikhil/org-roam-files/20211024212948-testing_3.org")
+ (front-context-string)
+ (rear-context-string . "itle: testing 3\n")
+ (position . 87))
+("planner.org"
  (filename . "~/MyFiles/Nikhil/org_agenda/planner.org")
  (front-context-string . "\n* Pysics 4B SJC")
  (rear-context-string)
