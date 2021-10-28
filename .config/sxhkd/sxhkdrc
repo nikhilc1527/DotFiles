@@ -16,8 +16,8 @@ super + e
 super + y
       discord
 
-super + r
-      lf
+super + r ; {v, b}
+      sh -c ~/.config/arandr_layouts/{vnc, basic}.sh
 
 super + Return
       $TERMInal
