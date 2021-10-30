@@ -17,7 +17,7 @@ super + y
       discord
 
 super + r ; {v, b}
-      sh -c ~/.config/arandr_layouts/{vnc,basic}.sh
+      sh -c ~/.config/arandr_layouts/{vnc,basic}.sh && publicify
 
 super + Return
       $TERMInal
