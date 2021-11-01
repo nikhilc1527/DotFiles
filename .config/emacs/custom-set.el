@@ -76,7 +76,7 @@
  '(lsp-java-implementations-code-lens-enabled t)
  '(lsp-java-references-code-lens-enabled t)
  '(lsp-java-save-actions-organize-imports t)
- '(lsp-java-server-install-dir "~/.emacs.d/eclipse.jdt.ls/")
+ '(lsp-java-server-install-dir "~/.config/emacs/eclipse.jdt.ls/")
  '(lsp-java-show-build-status-on-start-enabled t)
  '(lsp-java-sources-organize-imports-star-threshold 3)
  '(lsp-java-sources-organize-imports-static-star-threshold 3)
