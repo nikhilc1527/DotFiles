@@ -7,7 +7,7 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/nikhilc/school/apes/study_guides/unit4"/>
-  <property name="lastOpenPath" value="/tmp/forms"/>
+  <property name="lastOpenPath" value="/home/nikhilc/school/apes/study_guides/unit4"/>
   <property name="lastImagePath" value="/home/nikhilc/Pictures"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
@@ -83,7 +83,7 @@
   <property name="audioSampleRate" value="44100.00000000"/>
   <property name="audioGain" value="1.00000000"/>
   <property name="defaultSeekTime" value="5"/>
-  <property name="pluginEnabled" value=""/>
+  <property name="pluginEnabled" value="ColorCycle"/>
   <property name="pluginDisabled" value=""/>
   <property name="strokeFilterIgnoreTime" value="150"/>
   <property name="strokeFilterIgnoreLength" value="1.00000000"/>
