@@ -164,7 +164,6 @@ Cursor type
   :background "#cc02bb" 
   :foreground "#d3e603")
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
-  (global-set-key "\C-r" 'query-replace-regexp)
   (global-visual-line-mode t)
   (menu-bar-mode -1)
 #+END_SRC
@@ -290,6 +289,20 @@ it gives you a small prompt with all possible next key strokes
 ;; (use-package avy
 ;;   :ensure t
 ;;   (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1))
+#+END_SRC
+
+** visual-regexp
+#+BEGIN_SRC emacs-lisp
+    (use-package visual-regexp
+    :ensure t)
+#+END_SRC
+
+** visual-regexp-steriods
+#+BEGIN_SRC emacs-lisp
+    (use-package visual-regexp-steroids
+    :ensure t
+    :config
+    (global-set-key "\C-r" 'vr/select-query-replace))
 #+END_SRC
 
 ** undo tree
