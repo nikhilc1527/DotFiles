@@ -16,6 +16,9 @@ super + e
 super + y
       discord
 
+super + z
+      boomer
+
 super + r ; {v, b}
       sh -c ~/.config/arandr_layouts/{vnc,basic}.sh && publicify
 
