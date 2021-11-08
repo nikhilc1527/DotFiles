@@ -13,6 +13,9 @@ super + w
 super + e
       $TERMINAL -e neomutt
 
+super + i
+      xdotool type "|0|"
+
 super + y
       discord
 

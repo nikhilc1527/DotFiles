@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  content.media.audio_capture:
-    https://voice.google.com: true
   content.notifications.enabled:
-    https://voice.google.com: false
+    https://www.chess.com: false
