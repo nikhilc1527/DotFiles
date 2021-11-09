@@ -1604,7 +1604,7 @@ run(void)
 
 void
 runAutostart(void) {
-        system("/home/nikhilc/.scripts/.startup");
+        system("/home/nikhilc/.scripts/.startup &");
 	system("killall -q dwmblocks; dwmblocks &");
 }
 
@@ -2638,7 +2638,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
-	/* runAutostart(); */
+	runAutostart();
 	run();
 	if(restart) execvp(argv[0], argv);
 	cleanup();
