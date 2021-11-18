@@ -23,7 +23,7 @@ config.bind("po", "print -f /tmp/page.pdf ;; spawn ~/.local/share/qutebrowser/sc
 config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}"})
 
 # dark mode
-config.set("colors.webpage.darkmode.enabled", False)
+config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.page", "always")
 
 # access clipboard
