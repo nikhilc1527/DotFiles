@@ -60,3 +60,5 @@ QT_IM_MODULE=ibus
 XMODIFIERS="@im=ibus"
 
 export DEFAULT_SESSION="dwm"
+
+export IN_API_KEY="0f51f83430eb404d942aa18a2c6b066b"
