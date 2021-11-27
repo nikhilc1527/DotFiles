@@ -6,7 +6,7 @@ static const Block blocks[] = {
   	{"ram: ", "free -m | grep Mem | awk '{print ($3/$2)*100}'",                     1,	16},
 	{"cpu: ",	"sb-cpu",		1,	15},
   	/* {"📚", "mount_sizes",                     15,	14}, */
-  	{"🌶", "sensors | /usr/bin/grep Tdie | awk '{print $2}' | cut -c 2-",                     1,	13},
+  	{"🌶", "sensors | /usr/bin/grep Tctl | awk '{print $2}' | cut -c 2-",                     1,	13},
   	{"", "sb-nettraf",                              1,	12},
   	/* {"🔒", "gpg-connect-agent 'keyinfo --list' /bye | /usr/bin/grep -- \"- 1\" | wc -l",	5,	11}, */
   	{"📅", "task rc.verbose=nothing ls | wc -l",	0,	10},

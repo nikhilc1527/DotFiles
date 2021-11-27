@@ -28,6 +28,8 @@ alias dwmblocks_update='last_pwd=$PWD; cd ~/.local/src/dwmblocks/ && make && plz
 
 alias clear='echo "use <c-l> instead!"'
 
+alias gdb='gdb -tui'
+
 lfcd() {
     tmp="$(mktemp)"
     lfrun -last-dir-path="$tmp" "$@"
