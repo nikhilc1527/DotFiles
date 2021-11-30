@@ -173,7 +173,7 @@ static Key keys[] = {
 	{ MODKEY,			-1, XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY|ShiftMask,		-1, XK_Return,	togglescratch,	{.ui = 0} },
 
-	{ MODKEY|ShiftMask,		-1, XK_s        ,       spawn,          SHCMD("sxhkd") },
+	{ MODKEY|ShiftMask,		-1, XK_s        ,       spawn,          SHCMD("killall sxhkd && sxhkd") },
 
 	{ MODKEY,			-1, XK_b,		togglebar,	{0} },        
 
