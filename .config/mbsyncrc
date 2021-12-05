@@ -102,3 +102,29 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
+
+IMAPStore nikhil@nikhilchatterjee.com-remote
+Host mail.nikhilchatterjee.com
+Port 993
+User nikhil@nikhilchatterjee.com
+PassCmd "pass nikhil@nikhilchatterjee.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore nikhil@nikhilchatterjee.com-local
+Subfolders Verbatim
+Path /home/nikhilc/.local/share/mail/nikhil@nikhilchatterjee.com/
+Inbox /home/nikhilc/.local/share/mail/nikhil@nikhilchatterjee.com/INBOX
+
+Channel nikhil@nikhilchatterjee.com
+Expunge Both
+Master :nikhil@nikhilchatterjee.com-remote:
+Slave :nikhil@nikhilchatterjee.com-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
