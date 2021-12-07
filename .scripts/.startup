@@ -76,4 +76,7 @@ copyq --start-server &
 ibus-daemon -drx --desktop=dwm
 /usr/share/openbangla-keyboard/ibus-openbangla &
 
+killall gpg-agent
+gpg-agent --homedir ~/.config/gnupg/ &
+
 notify-send -u low "finished startup script"
