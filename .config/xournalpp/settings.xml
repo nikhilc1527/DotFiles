@@ -6,13 +6,13 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/nikhilc/school/econ/frqs"/>
+  <property name="lastSavePath" value="/home/nikhilc/projects/advent_of_code_2021/day8"/>
   <property name="lastOpenPath" value="/home/nikhilc/school/apes/study_guides/unit4"/>
   <property name="lastImagePath" value="/home/nikhilc/Pictures"/>
   <property name="zoomStep" value="10.00000000"/>
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1033"/>
+  <property name="mainWndWidth" value="1894"/>
   <property name="mainWndHeight" value="1155"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
@@ -232,7 +232,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="000000"/>
+      <attribute name="color" type="hex" value="00ff00"/>
       <attribute name="drawingType" type="string" value="strokeRecognizer"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
