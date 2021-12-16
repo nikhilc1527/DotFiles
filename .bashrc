@@ -30,6 +30,10 @@ alias clear='echo "use <c-l> instead!"'
 
 alias gdb='gdb -tui'
 
+bandit() {
+    ssh bandit"$1"@bandit.labs.overthewire.org -p 2220
+}
+
 lfcd() {
     tmp="$(mktemp)"
     lfrun -last-dir-path="$tmp" "$@"

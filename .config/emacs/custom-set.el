@@ -23,6 +23,11 @@
  '(custom-safe-themes
    '("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "a325ba05dc3b5c2fa89af0ff354bbbe90251fb1a6e6d5682977cebe61ce72ab7" default))
  '(default-input-method "TeX")
+ '(dired-keep-marker-copy t)
+ '(dired-keep-marker-hardlink t)
+ '(dired-keep-marker-symlink t)
+ '(dired-listing-switches "-ahl")
+ '(dired-use-ls-dired t)
  '(display-line-numbers 'relative)
  '(display-line-numbers-type 'relative)
  '(doom-one-brighter-comments t)

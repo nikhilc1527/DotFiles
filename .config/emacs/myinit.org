@@ -155,6 +155,8 @@ Load the programming init file
 
   (set-frame-parameter (selected-frame) 'alpha '(85 50))
 
+(global-auto-revert-mode t)
+
 #+END_SRC
 Cursor type
 #+BEGIN_SRC emacs-lisp
