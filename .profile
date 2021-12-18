@@ -1,4 +1,4 @@
-export PATH=$HOMEDownloads/node-v15.5.0-linux-x64/bin:$HOMEDownloads/google-cloud-sdk/bin:$HOME.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOMEDownloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:$HOMEMyFiles/Nikhil/git_cloned_repos/cordless:$HOME.local/bin:$HOME/.scripts:/root/.local/bin:/usr/lib/gnupg:$HOME/.local/share/flutter/bin:/usr/bin/vendor_perl:$HOME/.local/src/Extract
+export PATH=$HOME/.scripts:$HOME/Downloads/node-v15.5.0-linux-x64/bin:$HOME/Downloads/google-cloud-sdk/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:$HOME/MyFiles/Nikhil/git_cloned_repos/cordless:$HOME/.local/bin:/root/.local/bin:/usr/lib/gnupg:$HOME/.local/share/flutter/bin:/usr/bin/vendor_perl:$HOME/.local/src/Extract
 
 export JAVA_HOME=/usr
 

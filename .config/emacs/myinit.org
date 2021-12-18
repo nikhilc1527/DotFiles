@@ -170,7 +170,15 @@ Cursor type
   (menu-bar-mode -1)
 #+END_SRC
 
-* miscellaneous small packages
+* miscellaneous small packages  
+** fira code
+#+BEGIN_SRC emacs-lisp
+(use-package fira-code-mode
+  :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+  :hook prog-mode)                                         ; mode to enable fira-code-mode in
+#+END_SRC   
+
+
 ** nyan mode
 used for showing position in the current buffer
 #+BEGIN_SRC emacs-lisp
