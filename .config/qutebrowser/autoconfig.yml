@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.notifications.enabled:
-    https://voice.google.com: false
+  content.geolocation:
+    https://www.amctheatres.com: false

@@ -37,8 +37,15 @@
  '(fa-delay 1)
  '(fa-do-comments 'non-nil)
  '(fa-hint-position-below t)
- '(fira-code-mode-disabled-ligatures
-   '("[]" "**" "*** " ">>" "::" ">=" ":" "www" "**/" "*>" "\\\\\\\\" "\\\\\\\\\\\\" "{-" "[]" ":::" ":=" "!!" "!==" "-}") nil nil "Customized with use-package fira-code-mode")
+ '(face-font-family-alternatives
+   '(("Monospace" "courier" "fixed")
+     ("Monospace Serif" "Courier 10 Pitch" "Consolas" "Courier Std" "FreeMono" "Nimbus Mono L" "courier" "fixed")
+     ("courier" "CMU Typewriter Text" "fixed")
+     ("Sans Serif" "helv" "helvetica" "arial" "fixed")
+     ("helv" "helvetica" "arial" "fixed")
+     ("Fira")))
+ '(fira-code-mode-disabled-ligatures '("[]" "::") nil nil "Customized with use-package fira-code-mode")
+ '(fira-code-mode-enable-hex-literal nil)
  '(flycheck-checkers
    '(ada-gnat asciidoctor asciidoc awk-gawk bazel-buildifier c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint css-stylelint cuda-nvcc cwl d-dmd dockerfile-hadolint elixir-credo emacs-lisp emacs-lisp-checkdoc ember-template erlang-rebar3 erlang eruby-erubis eruby-ruumba fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck go-unconvert go-staticcheck groovy haml handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy javascript-eslint javascript-jshint javascript-standard json-jsonlint json-python-json json-jq jsonnet less less-stylelint llvm-llc lua-luacheck lua markdown-markdownlint-cli markdown-mdl nix nix-linter opam perl perl-perlcritic php php-phpmd php-phpcs processing proselint protobuf-protoc protobuf-prototool pug puppet-parser puppet-lint python-flake8 python-pylint python-pycompile python-mypy r-lintr racket rpm-rpmlint rst-sphinx rst ruby-rubocop ruby-standard ruby-reek ruby-rubylint ruby ruby-jruby rust-cargo rust rust-clippy scala scala-scalastyle scheme-chicken scss-lint scss-stylelint sass/scss-sass-lint sass scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim slim-lint sql-sqlint systemd-analyze tcl-nagelfar terraform terraform-tflint tex-chktex tex-lacheck texinfo textlint typescript-tslint verilog-verilator vhdl-ghdl xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby yaml-yamllint))
  '(flycheck-clang-args '("-std=c++2a"))

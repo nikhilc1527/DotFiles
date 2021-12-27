@@ -20,8 +20,7 @@ config.bind("po", "print -f /tmp/page.pdf ;; spawn ~/.local/share/qutebrowser/sc
 
 
 # custom search engines
-config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}"})
-
+config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}", "hoogle": "https://hoogle.haskell.org/?hoogle={}"})
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.page", "always")
