@@ -6,6 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#2d2a2e" "#ff6188" "#a9dc76" "#ffd866" "dark red" "#ab9df2" "#a1efe4" "#fcfcfa"])
+ '(async-bytecomp-package-mode t)
+ '(async-shell-command-buffer 'rename-buffer)
  '(auth-source-gpg-encrypt-to '("EA297DFC1EDBBA32252CDD12EF97796A7E0BB77D"))
  '(auth-source-save-behavior nil)
  '(auth-sources '("~/.config/authinfo.gpg"))
@@ -23,6 +25,7 @@
  '(custom-safe-themes
    '("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "a325ba05dc3b5c2fa89af0ff354bbbe90251fb1a6e6d5682977cebe61ce72ab7" default))
  '(default-input-method "TeX")
+ '(dired-async-mode t)
  '(dired-keep-marker-copy t)
  '(dired-keep-marker-hardlink t)
  '(dired-keep-marker-symlink t)
@@ -129,7 +132,7 @@
  '(org-src-fontify-natively t)
  '(org-todo-keywords '((sequence "TODO" "DONE")))
  '(package-selected-packages
-   '(fira-code-mode fixmee vterm visual-regexp-steroids visual-regexp selectrum nasm-mode org-roam rainbow-identifiers rainbow-delimiters yaml markdownfmt treemacs-magit haskell-emacs-base dockerfile-mode docker-compose-mode docker protobuf-mode mu4e-alert mu4e-column-faces mu4e-conversation mu4e-jump-to-list mu4e-maildirs-extension mu4e-marker-icons mu4e-overview mu4e-query-fragments mu4e-views yaml-mode ranger powerline ghci-completion company-ghci flycheck-haskell haskell-tab-indent haskell-snippets lsp-haskell haskell-emacs haskell-mode lsp-mode highlight inline-crypt cryptol-mode erc-crypt autocrypt pg doom-themes org-journal-list org-journal flycheck-aspell helm-flyspell ac-ispell helm-ispell unicode-fonts darkroom olivetti ace-jump-buffer ace-jump-zap ace-jump-mode ## sass-mode undo-tree auctex-lua company-auctex simple-httpd js2-mode skewer-mode d-mode company-lua lua-mode color-theme iedit aggressive-indent electric-operator crux zenburn-theme srefactor ll-debug company-capf cmake-ide cmake-mode meghanada bash-completion gotham-theme calmer-forest-theme forest-blue-theme color-theme-sanityinc-solarized solarized-theme gruvbox-theme sublime-themes org-super-agenda org-fragtog flycheck-clang-tidy makey make-it-so clang-format+ clang-format glsl-mode makefile-executor image+ helm-make org-outline-numbering git-link groovy-mode flycheck-gradle gradle-mode toml toml-mode cargo flycheck-rust lsp-origami origami flycheck-irony multiple-cursors beacon expand-region flycheck helm helm-fish-completion fish-mode lsp-intellij golden-ratio nyan-mode web-mode eshell-git-prompt fish-completion exec-path-from-shell hydra company-irony git-gutter+ git-gutter idle-highlight-mode lsp-java lsp-ccls magit helm-lsp projectile flyspell-correct dap-java fireplace lsp-ui ccls xwidgete orgalist latex-pretty-symbols company-emoji auto-complete virtualenvwrapper elpy try ox-reveal zeno misc golden-ratio-mode auto-complete-config helm-config org-mode php-mode go-mode rustic rust-mode which-key htmlize windswap markdown-mode+ markdown-preview-mode info-beamer org-edit-latex org-bullets helm-c-yasnippet engine-mode multi-term mandm-theme use-package dired-rainbow leetcode zeno-theme sexy-monochrome-theme reverse-theme minimal-theme github-modern-theme helm-file-preview yasnippet-snippets company-c-headers sr-speedbar imenus helm-gtags function-args ggtags floobits sudo-edit modern-cpp-font-lock dummyparens smartparens duplicate-thing yasnippet company monokai-pro-theme))
+   '(direx fira-code-mode fixmee vterm visual-regexp-steroids visual-regexp selectrum nasm-mode org-roam rainbow-identifiers rainbow-delimiters yaml markdownfmt treemacs-magit haskell-emacs-base dockerfile-mode docker-compose-mode docker protobuf-mode mu4e-alert mu4e-column-faces mu4e-conversation mu4e-jump-to-list mu4e-maildirs-extension mu4e-marker-icons mu4e-overview mu4e-query-fragments mu4e-views yaml-mode ranger powerline ghci-completion company-ghci flycheck-haskell haskell-tab-indent haskell-snippets lsp-haskell haskell-emacs haskell-mode lsp-mode highlight inline-crypt cryptol-mode erc-crypt autocrypt pg doom-themes org-journal-list org-journal flycheck-aspell helm-flyspell ac-ispell helm-ispell unicode-fonts darkroom olivetti ace-jump-buffer ace-jump-zap ace-jump-mode ## sass-mode undo-tree auctex-lua company-auctex simple-httpd js2-mode skewer-mode d-mode company-lua lua-mode color-theme iedit aggressive-indent electric-operator crux zenburn-theme srefactor ll-debug company-capf cmake-ide cmake-mode meghanada bash-completion gotham-theme calmer-forest-theme forest-blue-theme color-theme-sanityinc-solarized solarized-theme gruvbox-theme sublime-themes org-super-agenda org-fragtog flycheck-clang-tidy makey make-it-so clang-format+ clang-format glsl-mode makefile-executor image+ helm-make org-outline-numbering git-link groovy-mode flycheck-gradle gradle-mode toml toml-mode cargo flycheck-rust lsp-origami origami flycheck-irony multiple-cursors beacon expand-region flycheck helm helm-fish-completion fish-mode lsp-intellij golden-ratio nyan-mode web-mode eshell-git-prompt fish-completion exec-path-from-shell hydra company-irony git-gutter+ git-gutter idle-highlight-mode lsp-java lsp-ccls magit helm-lsp projectile flyspell-correct dap-java fireplace lsp-ui ccls xwidgete orgalist latex-pretty-symbols company-emoji auto-complete virtualenvwrapper elpy try ox-reveal zeno misc golden-ratio-mode auto-complete-config helm-config org-mode php-mode go-mode rustic rust-mode which-key htmlize windswap markdown-mode+ markdown-preview-mode info-beamer org-edit-latex org-bullets helm-c-yasnippet engine-mode multi-term mandm-theme use-package dired-rainbow leetcode zeno-theme sexy-monochrome-theme reverse-theme minimal-theme github-modern-theme helm-file-preview yasnippet-snippets company-c-headers sr-speedbar imenus helm-gtags function-args ggtags floobits sudo-edit modern-cpp-font-lock dummyparens smartparens duplicate-thing yasnippet company monokai-pro-theme))
  '(rust-format-on-save nil)
  '(rustic-lsp-format t)
  '(scroll-bar-mode nil)
@@ -171,4 +174,5 @@
  '(haskell-literate-comment-face ((t nil)))
  '(hl-line ((t (:extend t :background "#343850" :underline nil))))
  '(lsp-ui-doc-background ((t (:background nil))))
- '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic))))))
+ '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
+ '(region ((t (:extend t :background "#cc02bb" :foreground "#d3e603")))))
