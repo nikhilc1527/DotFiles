@@ -4,13 +4,6 @@ set -x
 
 dunst -follow none &
 
-ping -c 1 google.com
-
-while [ "$?" -gt "0" ]; do
-	sleep 0.1
-	ping -c 1 google.com
-done
-
 update_packages() {
 	# gpg -d ~/.password.gpg | yay --sudoflags -S -Syyuu --noconfirm
 	r=$(mktemp)
@@ -40,7 +33,14 @@ update_pkglist() {
     yay    -Sl aur          >> ~/.cache/pkglist
 }
 
-fd -L --max-depth 4 -p /home/nikhilc > ~/.cache/fd_dirs &
+# fd -L --max-depth 4 -p /home/nikhilc > ~/.cache/fd_dirs &
+
+ping -c 1 nikhilchatterjee.com
+
+while [ "$?" -gt "0" ]; do
+	sleep 0.1
+	ping -c 1 nikhilchatterjee.com
+done
 
 update_pkglist &
 update_packages &
