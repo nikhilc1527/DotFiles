@@ -33,8 +33,6 @@ update_pkglist() {
     yay    -Sl aur          >> ~/.cache/pkglist
 }
 
-# fd -L --max-depth 4 -p /home/nikhilc > ~/.cache/fd_dirs &
-
 ping -c 1 nikhilchatterjee.com
 
 while [ "$?" -gt "0" ]; do
