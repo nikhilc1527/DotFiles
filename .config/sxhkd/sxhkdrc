@@ -16,6 +16,9 @@ super + e
 super + i
       xdotool type "|0|"
 
+super + r
+      emacsclient -c -e "(dired \".\")"
+
 super + y
       discord
 
