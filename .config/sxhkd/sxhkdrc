@@ -16,7 +16,7 @@ super + e
 super + i
       xdotool type "|0|"
 
-super + r
+super + o
       emacsclient -c -e "(dired \".\")"
 
 super + y
