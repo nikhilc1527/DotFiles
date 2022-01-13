@@ -17,7 +17,10 @@ super + i
       xdotool type "|0|"
 
 super + o
-      emacsclient -c -e "(dired \".\")"
+      emacsclient -c -e "(dired \"/home/nikhilc\")" -e "(helm-find-files-1 \"/home/nikhilc/\")"
+
+super + p
+      emacsclient -c -e "(dired \"/sudo::/\")" -e "(helm-find-files-1 \"/sudo::/\")"
 
 super + y
       discord
