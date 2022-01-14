@@ -6,7 +6,8 @@
 
 config_version: 2
 settings:
-  content.media.audio_capture:
-    https://voice.google.com: true
-  content.notifications.enabled:
-    https://voice.google.com: false
+  content.blocking.whitelist:
+    global:
+    - sdk.split.io
+    - events.split.io
+    - cdn.split.io
