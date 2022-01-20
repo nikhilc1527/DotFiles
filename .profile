@@ -62,5 +62,3 @@ XMODIFIERS="@im=ibus"
 export DEFAULT_SESSION="dwm"
 
 export IN_API_KEY="0f51f83430eb404d942aa18a2c6b066b"
-
-source "/mnt/sda2/Nikhil/git_cloned_repos/emsdk/emsdk_env.sh" > /dev/null 2>&1

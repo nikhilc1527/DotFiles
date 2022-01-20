@@ -83,14 +83,14 @@ scale() {
     ffmpeg -i $1 -vf scale=$2:$3 $4
 }
 
-mv_download() {
-    name=$(/usr/bin/ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
-    echo ~/Downloads/$name $1 | xargs mv
-}
+# mv_download() {
+#     name=$(/usr/bin/ls -t ~/Downloads/ | head -n1 | sed 's/ /\\ /g')
+#     echo ~/Downloads/$name $1 | xargs mv
+# }
 
 mv_picture() {
     name=$(/usr/bin/ls -t ~/Pictures/ | head -n1 | sed 's/ /\\ /g')
-    echo ~/Downloads/$name $1 | xargs mv
+    echo ~/Pictures/$name $1 | xargs mv
 }
 
 network_scan() {
