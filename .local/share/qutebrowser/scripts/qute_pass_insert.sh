@@ -1,8 +1,10 @@
 #!/bin/sh
 
-set -x
+set -e
 
 url=$1
+
+echo "$url" > /tmp/qute.txt
 
 xdotool type "i"
 
@@ -26,8 +28,9 @@ fi
 
 [ "$3" = "no_user" ] || xdotool key Tab
 
-pass=$(pass "$base_url/$user")
-xdotool type --delay 10 "$pass"
+touch "$PASSWORD_STORE_DIR"/"$base_url"/"$user".gpg
+password=$(pass "$base_url"/"$user")
+xdotool type --delay 15 "$password"
 
 # xdotool key Tab
 # xdotool key Return
