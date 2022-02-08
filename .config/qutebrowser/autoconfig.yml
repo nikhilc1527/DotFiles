@@ -7,4 +7,4 @@
 config_version: 2
 settings:
   content.notifications.enabled:
-    https://www.facebook.com: false
+    https://web.libera.chat: false
