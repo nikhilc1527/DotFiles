@@ -1,16 +1,24 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+export ZSH="$HOME/.config/oh-my-zsh"
+ZSH_THEME="wuffers"
 
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 export ZSH_DISABLE_COMPFIX=true
 
-# eventually need to fix this
-# source ~/.config/oh-my-zsh/oh-my-zsh.sh
+plugins=(git)
+
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# source $ZSH/oh-my-zsh.sh
+fpath=("~/.config/zsh/completions/" $fpath)
+
+autoload -U compinit
+compinit
+
+for config_file (~/.config/zsh/init_scripts/*.zsh); do
+  source "$config_file"
+done
+unset custom_config_file
 
 unsetopt share_history
 export LANG=en_US.UTF-8
@@ -20,10 +28,5 @@ source ~/.zshenv
 eval "$(starship init zsh)"
 
 alias src='source ~/.config/zsh/.zshrc'
-
-# source ~/.local/src/powerlevel10k/powerlevel10k.zsh-theme 
-
-# # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-# [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
 eval "$(starship init zsh)"
