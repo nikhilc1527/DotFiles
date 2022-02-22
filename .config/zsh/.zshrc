@@ -17,7 +17,6 @@ export LANG=en_US.UTF-8
 source ~/.bashrc
 export HISTFILE="$XDG_CONFIG_HOME"/zsh/history
 source ~/.zshenv 
-eval "$(starship init zsh)"
 
 alias src='source ~/.config/zsh/.zshrc'
 

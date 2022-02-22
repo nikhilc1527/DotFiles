@@ -32,8 +32,6 @@ alias gdb='gdb -tui'
 
 alias clr='\clear'
 
-alias config="/usr/bin/git --git-dir=$HOME/MyFiles/Nikhil/DotFiles/ --work-tree=$HOME"
-
 bandit() {
     ssh bandit"$1"@bandit.labs.overthewire.org -p 2220
 }
