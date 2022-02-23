@@ -1,15 +1,7 @@
-export ZSH="$HOME/.config/oh-my-zsh"
-ZSH_THEME="wuffers"
-
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 export ZSH_DISABLE_COMPFIX=true
 
-plugins=(git)
-
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# source $ZSH/oh-my-zsh.sh
 fpath=("~/.config/zsh/completions/" $fpath)
 
 autoload -U compinit
