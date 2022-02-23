@@ -42,7 +42,7 @@ done
 
 update_pkglist &
 update_packages &
-/home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &
+# /home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &
 
 # feh --bg-scale ~/MyFiles/Junk/Meee.png
 nitrogen --restore
