@@ -57,3 +57,6 @@ super + Print
 
 super + shift + Print
       OUT=~/Pictures/$(date '+%Y_%m_%d_%H_%M_%S').png; maim -u $OUT && copyq write image/png - < $OUT && copyq select 0
+
+super + shift + b
+      yad_battery
