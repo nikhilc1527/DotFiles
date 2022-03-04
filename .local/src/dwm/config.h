@@ -154,7 +154,7 @@ static Key keys[] = {
 	{ MODKEY,			-1, XK_BackSpace,	spawn,		SHCMD("sysact") },
 	{ MODKEY|ShiftMask,		-1, XK_BackSpace,	spawn,		SHCMD("sysact") },
         
-	{ MODKEY,			-1, XK_Tab,		view,		{0} },
+	// { MODKEY,			-1, XK_Tab,		view,		{0} },
 	{ MODKEY,			-1, XK_q,		killclient,	{0} },
 
 	{ MODKEY,			-1, XK_a,		togglegaps,	{0} },
