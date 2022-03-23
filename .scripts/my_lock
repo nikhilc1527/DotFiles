@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # convert $HOME/.local/share/lock_wall.png $HOME/.local/share/lock.png -gravity center -composite -matte /tmp/locked.png
-i3lock -t -i $HOME/.local/share/lock.png 
+i3lock -c 000000
