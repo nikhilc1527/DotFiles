@@ -60,3 +60,9 @@ super + shift + Print
 
 super + shift + b
       yad_battery
+
+XF86MonBrightnessUp
+      notify-send "brightness up"
+
+XF86MonBrightnessDown
+      notify-send "brightness down"

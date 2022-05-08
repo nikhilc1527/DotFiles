@@ -302,27 +302,27 @@ Lsp user interface
 #+END_SRC
 * python stuff (commented out for now to try to use lsp for python)
 #+BEGIN_SRC emacs-lisp
-(use-package virtualenvwrapper
-  :ensure t
-  :config
-  (venv-initialize-interactive-shells)
-  (venv-initialize-eshell))
+  (use-package virtualenvwrapper
+    :ensure t
+    :config
+    (venv-initialize-interactive-shells)
+    (venv-initialize-eshell))
 
-(venv-workon "p3")
-(setq lsp-python-executable-cmd "python3")
+  ;; (venv-workon "p3")
+  (setq lsp-python-executable-cmd "python3")
 
-;; (use-package jedi
-;;   :ensure t
-;;   :init
-;;   (add-hook 'python-mode-hook 'jedi:setup)
-;;   (add-hook 'python-mode-hook 'jedi:ac-setup)
-;;   )
+  ;; (use-package jedi
+  ;;   :ensure t
+  ;;   :init
+  ;;   (add-hook 'python-mode-hook 'jedi:setup)
+  ;;   (add-hook 'python-mode-hook 'jedi:ac-setup)
+  ;;   )
 
 
-(setq python-shell-interpreter "python3"
-      python-shell-interpreter-args "-i")
+  (setq python-shell-interpreter "python3"
+	python-shell-interpreter-args "-i")
 
-(setq lsp-pyls-plugins-pycodestyle-enabled 1)
+  (setq lsp-pyls-plugins-pycodestyle-enabled 1)
 #+END_SRC
 
 * c++ setup

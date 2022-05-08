@@ -20,7 +20,9 @@ config.bind("po", "print -f /tmp/page.pdf ;; spawn ~/.local/share/qutebrowser/sc
 
 
 # custom search engines
-config.set("url.searchengines", {"DEFAULT": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}", "hoogle": "https://hoogle.haskell.org/?hoogle={}"})
+config.set("url.searchengines", {"DEFAULT": "https://search.brave.com/search?q={}&source=web", "ddg": "https://duckduckgo.com/?q={}&ia=web", "yts": "https://www.youtube.com/results?search_query={}", "dr": "http://drive.google.com/u/{}", "sp": "http://spanishdict.com/translate/{}", "hoogle": "https://hoogle.haskell.org/?hoogle={}"})
+config.set("url.default_page", "https://search.brave.com")
+config.set("url.start_pages", "https://search.brave.com")
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.page", "always")
