@@ -21,3 +21,5 @@ source ~/.zshenv
 alias src='source ~/.config/zsh/.zshrc'
 
 eval "$(starship init zsh)"
+
+[ "$(tty)" = "/dev/tty1" ] && startx
