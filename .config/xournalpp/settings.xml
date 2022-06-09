@@ -114,7 +114,7 @@
     <data name="default">
       <attribute name="color" type="hex" value="ff000000"/>
       <attribute name="drawingType" type="string" value="default"/>
-      <attribute name="size" type="string" value="thin"/>
+      <attribute name="size" type="string" value="medium"/>
       <attribute name="tool" type="string" value="pen"/>
     </data>
     <data name="eraser">
@@ -171,6 +171,10 @@
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
+    <data name="Logitech Gaming Mouse G502 Keyboard">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+    </data>
     <data name="Razer Razer Cynosa Chroma">
       <attribute name="deviceClass" type="int" value="5"/>
       <attribute name="deviceSource" type="int" value="0"/>
@@ -179,6 +183,7 @@
       <attribute name="deviceClass" type="int" value="5"/>
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
+<<<<<<< HEAD
     <data name="Synaptics TM3053-004">
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="6"/>
@@ -186,6 +191,11 @@
     <data name="TPPS/2 IBM TrackPoint">
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="7"/>
+=======
+    <data name="Razer Razer Cynosa Chroma Keyboard">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+>>>>>>> e0ab114 (Sun Feb 27 09:24:29 AM PST 2022)
     </data>
     <data name="Virtual core XTEST pointer">
       <attribute name="deviceClass" type="int" value="1"/>
