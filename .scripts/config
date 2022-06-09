@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-/usr/bin/git --git-dir=/home/nikhilc/dotfiles --work-tree=/home/nikhilc "$@"
+/usr/bin/git --git-dir=/home/nikhilc/MyFiles/Nikhil/DotFiles --work-tree=/home/nikhilc "$@"
