@@ -1,9 +1,4 @@
 #!/bin/sh
 
-# gpg -q -d /home/nikhil/.password.gpg | sudo -S echo "" > /dev/null
-# echo ""
-# "$@"
-# sudo -k
-
 gpg -q -d $HOME/.local/share/password.gpg | sudo -S -p "" "$@"
 sudo -k

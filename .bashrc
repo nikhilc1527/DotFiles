@@ -4,7 +4,7 @@
 
 # If not running interactively, don't do anything
 
-neofetch
+nerdfetch
 
 source $HOME/.profile
 
