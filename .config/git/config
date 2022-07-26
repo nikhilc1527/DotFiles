@@ -11,3 +11,6 @@
 	process = git-lfs filter-process
 	required = true
         
+[safe]
+	directory = /mnt/sda2/Nikhil/projects/haddr-lang
+	directory = /mnt/sda2/Nikhil/ngrok_url

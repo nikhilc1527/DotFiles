@@ -1,12 +1,12 @@
 # vim: filetype=neomuttrc
-# muttrc file for account nchatterjee391@student.fuhsd.org
-set realname = "nchatterjee391"
-set from = "nchatterjee391@student.fuhsd.org"
-set sendmail = "msmtp -a nchatterjee391@student.fuhsd.org"
-alias me nchatterjee391 <nchatterjee391@student.fuhsd.org>
-set folder = "/home/nikhilc/.local/share/mail/nchatterjee391@student.fuhsd.org"
-set header_cache = /home/nikhilc/.cache/mutt-wizard/nchatterjee391@student.fuhsd.org/headers
-set message_cachedir = /home/nikhilc/.cache/mutt-wizard/nchatterjee391@student.fuhsd.org/bodies
+# muttrc file for account grad_nchatterjee391@student.fuhsd.org
+set realname = "grad_nchatterjee391"
+set from = "grad_nchatterjee391@student.fuhsd.org"
+set sendmail = "msmtp -a grad_nchatterjee391@student.fuhsd.org"
+alias me grad_nchatterjee391 <grad_nchatterjee391@student.fuhsd.org>
+set folder = "/home/nikhilc/.local/share/mail/grad_nchatterjee391@student.fuhsd.org"
+set header_cache = /home/nikhilc/.cache/mutt-wizard/grad_nchatterjee391@student.fuhsd.org/headers
+set message_cachedir = /home/nikhilc/.cache/mutt-wizard/grad_nchatterjee391@student.fuhsd.org/bodies
 set mbox_type = Maildir
 set hostname = "student.fuhsd.org"
 
@@ -19,7 +19,7 @@ bind index gg first-entry
 unmailboxes *
 unalternates *
 unset signature
-macro index o "<shell-escape>mw -y nchatterjee391@student.fuhsd.org<enter>" "run mbsync to sync nchatterjee391@student.fuhsd.org"
+macro index o "<shell-escape>mw -y grad_nchatterjee391@student.fuhsd.org<enter>" "run mbsync to sync grad_nchatterjee391@student.fuhsd.org"
 
 mailboxes "=INBOX" "=Mailspring/Snoozed" "=[Gmail]/Drafts" "=[Gmail]/Important" "=[Gmail]/Sent" "=[Gmail]/Sent Mail" "=[Gmail]/Spam" "=[Gmail]/Starred" "=[Gmail]/Trash/Todos"
 macro index,pager gi "<change-folder>=INBOX<enter>" "go to inbox"

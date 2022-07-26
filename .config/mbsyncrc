@@ -24,24 +24,24 @@ ExpireUnread no
 # End profile
 
 
-IMAPStore nchatterjee391@student.fuhsd.org-remote
+IMAPStore grad_nchatterjee391@student.fuhsd.org-remote
 Host imap.gmail.com
 Port 993
-User nchatterjee391@student.fuhsd.org
-PassCmd "pass nchatterjee391@student.fuhsd.org"
+User grad_nchatterjee391@student.fuhsd.org
+PassCmd "pass grad_nchatterjee391@student.fuhsd.org"
 AuthMechs LOGIN
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-MaildirStore nchatterjee391@student.fuhsd.org-local
+MaildirStore grad_nchatterjee391@student.fuhsd.org-local
 Subfolders Verbatim
-Path /home/nikhilc/.local/share/mail/nchatterjee391@student.fuhsd.org/
-Inbox /home/nikhilc/.local/share/mail/nchatterjee391@student.fuhsd.org/INBOX
+Path /home/nikhilc/.local/share/mail/grad_nchatterjee391@student.fuhsd.org/
+Inbox /home/nikhilc/.local/share/mail/grad_nchatterjee391@student.fuhsd.org/INBOX
 
-Channel nchatterjee391@student.fuhsd.org
+Channel grad_nchatterjee391@student.fuhsd.org
 Expunge Both
-Far :nchatterjee391@student.fuhsd.org-remote:
-Near :nchatterjee391@student.fuhsd.org-local:
+Far :grad_nchatterjee391@student.fuhsd.org-remote:
+Near :grad_nchatterjee391@student.fuhsd.org-local:
 Patterns * !"[Gmail]/All Mail"
 Create Both
 SyncState *

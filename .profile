@@ -1,4 +1,4 @@
-export PATH=$HOME/.scripts:$HOME/Downloads/node-v15.5.0-linux-x64/bin:$HOME/Downloads/google-cloud-sdk/bin:$HOME/.cabal/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:$HOME/MyFiles/Nikhil/git_cloned_repos/cordless:$HOME/.local/bin:/root/.local/bin:/usr/lib/gnupg:$HOME/.local/share/flutter/bin:/usr/bin/vendor_perl:$HOME/.local/src/Extract:$HOME/.config/cargo/bin
+export PATH=$HOME/.scripts:$HOME/Downloads/node-v15.5.0-linux-x64/bin:$HOME/Downloads/google-cloud-sdk/bin:$HOME/.cabal/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/Downloads/fzf/bin:/mnt/sda2/Nikhil/git_cloned_repos/bat/target/release:~/.local/bin:/usr/sbin:/usr/local/bin:$HOME/MyFiles/Nikhil/git_cloned_repos/cordless:$HOME/.local/bin:/root/.local/bin:/usr/lib/gnupg:$HOME/.local/share/flutter/bin:/usr/bin/vendor_perl:$HOME/.local/src/Extract:$HOME/.config/cargo/bin:$HOME/.local/bin/flutter/bin
 
 export JAVA_HOME=/usr
 
@@ -55,10 +55,13 @@ export ANDROID_HOME=$HOME/MyFiles/AndroidSDK2
 export DISPLAY=:0
 
 # ibus stuff
-GTK_IM_MODULE=ibus 
-QT_IM_MODULE=ibus
-XMODIFIERS="@im=ibus"
+export GTK_IM_MODULE=ibus 
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
 
 export DEFAULT_SESSION="dwm"
 
 export IN_API_KEY="0f51f83430eb404d942aa18a2c6b066b"
+
+# so that steam doesnt use vulkan and instead uses opengl
+export PROTON_USE_WINED3D=1

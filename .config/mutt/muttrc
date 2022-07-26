@@ -3,10 +3,10 @@
 source /home/nikhilc/.config/mutt/mutt_config
 source /home/nikhilc/.config/mutt/accounts/4-nikhil@nikhilchatterjee.com.muttrc
 source /home/nikhilc/.config/mutt/accounts/3-biglymasly@gmail.com.muttrc
-source /home/nikhilc/.config/mutt/accounts/2-nchatterjee391@student.fuhsd.org.muttrc
+source /home/nikhilc/.config/mutt/accounts/2-grad_nchatterjee391@student.fuhsd.org.muttrc
 source /home/nikhilc/.config/mutt/accounts/1-nikhilc1527@gmail.com.muttrc
 macro index,pager i1 '<sync-mailbox><enter-command>source /home/nikhilc/.config/mutt/accounts/1-nikhilc1527@gmail.com.muttrc            <enter><change-folder>!<enter>;<check-stats>' "switch to nikhilc1527@gmail.com"
-macro index,pager i2 '<sync-mailbox><enter-command>source /home/nikhilc/.config/mutt/accounts/2-nchatterjee391@student.fuhsd.org.muttrc <enter><change-folder>!<enter>;<check-stats>' "switch to nchatterjee391@student.fuhsd.org"
+macro index,pager i2 '<sync-mailbox><enter-command>source /home/nikhilc/.config/mutt/accounts/2-grad_nchatterjee391@student.fuhsd.org.muttrc <enter><change-folder>!<enter>;<check-stats>' "switch to grad_nchatterjee391@student.fuhsd.org"
 macro index,pager i3 '<sync-mailbox><enter-command>source /home/nikhilc/.config/mutt/accounts/3-biglymasly@gmail.com.muttrc             <enter><change-folder>!<enter>;<check-stats>' "switch to biglymasly@gmail.com"
 macro index,pager i4 '<sync-mailbox><enter-command>source /home/nikhilc/.config/mutt/accounts/4-nikhil@nikhilchatterjee.com.muttrc      <enter><change-folder>!<enter>;<check-stats>' "switch to nikhil@nikhilchatterjee.com"
 
