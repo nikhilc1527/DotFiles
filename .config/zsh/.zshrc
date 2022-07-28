@@ -18,7 +18,8 @@ source ~/.bashrc
 export HISTFILE="$XDG_CONFIG_HOME"/zsh/history
 source ~/.zshenv
 
-bindkey -v # set vi mode
+# bindkey -v # set vi mode
+bindkey -e
 
 alias src='source ~/.config/zsh/.zshrc'
 
