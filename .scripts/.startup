@@ -33,12 +33,12 @@ update_pkglist() {
     yay    -Sl aur          >> ~/.cache/pkglist
 }
 
-ping -c 1 nikhilchatterjee.com
+ping -c 1 google.com
 
-# while [ "$?" -gt "0" ]; do
-# 	sleep 0.1
-# 	ping -c 1 nikhilchatterjee.com
-# done
+while [ "$?" -gt "0" ]; do
+	sleep 0.1
+	ping -c 1 google.com
+done
 
 update_pkglist &
 update_packages &
