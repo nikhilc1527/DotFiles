@@ -4,6 +4,8 @@
 
 # If not running interactively, don't do anything
 
+[ -n "$SSH_TTY" ] && tmux
+
 nerdfetch
 
 source $HOME/.profile
@@ -75,9 +77,9 @@ ek() {
     emacsclient -e '(save-buffers-kill-emacs)'
 }
 
-alias dual_scr='xsetwacom set "HID 256c:006d Pen stylus" Area 0 0 44200 27600'
-alias right_scr='xsetwacom set "HID 256c:006d Pen stylus" Area -44200 0 44200 27600'
-alias left_scr='xsetwacom set "HID 256c:006d Pen stylus" Area 0 0 88400 27600'
+alias dual_scr='xsetwacom set "HID 256c:006d stylus" Area 0 0 44200 27600'
+alias right_scr='xsetwacom set "HID 256c:006d stylus" Area -44200 0 44200 27600'
+alias left_scr='xsetwacom set "HID 256c:006d stylus" Area 0 0 88400 27600'
 
 alias cat='bat'
 

@@ -50,13 +50,13 @@
                  (reusable-frames . visible)
                  (window-height   . 0.15))))
 
-(flycheck-define-error-level 'info
-  :severity -10
-  :compilation-level 0
-  :overlay-category 'flycheck-info-overlay
-  :fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-  :fringe-face 'flycheck-fringe-info
-  :error-list-face 'flycheck-error-list-info)
+;; (flycheck-define-error-level 'info
+;;   :severity -10
+;;   :compilation-level 0
+;;   :overlay-category 'flycheck-info-overlay
+;;   :fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
+;;   :fringe-face 'flycheck-fringe-info
+;;   :error-list-face 'flycheck-error-list-info)
 #+END_SRC
 
 * lsp (experimental)
@@ -308,7 +308,7 @@ Lsp user interface
     (venv-initialize-interactive-shells)
     (venv-initialize-eshell))
 
-  (venv-workon "p3")
+  ;; (venv-workon "p3")
   (setq lsp-python-executable-cmd "python3")
 
   ;; (use-package jedi
@@ -450,8 +450,8 @@ Lsp user interface
               (set (make-local-variable 'company-backends)
                    (append '((company-capf company-dabbrev-code))
                            company-backends))))
-     (require 'haskell-interactive-mode)
-     (require 'haskell-process)
+     (use-package 'haskell-interactive-mode)
+     (use-package 'haskell-process)
      (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
      (custom-set-variables
        '(haskell-process-suggest-remove-import-lines t)
