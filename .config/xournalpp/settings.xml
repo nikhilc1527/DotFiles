@@ -7,7 +7,7 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/nikhilc/MyFiles/Nikhil/wisco_22_23/sem1/math375/hw/hw2"/>
-  <property name="lastOpenPath" value=""/>
+  <property name="lastOpenPath" value="/home/nikhilc/MyFiles/Nikhil/wisco_22_23/sem1/math375/notes"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20.00000000"/>
   <property name="edgePanMaxMult" value="5.00000000"/>
@@ -15,7 +15,7 @@
   <property name="zoomStepScroll" value="2.00000000"/>
   <property name="displayDpi" value="72"/>
   <property name="mainWndWidth" value="1894"/>
-  <property name="mainWndHeight" value="1174"/>
+  <property name="mainWndHeight" value="1153"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
