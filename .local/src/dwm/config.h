@@ -174,6 +174,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		-1, XK_Return,	togglescratch,	{.ui = 0} },
 
 	{ MODKEY|ShiftMask,		-1, XK_s        ,       spawn,          SHCMD("killall sxhkd && sxhkd") },
+	{ MODKEY,		-1, XK_w        ,       spawn,          SHCMD("qutebrowser") },
 
 	{ MODKEY,			-1, XK_b,		togglebar,	{0} },        
 
