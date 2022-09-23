@@ -45,10 +45,10 @@ update_packages &
 /home/nikhilc/.scripts/start_ngrok > /tmp/ngrok_log.txt &
 
 # feh --bg-scale ~/MyFiles/Junk/Meee.png
-nitrogen --restore
+# nitrogen --restore
 # set pywal with nitrogen saved wallpaper
-cat .config/nitrogen/bg-saved.cfg | grep file | awk -F= '{print $2}' | xargs wal -i
-redshift -P -O 3000
+# cat .config/nitrogen/bg-saved.cfg | grep file | awk -F= '{print $2}' | xargs wal -i
+# redshift -P -O 3000
 
 emacs --daemon &
 setxkbmap -option compose:ralt
