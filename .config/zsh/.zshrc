@@ -25,4 +25,6 @@ alias src='source ~/.config/zsh/.zshrc'
 
 eval "$(starship init zsh)"
 
+[ -f "/home/nikhilc/.ghcup/env" ] && source "/home/nikhilc/.ghcup/env" # ghcup-env
+
 ([ "$(tty)" = "/dev/tty1" ] && startx) || true
