@@ -61,7 +61,7 @@
   <property name="drawDirModsRadius" value="50"/>
   <property name="snapRotation" value="false"/>
   <property name="snapRotationTolerance" value="0.30000000"/>
-  <property name="snapGrid" value="false"/>
+  <property name="snapGrid" value="true"/>
   <property name="snapGridTolerance" value="0.50000000"/>
   <property name="snapGridSize" value="14.17000000"/>
   <property name="touchDrawing" value="false"/>
@@ -85,7 +85,7 @@
   <property name="audioSampleRate" value="44100.00000000"/>
   <property name="audioGain" value="1.00000000"/>
   <property name="defaultSeekTime" value="5"/>
-  <property name="pluginEnabled" value=""/>
+  <property name="pluginEnabled" value="ToggleGrid"/>
   <property name="pluginDisabled" value=""/>
   <property name="strokeFilterIgnoreTime" value="150"/>
   <property name="strokeFilterIgnoreLength" value="1.00000000"/>
@@ -173,11 +173,11 @@
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
     <data name="Razer Razer Cynosa Chroma">
-      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceClass" type="int" value="5"/>
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
     <data name="Razer Razer Cynosa Chroma Keyboard">
-      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceClass" type="int" value="5"/>
       <attribute name="deviceSource" type="int" value="0"/>
     </data>
     <data name="Virtual core XTEST pointer">
