@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/nikhilc/wisco/math375/hw/hw3"/>
+  <property name="lastSavePath" value="/home/nikhilc/wisco/math375/hw/hw4"/>
   <property name="lastOpenPath" value="/home/nikhilc/MyFiles/Nikhil/wisco_22_23/sem1/math375/hw/hw2"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20.00000000"/>
@@ -61,7 +61,7 @@
   <property name="drawDirModsRadius" value="50"/>
   <property name="snapRotation" value="false"/>
   <property name="snapRotationTolerance" value="0.30000000"/>
-  <property name="snapGrid" value="true"/>
+  <property name="snapGrid" value="false"/>
   <property name="snapGridTolerance" value="0.50000000"/>
   <property name="snapGridSize" value="14.17000000"/>
   <property name="touchDrawing" value="false"/>
