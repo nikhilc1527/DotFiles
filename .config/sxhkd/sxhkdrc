@@ -19,7 +19,7 @@ super + i
 super + o
       emacsclient -c -e "(dired \"/home/nikhilc\")" -e "(helm-find-files-1 \"/home/nikhilc/\")"
 
-super + p
+super + shift + o
       emacsclient -c -e "(dired \"/sudo::/\")" -e "(helm-find-files-1 \"/sudo::/\")"
 
 super + y
@@ -41,7 +41,13 @@ super + d
       dmenu_run
 
 super + p ; p
-      xsetwacom --set "HID 256c:006d Pad pad" Button 12 "key h"
+      sh ~/.scripts/reload_tablet.sh
+
+super + p ; l
+      xsetwacom set "HID 256c:006d stylus" Area 0 0 88400 27600
+
+super + p ; r
+      xsetwacom set "HID 256c:006d stylus" Area -44200 0 44200 27600
 
 super + shift + d
       passmenu
