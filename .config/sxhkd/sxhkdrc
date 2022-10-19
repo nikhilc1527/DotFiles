@@ -40,6 +40,9 @@ super + shift + Return
 super + d
       dmenu_run
 
+super + p ; p
+      xsetwacom --set "HID 256c:006d Pad pad" Button 12 "key h"
+
 super + shift + d
       passmenu
 
