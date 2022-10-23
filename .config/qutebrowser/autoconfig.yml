@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.notifications.enabled:
-    https://www.chess.com: false
+  content.register_protocol_handler:
+    https://outlook.office.com?mailtouri=%25s: false
