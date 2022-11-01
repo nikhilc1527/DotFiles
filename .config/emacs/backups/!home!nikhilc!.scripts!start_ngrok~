@@ -3,7 +3,7 @@
 set -x
 
 killall ngrok
-ngrok tcp --config ~/.config/ngrok.yml --log stdout 22 &
+ngrok tcp 22 --config ~/.config/ngrok.yml --log stdout &
 while [ ! $(curl -s localhost:4040/api/tunnels) ]; do
       true;
 done
