@@ -31,6 +31,8 @@ config.set("content.blocking.whitelist", ["sdk.split.io", "events.split.io", "cd
 # access clipboard
 config.set("content.javascript.can_access_clipboard", True)
 
+config.set("content.headers.user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
+
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
