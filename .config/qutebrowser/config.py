@@ -27,7 +27,7 @@ config.set("url.start_pages", "https://start.duckduckgo.com")
 # config.set("url.start_pages", "https://search.brave.com")
 # dark mode
 config.set("colors.webpage.darkmode.enabled", True)
-# config.set("colors.webpage.darkmode.policy.page", "always")
+config.set("colors.webpage.darkmode.policy.page", "smart")
 config.set("content.blocking.whitelist", ["sdk.split.io", "events.split.io", "cdn.split.io"])
 
 # access clipboard
