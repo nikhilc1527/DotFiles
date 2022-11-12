@@ -1,3 +1,5 @@
+([ "$(tty)" = "/dev/tty1" ] && startx)
+
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 export ZSH_DISABLE_COMPFIX=true
@@ -26,5 +28,3 @@ alias src='source ~/.config/zsh/.zshrc'
 eval "$(starship init zsh)"
 
 [ -f "/home/nikhilc/.ghcup/env" ] && source "/home/nikhilc/.ghcup/env" # ghcup-env
-
-([ "$(tty)" = "/dev/tty1" ] && startx) || true
