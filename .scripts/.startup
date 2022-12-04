@@ -76,6 +76,6 @@ ibus-daemon -drx --desktop=dwm
 
 watch_tablet.sh &
 
-fake_hdmi.sh
+# fake_hdmi.sh
 
 notify-send -u low "finished startup script"
