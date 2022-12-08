@@ -445,6 +445,7 @@ Lsp user interface
 
 * haskell
 #+BEGIN_SRC emacs-lisp
+  (use-package haskell-mode)
   (add-hook 'haskell-mode-hook
             (lambda ()
               (set (make-local-variable 'company-backends)
