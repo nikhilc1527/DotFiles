@@ -19,7 +19,7 @@ eval "$(pyenv init --path)"
 
 export TERMINAL="alacritty"
 export BROWSER="qutebrowser"
-export PAGER="less"
+export PAGER="moar"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
