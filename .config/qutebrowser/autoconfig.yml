@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.mouse_lock:
-    https://krunker.io: true
+  content.notifications.enabled:
+    https://www.tiktok.com: false
