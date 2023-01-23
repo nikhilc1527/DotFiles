@@ -2,7 +2,7 @@
 
 set -x
 
-# while [ true ]; do
+while [ true ]; do
 killall ngrok
 ngrok tcp 5900 --config ~/.config/ngrok.yml --log stdout &
 while [ ! $(curl -s localhost:4040/api/tunnels) ]; do
@@ -21,5 +21,5 @@ git add url.txt
 git commit -m "$(date)"
 git push
 notify-send "finished starting ngrok"
-# sleep 7200
-# done
+sleep 7200
+done
