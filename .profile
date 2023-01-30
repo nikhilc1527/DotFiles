@@ -66,3 +66,8 @@ export IN_API_KEY="0f51f83430eb404d942aa18a2c6b066b"
 
 # so that steam doesnt use vulkan and instead uses opengl
 export PROTON_USE_WINED3D=1
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/nikhilc/.local/share/JetBrains/Toolbox/scripts"
+
