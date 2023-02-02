@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1.00000000"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/tmp"/>
+  <property name="lastSavePath" value="/home/nikhilc/wisco/math376/homeworks/hw1"/>
   <property name="lastOpenPath" value="/home/nikhilc/MyFiles/Nikhil/wisco_22_23/sem1/math375/hw/hw7"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20.00000000"/>
@@ -135,7 +135,7 @@
       <attribute name="tool" type="string" value="selectRect"/>
     </data>
     <data name="stylus2">
-      <attribute name="eraserMode" type="string" value="none"/>
+      <attribute name="eraserMode" type="string" value="deleteStroke"/>
       <attribute name="size" type="string" value="none"/>
       <attribute name="tool" type="string" value="eraser"/>
     </data>
@@ -146,6 +146,14 @@
     </data>
   </data>
   <data name="deviceClasses">
+    <data name="Compx 2.4G Wireless Receiver Keyboard">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+    </data>
+    <data name="Compx 2.4G Wireless Receiver Mouse">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+    </data>
     <data name="HID 256c:006d Pad pad">
       <attribute name="deviceClass" type="int" value="0"/>
       <attribute name="deviceSource" type="int" value="8"/>
