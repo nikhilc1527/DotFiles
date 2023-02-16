@@ -160,7 +160,7 @@ Load the programming init file
 
 #+END_SRC
 
-Cursor type
+** Cursor type
 #+BEGIN_SRC emacs-lisp
   (setq-default cursor-type 'box)
   (set-cursor-color "#AEFF40")
@@ -170,6 +170,11 @@ Cursor type
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (global-visual-line-mode t)
   (menu-bar-mode -1)
+#+END_SRC
+
+** terminal from current directory
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x RET RET") (lambda () (interactive) (start-process "term" "foo" "alacritty" "--working-directory" ".")))
 #+END_SRC
 
 * miscellaneous small packages  
