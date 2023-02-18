@@ -416,6 +416,15 @@ it gives you a small prompt with all possible next key strokes
 
 #+END_SRC
 
+** ace jump mode
+#+BEGIN_SRC emacs-lisp
+
+      (use-package ace-jump-mode
+        :bind
+        ("C-c SPC" . 'ace-jump-mode))
+
+#+END_SRC
+
 * custom made functions
 Clear the buffer in eshell mode
 #+BEGIN_SRC emacs-lisp
