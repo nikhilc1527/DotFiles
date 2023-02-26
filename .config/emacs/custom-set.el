@@ -60,7 +60,7 @@
  '(flycheck-clang-language-standard "2a")
  '(flycheck-gcc-args '("-std=c++2a"))
  '(flycheck-gcc-include-path '("/usr/local/include" "/usr/include/c++"))
- '(flycheck-gcc-language-standard "\"c++2a\"")
+ '(flycheck-gcc-language-standard "c++2a")
  '(flycheck-gcc-pedantic t)
  '(flycheck-gcc-pedantic-errors t)
  '(flycheck-global-modes t)
