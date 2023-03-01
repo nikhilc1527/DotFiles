@@ -71,6 +71,8 @@ clipmenud &
 
 copyq --start-server &
 
+blueman-applet & # allows blueman manager and blueman services
+
 ibus-daemon -drx --desktop=dwm
 /usr/share/openbangla-keyboard/ibus-openbangla &
 
