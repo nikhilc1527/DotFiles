@@ -33,3 +33,5 @@ appstatus_cmu https://s3.andrew.cmu.edu/aio/wai/home
 appstatus_stanford https://apply.stanford.edu/apply/status
 wisco my.wisc.edu
 courses https://enroll.wisc.edu/search
+go_gp https://go.gradepotential.com
+office_gp https://office.gradepotential.com
