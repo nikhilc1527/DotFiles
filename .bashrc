@@ -119,3 +119,5 @@ reblue() {
     bluetoothctl power on
     bluetoothctl connect 14:3F:A6:3D:DA:2B    
 }
+
+alias wauto="cd ~/projects/WAutoDrive/; atk dev"
