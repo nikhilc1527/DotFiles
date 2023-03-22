@@ -4,8 +4,6 @@
 
 # If not running interactively, don't do anything
 
-[ -n "$SSH_TTY" ] && tmux
-
 nerdfetch
 
 source $HOME/.profile
