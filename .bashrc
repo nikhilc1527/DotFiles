@@ -118,4 +118,8 @@ reblue() {
     bluetoothctl connect 14:3F:A6:3D:DA:2B    
 }
 
-alias wauto="cd ~/projects/WAutoDrive/; atk dev"
+BOOKMARK_PATH="$HOME/.config/bookmarks"
+if [ -d "$BOOKMARK_PATH" ]; then
+    export CDPATH=".:$BOOKMARK_PATH/"
+    alias g="cd -P"
+fi
