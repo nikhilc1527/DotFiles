@@ -177,6 +177,11 @@ Load the programming init file
   (global-set-key (kbd "C-x RET RET") (lambda () (interactive) (start-process "term" "foo" "alacritty" "--working-directory" ".")))
 #+END_SRC
 
+** dragon drop current file
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x RET u") (lambda () (interactive) (start-process "dragon-drop" "foo" "dragon-drop" (buffer-file-name))))
+#+END_SRC
+
 * miscellaneous small packages  
 ** fira code
 #+BEGIN_SRC emacs-lisp
