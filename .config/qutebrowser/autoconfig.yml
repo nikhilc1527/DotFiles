@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  content.desktop_capture:
-    https://flip.com: true
-  content.media.audio_video_capture:
-    https://flip.com: true
+  content.media.video_capture:
+    https://my.zipcar.com: true
