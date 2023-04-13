@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.media.video_capture:
-    https://my.zipcar.com: true
+  content.notifications.enabled:
+    https://www.chess.com: true
