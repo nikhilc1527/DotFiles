@@ -1,4 +1,9 @@
 #!/bin/sh
 
 # convert $HOME/.local/share/lock_wall.png $HOME/.local/share/lock.png -gravity center -composite -matte /tmp/locked.png
-i3lock -c 000000
+# i3lock -c 000000
+
+dunstctl close-all
+dunstctl set-paused true
+xscreensaver-command -lock
+dunstctl set-paused false

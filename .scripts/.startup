@@ -80,4 +80,6 @@ watch_tablet.sh &
 
 # fake_hdmi.sh
 
+xscreensaver &
+
 notify-send -u low "finished startup script"
