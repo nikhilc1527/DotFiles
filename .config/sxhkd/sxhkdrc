@@ -22,6 +22,9 @@ super + o
 super + shift + o
       emacsclient -c -e "(dired \"/sudo::/\")" -e "(helm-find-files-1 \"/sudo::/\")"
 
+super + control + shift + o
+      emacsclient -c -e "(switch-to-buffer \"*scratch*\")"
+
 super + y
       discord
 
