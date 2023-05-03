@@ -4,7 +4,12 @@ import os
 import subprocess
 
 os.system("dunstctl close-all")
-os.system("dunstctl set-paused true")
+paused = subprocess.run(["dunstctl", "is-paused"], stdout=subprocess.PIPE)
+paused = paused.stdout.decode("UTF-8") == "false"
+
+if paused:
+    os.system("dunstctl set-paused true")
+
 os.system("xscreensaver-command -lock")
 lock_watch = subprocess.Popen(["xscreensaver-command", "-watch"], stdout=subprocess.PIPE)
 while True:
@@ -12,4 +17,5 @@ while True:
     if line.split(" ")[0] == 'UNBLANK':
         break
 
-os.system("dunstctl set-paused false")
+if paused:
+    os.system("dunstctl set-paused false")

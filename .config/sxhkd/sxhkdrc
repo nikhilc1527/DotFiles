@@ -1,3 +1,6 @@
+super + n ; {y,n}
+      dunstctl set-paused {false,true}
+
 super + t ; {a,l,d}
       dt {add,list,done}
 
