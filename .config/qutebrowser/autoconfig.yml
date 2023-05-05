@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  content.media.audio_capture:
-    https://go.room.sh: true
-  content.media.audio_video_capture:
-    https://go.room.sh: true
+  content.notifications.enabled:
+    https://www.chess.com: true
