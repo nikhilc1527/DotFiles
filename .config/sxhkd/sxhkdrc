@@ -50,10 +50,10 @@ super + p ; p
       sh ~/.scripts/reload_tablet.sh
 
 super + p ; l
-      xsetwacom set "HID 256c:006d stylus" Area 0 0 88400 27600
+      xsetwacom set "HID 256c:006d Pen stylus" Area 0 0 88400 27600
 
 super + p ; r
-      xsetwacom set "HID 256c:006d stylus" Area -44200 0 44200 27600
+      xsetwacom set "HID 256c:006d Pen stylus" Area -44200 0 44200 27600
 
 super + shift + d
       passmenu
