@@ -308,9 +308,18 @@ it gives you a small prompt with all possible next key strokes
 
 ** ace-jump-mode
 #+BEGIN_SRC emacs-lisp
-;; (use-package avy
-;;   :ensure t
-;;   (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1))
+  ;; (use-package avy
+  ;;   :ensure t
+  ;;   (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1))
+#+END_SRC
+
+** jump-char
+#+BEGIN_SRC emacs-lisp
+  (use-package jump-char
+    :ensure t
+    :config
+    (global-set-key (kbd "M-o") 'jump-char-forward)
+    (global-set-key (kbd "C-M-o") 'jump-char-forward-set-mark))
 #+END_SRC
 
 ** visual-regexp
