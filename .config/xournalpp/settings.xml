@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/nikhilc/.config/xournalpp"/>
+  <property name="lastSavePath" value="/home/nikhilc/wisco/cs539/hw/hw3"/>
   <property name="lastOpenPath" value="/home/nikhilc/wisco/math376/homeworks/week10"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20"/>
@@ -15,7 +15,7 @@
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
   <property name="mainWndWidth" value="1894"/>
-  <property name="mainWndHeight" value="1153"/>
+  <property name="mainWndHeight" value="1174"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
   <property name="showSidebar" value="false"/>
@@ -191,6 +191,10 @@
       <attribute name="deviceClass" type="int" value="2"/>
       <attribute name="deviceSource" type="int" value="1"/>
     </data>
+    <data name="Logitech G502 HERO Gaming Mouse">
+      <attribute name="deviceClass" type="int" value="1"/>
+      <attribute name="deviceSource" type="int" value="0"/>
+    </data>
     <data name="Logitech Gaming Mouse G502">
       <attribute name="deviceClass" type="int" value="1"/>
       <attribute name="deviceSource" type="int" value="0"/>
@@ -271,7 +275,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="ffffff"/>
+      <attribute name="color" type="hex" value="000000"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
