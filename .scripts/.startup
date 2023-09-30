@@ -82,6 +82,6 @@ watch_tablet.sh &
 
 xscreensaver &
 
-syncthing &
+# syncthing &
 
 notify-send -u low "finished startup script"
