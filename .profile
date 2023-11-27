@@ -18,7 +18,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="qutebrowser"
 export PAGER="less"
 
 export XDG_CONFIG_HOME="$HOME/.config"
