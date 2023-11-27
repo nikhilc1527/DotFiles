@@ -32,7 +32,7 @@ super + y
       discord
 
 super + z
-      boomer
+      notify-send "hello" $(/usr/local/bin/boomer)
 
 super + r
       kill -s SIGUSR1 $(pgrep sxhkd) && notify-send -t 1000 "updated sxhkd"
