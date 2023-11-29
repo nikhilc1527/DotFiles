@@ -322,6 +322,18 @@ it gives you a small prompt with all possible next key strokes
     (global-set-key (kbd "C-M-o") 'jump-char-forward-set-mark))
 #+END_SRC
 
+** move-text
+#+BEGIN_SRC emacs-lisp
+  (use-package move-text
+    :ensure t
+    :config
+        (global-set-key (kbd "M-p") 'move-text-up)
+        (global-set-key (kbd "M-n") 'move-text-down)
+    )
+#+END_SRC
+
+
+
 ** visual-regexp
 #+BEGIN_SRC emacs-lisp
     (use-package visual-regexp
