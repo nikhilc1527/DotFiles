@@ -15,6 +15,7 @@ done
 unset custom_config_file
 
 unsetopt share_history
+setopt interactive_comments
 export LANG=en_US.UTF-8
 source ~/.bashrc
 export HISTFILE="$XDG_CONFIG_HOME"/zsh/history
