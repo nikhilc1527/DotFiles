@@ -84,4 +84,6 @@ xscreensaver &
 
 # syncthing &
 
+otd-daemon &
+
 notify-send -u low "finished startup script"
