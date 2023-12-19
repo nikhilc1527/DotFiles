@@ -14,7 +14,7 @@
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="72"/>
-  <property name="mainWndWidth" value="1894"/>
+  <property name="mainWndWidth" value="1033"/>
   <property name="mainWndHeight" value="1174"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
@@ -253,7 +253,7 @@
     <attribute name="count" type="int" value="9"/>
   </data>
   <data name="tools">
-    <attribute name="current" type="string" value="text"/>
+    <attribute name="current" type="string" value="pen"/>
     <data name="drawArrow">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
@@ -328,7 +328,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="text">
-      <attribute name="color" type="hex" value="000000"/>
+      <attribute name="color" type="hex" value="ffffff"/>
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="verticalSpace">
