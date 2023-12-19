@@ -28,4 +28,8 @@ alias src='source ~/.config/zsh/.zshrc'
 
 eval "$(starship init zsh)"
 
-[ -f "/home/nikhilc/.ghcup/env" ] && source "/home/nikhilc/.ghcup/env" # ghcup-env
+[ -f "/home/nikhilc/.ghcup/env" ] && \
+    source "/home/nikhilc/.ghcup/env" # ghcup-env
+
+preexec() { print -Pn "\e]0;$1\a" }
+precmd() { print -Pn "\e]0;$PWD\a" }

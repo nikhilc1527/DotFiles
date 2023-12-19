@@ -1,6 +1,9 @@
 [Desktop Entry]
 DefaultProfile=
 
+[General]
+ConfigVersion=1
+
 [KonsoleWindow]
 ShowMenuBarByDefault=false
 
@@ -19,4 +22,4 @@ StatusBar=Disabled
 ToolBarsMovable=Disabled
 
 [UiSettings]
-ColorScheme=Default
+ColorScheme=
