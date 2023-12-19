@@ -17,7 +17,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
-export TERMINAL="alacritty"
+# export TERMINAL="alacritty"
 export BROWSER="firefox"
 export PAGER="less"
 
