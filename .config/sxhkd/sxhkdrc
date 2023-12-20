@@ -4,6 +4,9 @@ super + n ; {y,n}
 super + t ; {a,l,d}
       dt {add,list,done}
 
+super + e ; {p,u,n}
+      scratch {push,pop,pop_named}
+
 super + u
       ddg_last_download
 
@@ -12,9 +15,6 @@ super + shift + x
 
 super + w
       $BROWSER
-
-super + e
-      $TERMINAL -e neomutt
 
 super + i
       xdotool type "|0|"

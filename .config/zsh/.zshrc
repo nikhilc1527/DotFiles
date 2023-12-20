@@ -32,4 +32,4 @@ eval "$(starship init zsh)"
     source "/home/nikhilc/.ghcup/env" # ghcup-env
 
 preexec() { print -Pn "\e]0;$1\a" }
-precmd() { print -Pn "\e]0;$PWD\a" }
+precmd() { print -Pn "\e]0;%n@%M:%~\a" }
