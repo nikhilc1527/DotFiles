@@ -1,4 +1,4 @@
-([ "$(tty)" = "/dev/tty1" ] && startx)
+# ([ "$(tty)" = "/dev/tty1" ] && startx)
 
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
